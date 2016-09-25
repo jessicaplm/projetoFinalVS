@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Insert title here</title>
+
+
+</h:head>
+<h:body>
+	<h:form enctype="multipart/form-data">
+		<p:panel id="caampos" header="Formulario de Cadastro de Alimentos"
+			footer="Movie Details" style="margin-bottom:20px">
+
+			<p:messages id="messages1" />
+			<h:panelGrid style="margin-top:20px" columns="2">
+
+
+				<h:panelGrid columns="1" cellspacing="6">
+					<p:outputLabel for="nome" value="Nome do Alimento:" />
+					<p:inputText id="nome" value="#{mbAlimento.nomeAlimento}"
+						required="true" label="nome">
+						<f:validateLength minimum="2" />
+					</p:inputText>
+					<p:message for="nome" />
+				</h:panelGrid>
+				<h:panelGrid columns="1" cellspacing="6">
+					<p:outputLabel for="valorEnergetico" value="Valor calorico:" />
+					<p:inputText id="valorEnergetico"
+						value="#{mbAlimento.valorEnergetico}" required="true"
+						label="valorEnergetico" />
+
+					<p:message for="valorEnergetico" />
+				</h:panelGrid>
+
+
+			</h:panelGrid>
+		</p:panel>
+
+	
+			<p:panel id="editorGeral" header="Detalhes Gerais"
+				footer="Movie Details" style="margin-bottom:20px">
+
+				<!--Editor Detalhes Gerais-->
+				<h:panelGrid columns="1" cellpadding="10">
+
+					<p:editor id="editor" widgetVar="editorWidget"
+						value="#{mbAlimento.descricaoGeral}" width="600" />
+
+					<h:panelGrid columns="2" style="margin-top: 10px">
+						<p:commandButton value="Submit" update="display"
+							oncomplete="PF('dlg').show()" icon="ui-icon-disk" />
+
+						<p:commandButton value="Clear" type="button"
+							onclick="PF('editorWidget').clear();" icon="ui-icon-close" />
+					</h:panelGrid>
+
+					<p:dialog header="Content" widgetVar="dlg" showEffect="fade"
+						hideEffect="fade">
+						<h:outputText id="display" value="#{mbAlimento.descricaoGeral}"
+							escape="false" />
+					</p:dialog>
+				</h:panelGrid>
+			</p:panel>
+		
+		
+		<p:panel id="editorEspecifico" header="Detalhes Especificos"
+			footer="Movie Details" style="margin-bottom:20px">
+			<!--Editor Detalhes Especificos-->
+			<h:panelGrid columns="1" cellpadding="10">
+
+				<p:editor id="editor2" widgetVar="editorWidget"
+					value="#{mbAlimento.descricaoEspecifica}" width="600" />
+
+				<h:panelGrid columns="2" style="margin-top: 10px">
+					<p:commandButton value="Submit" update="display2"
+						oncomplete="PF('dlg').show()" icon="ui-icon-disk" />
+
+					<p:commandButton value="Clear" type="button"
+						onclick="PF('editorWidget').clear();" icon="ui-icon-close" />
+				</h:panelGrid>
+
+				<p:dialog header="Content" widgetVar="dlg" showEffect="fade"
+					hideEffect="fade">
+					<h:outputText id="display2"
+						value="#{mbAlimento.descricaoEspecifica}" escape="false" />
+				</p:dialog>
+			</h:panelGrid>
+
+		</p:panel>
+
+
+		<p:panel id="beneficios" header="Beneficios e Maleficios"
+			footer="Movie Details" style="margin-bottom:20px">
+			<!--Editor Detalhes Especificos-->
+			<h:panelGrid columns="2" cellpadding="10">
+				<h:panelGrid columns="1" cellpadding="5">
+
+					<p:editor id="editor3" widgetVar="editorWidget"
+						value="#{mbAlimento.beneficios}" width="600" />
+
+					<h:panelGrid columns="2" style="margin-top: 10px">
+						<p:commandButton value="Submit" update="display3"
+							oncomplete="PF('dlg').show()" icon="ui-icon-disk" />
+
+						<p:commandButton value="Clear" type="button"
+							onclick="PF('editorWidget').clear();" icon="ui-icon-close" />
+					</h:panelGrid>
+
+					<p:dialog header="Content" widgetVar="dlg" showEffect="fade"
+						hideEffect="fade">
+						<h:outputText id="display3" value="#{mbAlimento.beneficios}"
+							escape="false" />
+					</p:dialog>
+
+				</h:panelGrid>
+				<h:panelGrid columns="1" cellpadding="5">
+
+					<p:editor id="editor4" widgetVar="editorWidget"
+						value="#{mbAlimento.maleficios}" width="600" />
+
+					<h:panelGrid columns="2" style="margin-top: 10px">
+						<p:commandButton value="Submit" update="display4"
+							oncomplete="PF('dlg').show()" icon="ui-icon-disk" />
+
+						<p:commandButton value="Clear" type="button"
+							onclick="PF('editorWidget').clear();" icon="ui-icon-close" />
+					</h:panelGrid>
+
+					<p:dialog header="Content" widgetVar="dlg" showEffect="fade"
+						hideEffect="fade">
+						<h:outputText id="display4" value="#{mbAlimento.maleficios}"
+							escape="false" />
+					</p:dialog>
+				</h:panelGrid>
+			</h:panelGrid>
+		</p:panel>
+
+		<p:panel id="uploadImagem" header="Carregar Imagem"
+			footer="Movie Details" style="margin-bottom:20px">
+			<!--Editor Detalhes Especificos-->
+			<h:panelGrid columns="3" cellpadding="10">
+
+				<!-- <p:growl id="messages" showDetail="true" /> -->
+
+				<p:fileUpload value="#{alimentoController.file}" mode="simple"
+					skinSimple="true" />
+
+				<p:commandButton value="Submit" ajax="false"
+					actionListener="#{alimentoController.upload}" disabled="true" />
+
+			</h:panelGrid>
+
+		</p:panel>
+
+		<p:commandButton value="Adicionar" ajax="false"
+			action="#{alimentoController.addAlimento(mbAlimento)}"></p:commandButton>
+	</h:form>
+</h:body>
+</html>
