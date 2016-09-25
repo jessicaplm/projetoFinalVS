@@ -16,7 +16,7 @@
 	<p:layout style="min-width:1035px;max-width:1250px;min-height:400px"
 		id="layout" fullPage="false">
 
-		<p:layoutUnit position="north" size="10%" resizable="true"
+		<p:layoutUnit position="north" size="20%" resizable="true"
 			closable="false" collapsible="true" effect="drop">
 
 			<h:form>
@@ -76,32 +76,38 @@
 
 
 		</p:layoutUnit>
-		<p:layoutUnit position="center" size="90%" resizable="true"
-			closable="false" collapsible="true" effect="drop">
+		<h:form>
+			<p:layoutUnit position="center" size="90%" resizable="true"
+				closable="false" collapsible="true" effect="drop">
 
-			<p:panel id="basic" header="Basic" footer="Movie Details"
-				style="margin-bottom:20px">
-				<h:panelGrid columns="2" cellpadding="10">
-					<p:graphicImage name="demo/images/godfather/godfather1.jpg" />
-					<h:outputText value="The story begins as Don Vito Corleone..." />
-				</h:panelGrid>
-			</p:panel>
-		</p:layoutUnit>
-
+				<p:panel id="basic" header="Basic" footer="Movie Details"
+					style="margin-bottom:20px">
+					<h:panelGrid columns="2" cellpadding="10">
+						<p:graphicImage name="demo/images/godfather/godfather1.jpg" />
+						<h:outputText value="The story begins as Don Vito Corleone..." />
+					</h:panelGrid>
+					<h:panelGrid columns="2" cellpadding="10">
+						<p:commandLink ajax="false" value="cadastro alimento"
+							action="cadastroAlimento.xhtml"></p:commandLink>
+						<p:commandLink ajax="false" value="cadastro componente"
+							action="cadastroComponentes.xhtml"></p:commandLink>
+					</h:panelGrid>
+				</p:panel>
+			</p:layoutUnit>
+		</h:form>
 	</p:layout>
 	<h:form>
 
 		<h:dataTable value="#{alimentoController.listAlimento()}" var="ali">
 			<h:column>
-				<p:graphicImage width="300px" value="#{alimentoController.mostrarimagem}"
-					cache="false" />
+				<p:graphicImage width="300px"
+					value="#{alimentoController.mostrarimagem}" cache="false" />
 				<h:outputText value="#{ali.nomeAlimento}">
 				</h:outputText>
 			</h:column>
 		</h:dataTable>
 
-		<p:commandLink ajax="false" value="cadastro alimento"
-			action="cadastroAlimento.xhtml"></p:commandLink>
+
 	</h:form>
 </h:body>
 </html>

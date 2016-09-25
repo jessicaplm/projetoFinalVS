@@ -32,6 +32,7 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
 			<beans:list>
 				<!-- Adicionar as classes que quer que o hibernate gerencie inicio -->
 				<beans:value>com.vidasaudavel.model.Alimento</beans:value>
+				<beans:value>com.vidasaudavel.model.Componente</beans:value>
 
 				<!-- Adicionar as classes que quer que o hibernate gerencie fim -->
 			</beans:list>
@@ -64,6 +65,21 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
 		<beans:property name="alimentoService" ref="alimentoService"></beans:property>
 	</beans:bean>
 	<!--Alimentos -->
+	
+		<!--Componentes -->
+	<beans:bean id="componenteDAO" class="com.vidasaudavel.dao.ComponenteDAOImpl">
+		<beans:property name="sessionFactory"
+			ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
+	<beans:bean id="componenteService"
+		class="com.vidasaudavel.service.ComponenteServiceImpl">
+		<beans:property name="componenteDAO" ref="componenteDAO"></beans:property>
+	</beans:bean>
+	<beans:bean id="componenteController"
+		class="com.vidasaudavel.controller.ComponenteController">
+		<beans:property name="componenteService" ref="componenteService"></beans:property>
+	</beans:bean>
+	<!--Componentes -->
 
 	<!--colocar todas as classes DAO que tiverem session factory aqui fim -->
 
