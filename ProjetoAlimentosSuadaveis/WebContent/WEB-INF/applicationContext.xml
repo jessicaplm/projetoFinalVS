@@ -33,7 +33,8 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
 				<!-- Adicionar as classes que quer que o hibernate gerencie inicio -->
 				<beans:value>com.vidasaudavel.model.Alimento</beans:value>
 				<beans:value>com.vidasaudavel.model.Componente</beans:value>
-
+				<beans:value>com.vidasaudavel.model.SugestaoAlimento</beans:value>
+				<beans:value>com.vidasaudavel.model.SugestaoComponente</beans:value>
 				<!-- Adicionar as classes que quer que o hibernate gerencie fim -->
 			</beans:list>
 		</beans:property>
@@ -65,8 +66,8 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
 		<beans:property name="alimentoService" ref="alimentoService"></beans:property>
 	</beans:bean>
 	<!--Alimentos -->
-	
-		<!--Componentes -->
+
+	<!--Componentes -->
 	<beans:bean id="componenteDAO" class="com.vidasaudavel.dao.ComponenteDAOImpl">
 		<beans:property name="sessionFactory"
 			ref="hibernate4AnnotatedSessionFactory" />
@@ -78,6 +79,36 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
 	<beans:bean id="componenteController"
 		class="com.vidasaudavel.controller.ComponenteController">
 		<beans:property name="componenteService" ref="componenteService"></beans:property>
+	</beans:bean>
+	<!--Componentes -->
+	
+		<!--SugestaoAlimento -->
+	<beans:bean id="sugestaoAlimentoDAO" class="com.vidasaudavel.dao.SugestaoAlimentoDAOImpl">
+		<beans:property name="sessionFactory"
+			ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
+	<beans:bean id="sugestaoAlimentoService"
+		class="com.vidasaudavel.service.SugestaoAlimentoServiceImpl">
+		<beans:property name="sugestaoAlimentoDAO" ref="sugestaoAlimentoDAO"></beans:property>
+	</beans:bean>
+	<beans:bean id="sugestaoAlimentoController"
+		class="com.vidasaudavel.controller.SugestaoAlimentoController">
+		<beans:property name="sugestaoAlimentoService" ref="sugestaoAlimentoService"></beans:property>
+	</beans:bean>
+	<!--SugestaoAlimento -->
+	
+		<!--SugestaoComponente -->
+	<beans:bean id="sugestaoComponenteDAO" class="com.vidasaudavel.dao.SugestaoComponenteDAOImpl">
+		<beans:property name="sessionFactory"
+			ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
+	<beans:bean id="sugestaoComponenteService"
+		class="com.vidasaudavel.service.SugestaoComponenteServiceImpl">
+		<beans:property name="sugestaoComponenteDAO" ref="sugestaoComponenteDAO"></beans:property>
+	</beans:bean>
+	<beans:bean id="sugestaoComponenteController"
+		class="com.vidasaudavel.controller.SugestaoComponenteController">
+		<beans:property name="sugestaoComponenteService" ref="sugestaoComponenteService"></beans:property>
 	</beans:bean>
 	<!--Componentes -->
 

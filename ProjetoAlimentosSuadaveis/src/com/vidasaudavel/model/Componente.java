@@ -20,7 +20,8 @@ public class Componente implements Serializable{
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -2201012060270019795L;
+	private static final long serialVersionUID = 1L;
+
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
