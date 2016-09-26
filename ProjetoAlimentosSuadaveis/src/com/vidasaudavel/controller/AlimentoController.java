@@ -31,49 +31,49 @@ public class AlimentoController {
 		this.alimentoService = alimentoService;
 	}
 
-//	public void addAlimento(Alimento a) {
-//		try {
-//			a.setImagem(file.getContents());
-//
-//		} catch (Exception e) {
-//			// TODO: handle exception
-//			e.getMessage();
-//		}
-//		this.alimentoService.addAlimento(a);
-//	}
-//
-//	public List<Alimento> listAlimento() {
-//
-//		alimentos = this.alimentoService.listAlimento();
-//	
-//			//mostrarimagem=  new DefaultStreamedContent(new ByteArrayInputStream(alimentos.get(0).getImagem()));
-//	
-//		
-//		return alimentos;
-//
-//	}
-//
-//	public void updateAlimento(Alimento a) {
-//
-//		try {
-//
-//		} catch (Exception e) {
-//			// TODO: handle exception
-//			e.getMessage();
-//		}
-//		this.alimentoService.updateAlimento(a);
-//	}
-//
-//	public void removeAlimentoById(int id) {
-//
-//		try {
-//
-//		} catch (Exception e) {
-//			// TODO: handle exception
-//			e.getMessage();
-//		}
-//		this.alimentoService.removeAlimentoById(id);
-//	}
+	public void addAlimento(Alimento a) {
+		try {
+			
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.getMessage();
+		}
+		this.alimentoService.addAlimento(a);
+	}
+
+	public List<Alimento> listAlimento() {
+
+		alimentos = this.alimentoService.listAlimento();
+	
+			//mostrarimagem=  new DefaultStreamedContent(new ByteArrayInputStream(alimentos.get(0).getImagem()));
+	
+		
+		return alimentos;
+
+	}
+
+	public void updateAlimento(Alimento a) {
+
+		try {
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.getMessage();
+		}
+		this.alimentoService.updateAlimento(a);
+	}
+
+	public void removeAlimentoById(int id) {
+
+		try {
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.getMessage();
+		}
+		this.alimentoService.removeAlimentoById(id);
+	}
 //
 //	public Alimento getAlimento() {
 //		return alimento;

@@ -6,7 +6,7 @@ import javax.faces.bean.SessionScoped;
 import org.springframework.stereotype.Controller;
 
 import com.vidasaudavel.model.TipoRegiao;
-import com.vidasaudavel.model.TipoSugestao;
+
 import com.vidasaudavel.service.QuestionarioService;
 
 @ManagedBean(name = "questionarioController")
