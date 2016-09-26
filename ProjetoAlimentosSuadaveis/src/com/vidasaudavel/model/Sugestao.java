@@ -11,47 +11,25 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@ManagedBean(name="mbComponente")
+
+@ManagedBean(name="mbSugestaoAlimento")
 @SessionScoped
 @Entity
-@Table(name="componente")
-public class Componente implements Serializable{
+@Table(name="sugestaoAlimento")
+public class Sugestao implements Serializable{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
-
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private long id_componente;
+	private long idAlimento;
 	@Column
-	private String nm_componente;
+	private String nome;
 	@Column
-	private String ds_componente;
-	@Column
-	private String benef_componente;
-	@Column
-	private String malef_componente;
-	@Column
-	private String url_imagem_componente;
-	@Column
-	private String link_componente;
+	private String tipo_sugestao;
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
 }

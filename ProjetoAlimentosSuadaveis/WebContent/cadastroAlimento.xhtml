@@ -6,13 +6,34 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
+	
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<title>Insert title here</title>
-
+	<h:link href="css/arquivo.css" rel="stylesheet"/>
 
 </h:head>
 <h:body>
+
 	<h:form enctype="multipart/form-data">
+
+
+		<p:growl id="messages" />
+
+		<p:menubar styleClass="menu ">
+			<p:submenu label="File" icon="ui-icon-home" rendered="">
+			</p:submenu>
+
+
+
+			<f:facet name="options">
+				<p:inputText style="margin-right:10px" placeholder="Search" />
+				<p:commandButton type="button" value="Logout" icon="ui-icon-extlink" />
+			</f:facet>
+		</p:menubar>
+
+
+
+
 		<p:panel id="caampos" header="Formulario de Cadastro de Alimentos"
 			footer="Movie Details" style="margin-bottom:20px">
 
@@ -41,33 +62,33 @@
 			</h:panelGrid>
 		</p:panel>
 
-	
-			<p:panel id="editorGeral" header="Detalhes Gerais"
-				footer="Movie Details" style="margin-bottom:20px">
 
-				<!--Editor Detalhes Gerais-->
-				<h:panelGrid columns="1" cellpadding="10">
+		<p:panel id="editorGeral" header="Detalhes Gerais"
+			footer="Movie Details" style="margin-bottom:20px">
 
-					<p:editor id="editor" widgetVar="editorWidget"
-						value="#{mbAlimento.descricaoGeral}" width="600" />
+			<!--Editor Detalhes Gerais-->
+			<h:panelGrid columns="1" cellpadding="10">
 
-					<h:panelGrid columns="2" style="margin-top: 10px">
-						<p:commandButton value="Submit" update="display"
-							oncomplete="PF('dlg').show()" icon="ui-icon-disk" />
+				<p:editor id="editor" widgetVar="editorWidget"
+					value="#{mbAlimento.descricaoGeral}" width="600" />
 
-						<p:commandButton value="Clear" type="button"
-							onclick="PF('editorWidget').clear();" icon="ui-icon-close" />
-					</h:panelGrid>
+				<h:panelGrid columns="2" style="margin-top: 10px">
+					<p:commandButton value="Submit" update="display"
+						oncomplete="PF('dlg').show()" icon="ui-icon-disk" />
 
-					<p:dialog header="Content" widgetVar="dlg" showEffect="fade"
-						hideEffect="fade">
-						<h:outputText id="display" value="#{mbAlimento.descricaoGeral}"
-							escape="false" />
-					</p:dialog>
+					<p:commandButton value="Clear" type="button"
+						onclick="PF('editorWidget').clear();" icon="ui-icon-close" />
 				</h:panelGrid>
-			</p:panel>
-		
-		
+
+				<p:dialog header="Content" widgetVar="dlg" showEffect="fade"
+					hideEffect="fade">
+					<h:outputText id="display" value="#{mbAlimento.descricaoGeral}"
+						escape="false" />
+				</p:dialog>
+			</h:panelGrid>
+		</p:panel>
+
+
 		<p:panel id="editorEspecifico" header="Detalhes Especificos"
 			footer="Movie Details" style="margin-bottom:20px">
 			<!--Editor Detalhes Especificos-->
@@ -101,7 +122,7 @@
 				<h:panelGrid columns="1" cellpadding="5">
 
 					<p:editor id="editor3" widgetVar="editorWidget"
-						value="#{mbAlimento.beneficios}" width="600" />
+						value="#{mbAlimento.beneficios}" width="400" />
 
 					<h:panelGrid columns="2" style="margin-top: 10px">
 						<p:commandButton value="Submit" update="display3"
@@ -121,7 +142,7 @@
 				<h:panelGrid columns="1" cellpadding="5">
 
 					<p:editor id="editor4" widgetVar="editorWidget"
-						value="#{mbAlimento.maleficios}" width="600" />
+						value="#{mbAlimento.maleficios}" width="400" />
 
 					<h:panelGrid columns="2" style="margin-top: 10px">
 						<p:commandButton value="Submit" update="display4"

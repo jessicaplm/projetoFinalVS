@@ -13,7 +13,7 @@
 </h:head>
 <h:body>
 
-	<h:form enctype="multipart/form-data">
+	<!-- <h:form enctype="multipart/form-data">
 	 <p:growl id="msgs" showDetail="true" />
 		<p:panel id="caampos" header="Formulario de Cadastro de Componentes"
 			footer="Movie Details" style="margin-bottom:20px">
@@ -38,7 +38,7 @@
 		<p:panel id="descricaoComponente" header="Descrição do Componente"
 			footer="Movie Details" style="margin-bottom:20px">
 
-			<!--Editor Detalhes Gerais-->
+			Editor Detalhes Gerais
 			<h:panelGrid columns="1" cellpadding="10">
 
 				<p:editor id="editor" widgetVar="editorWidget"
@@ -81,7 +81,7 @@
 				<p:commandButton ajax="false" value="Deletar" 
 					action="#{componenteController.deletComponente(compo)}"
 					title="View">
-					<!--  <f:setPropertyActionListener value="#{car}" target="#{dtSelectionView.selectedCar}" /> -->
+					 <f:setPropertyActionListener value="#{car}" target="#{dtSelectionView.selectedCar}" />
 				</p:commandButton>
 			</p:column>
 		</p:dataTable>
@@ -91,8 +91,8 @@
 	<h:form>
 		<p:commandButton ajax="false" value="Adicionar Componentes"
 			action="#{componenteController.addComponente()}" title="View">
-			<!--  <f:setPropertyActionListener value="#{car}" target="#{dtSelectionView.selectedCar}" /> -->
+			 <f:setPropertyActionListener value="#{car}" target="#{dtSelectionView.selectedCar}" />
 		</p:commandButton>
-	</h:form>
+	</h:form> -->
 </h:body>
 </html>

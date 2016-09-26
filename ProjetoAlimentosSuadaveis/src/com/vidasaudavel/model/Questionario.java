@@ -1,12 +1,6 @@
 package com.vidasaudavel.model;
 
 import java.io.Serializable;
-import java.util.List;
-
-
-
-
-
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -17,47 +11,32 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.primefaces.model.DefaultStreamedContent;
-
-@ManagedBean(name="mbAlimento")
+@ManagedBean(name="mbQuestionario")
 @SessionScoped
 @Entity
-@Table(name = "alimento")
-public class Alimento implements Serializable {
+@Table(name = "questionario")
+public class Questionario implements Serializable{
+	
 	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id_alimento;
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private long id_questionario;
 	@Column
-	private String nm_alimento;
+	private String nm_usuario;
 	@Column
-	private String regiao_tipica;
+	private int idade;
 	@Column
-	private String periodo_dia;
+	private double peso;
 	@Column
-	private int calorias;
+	private double altura;
 	@Column
-	private String porcao;
+	private double imc;
 	@Column
-	private String url_imagem_alimento;
-	@Column
-	private String desc_alimento;
+	private String regiao_usuario;
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
 }
