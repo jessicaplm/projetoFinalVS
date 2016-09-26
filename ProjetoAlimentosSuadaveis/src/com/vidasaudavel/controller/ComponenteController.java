@@ -36,114 +36,115 @@ public class ComponenteController {
 		componentes = new ArrayList<Componente>();
 
 	}
-//
-//	public void addComponentes(Componente c) {
-//		Componente comp = new Componente();
-//		componente = new Componente();
-//		boolean existe = false;
-//
-//		for (int i = 0; i < componentes.size(); i++) {
-//			comp = componentes.get(i);
-//			if (c.getNomeComponente()
-//					.equalsIgnoreCase(comp.getNomeComponente())) {
-//
-//				FacesMessage msg = new FacesMessage("Componente ja Inserido",
-//						"");
-//				FacesContext.getCurrentInstance().addMessage(null, msg);
-//
-//				existe = true;
-//				break;
-//			}
-//			comp = null;
-//		}
-//
-//		if (existe == false) {
-//
-//			for (int i = 0; i < listComponente().size(); i++) {
-//				comp = listComponente().get(i);
-//				if (c.getNomeComponente().equalsIgnoreCase(
-//						comp.getNomeComponente())) {
-//					// componente.setIdComponente(comp.getIdComponente()); usar
-//					// depois quando tiver o relacionamento mapeado
-//					componente.setNomeComponente(comp.getNomeComponente());
-//					componente.setDescricaoComponente(comp
-//							.getDescricaoComponente());
-//					existe = true;
-//					break;
-//				}
-//				comp = null;
-//			}
-//			if (existe == false) {
-//
-//				componente.setNomeComponente(c.getNomeComponente());
-//				componente.setDescricaoComponente(c.getDescricaoComponente());
-//			}
-//			componentes.add(componente);
-//		}
-//	}
-//
-//	public void deletComponente(Componente c) {
-//
-//		componentes.remove(c);
-//	}
-//
-//	public void addComponente() {
-//		try {
-//			for (int i = 0; i < componentes.size(); i++) {
-//				this.componenteService.addComponente(componentes.get(i));
-//			}
-//
-//		} catch (Exception e) {
-//			// TODO: handle exception
-//			e.getMessage();
-//		}
-//
-//	}
-//
-//	public List<Componente> listComponente() {
-//
-//		
-//
-//		return  this.componenteService.listComponente();
-//
-//	}
-//
-//	public void updateComponente(Componente c) {
-//
-//		try {
-//
-//		} catch (Exception e) {
-//			// TODO: handle exception
-//			e.getMessage();
-//		}
-//		this.componenteService.updateComponente(c);
-//	}
-//
-//	public void removeComponenteById(int id) {
-//
-//		try {
-//
-//		} catch (Exception e) {
-//			// TODO: handle exception
-//			e.getMessage();
-//		}
-//		this.componenteService.removeComponenteById(id);
-//	}
-//
-//	public Componente getComponente() {
-//		return componente;
-//	}
-//
-//	public void setComponente(Componente componente) {
-//		this.componente = componente;
-//	}
-//
-//	public List<Componente> getComponentes() {
-//		return componentes;
-//	}
-//
-//	public void setComponentes(List<Componente> componentes) {
-//		this.componentes = componentes;
-//	}
+
+	//
+	// public void addComponentes(Componente c) {
+	// Componente comp = new Componente();
+	// componente = new Componente();
+	// boolean existe = false;
+	//
+	// for (int i = 0; i < componentes.size(); i++) {
+	// comp = componentes.get(i);
+	// if (c.getNomeComponente()
+	// .equalsIgnoreCase(comp.getNomeComponente())) {
+	//
+	// FacesMessage msg = new FacesMessage("Componente ja Inserido",
+	// "");
+	// FacesContext.getCurrentInstance().addMessage(null, msg);
+	//
+	// existe = true;
+	// break;
+	// }
+	// comp = null;
+	// }
+	//
+	// if (existe == false) {
+	//
+	// for (int i = 0; i < listComponente().size(); i++) {
+	// comp = listComponente().get(i);
+	// if (c.getNomeComponente().equalsIgnoreCase(
+	// comp.getNomeComponente())) {
+	// // componente.setIdComponente(comp.getIdComponente()); usar
+	// // depois quando tiver o relacionamento mapeado
+	// componente.setNomeComponente(comp.getNomeComponente());
+	// componente.setDescricaoComponente(comp
+	// .getDescricaoComponente());
+	// existe = true;
+	// break;
+	// }
+	// comp = null;
+	// }
+	// if (existe == false) {
+	//
+	// componente.setNomeComponente(c.getNomeComponente());
+	// componente.setDescricaoComponente(c.getDescricaoComponente());
+	// }
+	// componentes.add(componente);
+	// }
+	// }
+	//
+	// public void deletComponente(Componente c) {
+	//
+	// componentes.remove(c);
+	// }
+	//
+	// public void addComponente() {
+	// try {
+	// for (int i = 0; i < componentes.size(); i++) {
+	// this.componenteService.addComponente(componentes.get(i));
+	// }
+	//
+	// } catch (Exception e) {
+	// // TODO: handle exception
+	// e.getMessage();
+	// }
+	//
+	// }
+	//
+	
+	public List<Componente> listComponente() {
+
+		return this.componenteService.listComponente();
+
+	}
+	
+	//
+	// public void updateComponente(Componente c) {
+	//
+	// try {
+	//
+	// } catch (Exception e) {
+	// // TODO: handle exception
+	// e.getMessage();
+	// }
+	// this.componenteService.updateComponente(c);
+	// }
+	//
+	// public void removeComponenteById(int id) {
+	//
+	// try {
+	//
+	// } catch (Exception e) {
+	// // TODO: handle exception
+	// e.getMessage();
+	// }
+	// this.componenteService.removeComponenteById(id);
+	// }
+	//
+	// public Componente getComponente() {
+	// return componente;
+	// }
+	//
+	// public void setComponente(Componente componente) {
+	// this.componente = componente;
+	// }
+	//
+	// public List<Componente> getComponentes() {
+	// return componentes;
+	// }
+	//
+	// public void setComponentes(List<Componente> componentes) {
+	// this.componentes = componentes;
+	// }
 
 }
