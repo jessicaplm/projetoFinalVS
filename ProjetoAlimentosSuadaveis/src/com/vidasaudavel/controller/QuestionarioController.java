@@ -5,6 +5,7 @@ import javax.faces.bean.SessionScoped;
 
 import org.springframework.stereotype.Controller;
 
+import com.vidasaudavel.model.Questionario;
 import com.vidasaudavel.model.TipoRegiao;
 
 import com.vidasaudavel.service.QuestionarioService;
@@ -15,6 +16,22 @@ import com.vidasaudavel.service.QuestionarioService;
 public class QuestionarioController {
 
 	private QuestionarioService questionarioService;
+	private Questionario questionario;
+
+	
+	
+	public QuestionarioController() {
+	questionario = new Questionario();
+	}
+
+	public Questionario getQuestionario() {
+		return questionario;
+	}
+
+	public void setQuestionario(Questionario questionario) {
+		this.questionario = questionario;
+	}
+
 
 	public void setQuestionarioService(QuestionarioService questionarioService) {
 		this.questionarioService = questionarioService;

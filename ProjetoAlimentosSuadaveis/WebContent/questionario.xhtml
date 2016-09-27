@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<f:view contentType="text/html">
+	<h:head>
+		<f:facet name="first">
+			<meta content='text/html; charset=UTF-8' http-equiv="Content-Type" />
+			<title>Vida Saudável</title>
+		</f:facet>
+	</h:head>
+
+	<h:body>
+		<h:form>
+			<p:layout fullPage="true">
+
+				<p:layoutUnit position="north" size="240" resizable="false">
+					<h:graphicImage url="/VoeBem.png" width="1000" height="160" />
+					<p:tabMenu activeIndex="#{param.i}">
+						<p:menuitem value="Inicio" icon="ui-icon-home">
+
+						</p:menuitem>
+						<p:menuitem value="Alimentos">
+
+						</p:menuitem>
+						<p:menuitem value="Ingredientes">
+
+						</p:menuitem>
+						<p:menuitem value="Questionario">
+
+						</p:menuitem>
+						<p:menuitem value="Informativos">
+
+						</p:menuitem>
+					</p:tabMenu>
+				</p:layoutUnit>
+				<p:layoutUnit position="center" size="500">
+					<h:panelGrid columns="2">
+						<h:panelGrid columns="3" cellspacing="10">
+							<h:panelGrid columns="1" cellspacing="6">
+								<h:panelGrid columns="1" cellspacing="6">
+									<p:outputLabel for="idade" value="Idade:" />
+									<h:panelGrid columns="2" cellspacing="6">
+										<p:inputText id="idade" required="true" label="idade"
+											value="#{questionarioController.questionario.idade}" />
+									</h:panelGrid>
+								</h:panelGrid>
+
+								<h:panelGrid columns="1" cellspacing="6">
+									<p:outputLabel for="peso" value="Peso:" />
+									<h:panelGrid columns="2" cellspacing="6">
+										<p:inputText id="peso"
+											value="#{questionarioController.questionario.peso}"
+											required="true" label="peso" />
+									</h:panelGrid>
+
+								</h:panelGrid>
+								<h:panelGrid columns="1" cellspacing="6">
+									<p:outputLabel for="altura" value="Altura:" />
+									<h:panelGrid columns="2" cellspacing="6">
+										<p:inputMask id="altura"
+											value="#{questionarioController.questionario.altura}"
+											required="true" mask="9,99" size="1" />
+									</h:panelGrid>
+								</h:panelGrid>
+
+								<h:panelGrid columns="1" cellspacing="6">
+									<p:outputLabel for="regiao" value="Qual a sua região?" />
+
+									<p:selectOneMenu id="regiao"
+										value="#{questionarioController.questionario.regiao_usuario}"
+										style="width:125px">
+
+										<f:selectItems value="#{questionarioController.tipoRegiao}"
+											var="tr" itemValue="#{tr}" itemLabel="#{tr.valor}" />
+
+									</p:selectOneMenu>
+									<p:message for="regiao" />
+									<p:commandButton value="Confirmar"></p:commandButton>
+								</h:panelGrid>
+							</h:panelGrid>
+
+							<h:panelGrid columns="1" cellspacing="6">
+
+								<div style="width: 200px"></div>
+
+							</h:panelGrid>
+
+							<h:panelGrid columns="1" cellspacing="10">
+
+								<p:graphicImage url="imagens/imc.jpg" height="180" width="420" />
+							
+								<h:outputText value="Seu IMC é:" />
+								<h:inputText disabled="true"></h:inputText>
+							</h:panelGrid>
+						</h:panelGrid>
+
+					</h:panelGrid>
+				</p:layoutUnit>
+
+			</p:layout>
+
+		</h:form>
+	</h:body>
+</f:view>
+</html>
