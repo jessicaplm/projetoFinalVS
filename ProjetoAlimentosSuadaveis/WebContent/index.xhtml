@@ -1,111 +1,64 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-<h:head>
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-	<title>Insert title here</title>
 
+<f:view contentType="text/html">
+	<h:head>
+		<f:facet name="first">
+			<meta content='text/html; charset=UTF-8' http-equiv="Content-Type" />
+			<title>Vida Saudável</title>
+		</f:facet>
+	</h:head>
 
-</h:head>
-<h:body>
-
-
-	
-
+	<h:body>
 		<h:form>
-			<p:growl id="messages" />
+			<p:layout fullPage="true">
 
-			<p:menubar>
-				<p:submenu label="File" icon="ui-icon-document">
-					<p:submenu label="New" icon="ui-icon-contact">
-						<p:menuitem value="Project" url="#" />
-						<p:menuitem value="Other" url="#" />
-					</p:submenu>
-					<p:menuitem value="Open" url="#" />
-					<p:separator />
-					<p:menuitem value="Quit" url="#" />
-				</p:submenu>
+				<p:layoutUnit position="north" size="255" resizable="false">
+					<h:graphicImage url="imagens/logo.png" width="1000" height="160" />
+					<p:tabMenu activeIndex="#{param.i}">
+						<p:menuitem value="Inicio" icon="ui-icon-home">
 
-				<p:submenu label="Edit" icon="ui-icon-pencil">
-					<p:menuitem value="Undo" url="#"
-						icon="ui-icon-arrowreturnthick-1-w" />
-					<p:menuitem value="Redo" url="#"
-						icon="ui-icon-arrowreturnthick-1-e" />
-				</p:submenu>
+						</p:menuitem>
+						<p:menuitem value="Alimentos">
 
-				<p:submenu label="Help" icon="ui-icon-help">
-					<p:menuitem value="Contents" url="#" />
-					<p:submenu label="Search" icon="ui-icon-search">
-						<p:submenu label="Text">
-							<p:menuitem value="Workspace" url="#" />
-						</p:submenu>
-						<p:menuitem value="File" url="#" />
-					</p:submenu>
-				</p:submenu>
+						</p:menuitem>
+						<p:menuitem value="Ingredientes">
 
-				<p:submenu label="Actions" icon="ui-icon-gear">
-					<p:submenu label="Ajax" icon="ui-icon-refresh">
-						<p:menuitem value="Save" actionListener="#{menuView.save}"
-							icon="ui-icon-disk" update="messages" />
-						<p:menuitem value="Update" actionListener="#{menuView.update}"
-							icon="ui-icon-arrowrefresh-1-w" update="messages" />
-					</p:submenu>
-					<p:submenu label="Non-Ajax" icon="ui-icon-newwin">
-						<p:menuitem value="Delete" actionListener="#{menuView.delete}"
-							icon="ui-icon-close" update="messages" ajax="false" />
-					</p:submenu>
-				</p:submenu>
+						</p:menuitem>
+						<p:menuitem value="Questionário">
 
-				<p:menuitem value="Quit" url="http://www.primefaces.org"
-					icon="ui-icon-close" />
+						</p:menuitem>
+						<p:menuitem value="Informativos">
 
-				<f:facet name="options">
-					<p:inputText style="margin-right:10px" placeholder="Search" />
-					<p:commandButton type="button" value="Logout"
-						icon="ui-icon-extlink" />
-				</f:facet>
-			</p:menubar>
+						</p:menuitem>
+					</p:tabMenu>
+				</p:layoutUnit>
+
+				<p:layoutUnit position="center" size="700">
+				
+				
+						<p:panel id="curiosidade" header="Você Sabia?"
+							style="margin-bottom:20px">
+							<h:panelGrid columns="2" cellpadding="10">
+								<p:graphicImage url="imagens/leite.jpg" width="300" height="200" />
+								<h:outputText
+									value="Leite é bom para a saúde bucal. Ele contém nutrientes como cálcio, fósforo, magnésio e vitamina D que ajudam no desenvolvimento dos dentes e tecidos orais, protegendo contra as cáries." />
+							</h:panelGrid>
+						</p:panel>
+					<p:imageSwitch effect="fade" >
+						<p:graphicImage url="imagens/feijao.jpg" />
+						<p:graphicImage url="imagens/sal.jpg" />
+						<p:graphicImage url="imagens/agua.jpg" />
+					</p:imageSwitch>
+				</p:layoutUnit>
+
+			</p:layout>
 
 		</h:form>
-
-
-
-		<h:form>
-
-			<p:panel id="basic" header="Basic" footer="Movie Details"
-				style="margin-bottom:20px">
-				<h:panelGrid columns="2" cellpadding="10">
-					<p:graphicImage name="demo/images/godfather/godfather1.jpg" />
-					<h:outputText value="The story begins as Don Vito Corleone..." />
-				</h:panelGrid>
-				<h:panelGrid columns="2" cellpadding="10">
-					<p:commandLink ajax="false" value="cadastro alimento"
-						action="cadastroAlimento.xhtml"></p:commandLink>
-					<p:commandLink ajax="false" value="cadastro componente"
-						action="cadastroComponentes.xhtml"></p:commandLink>
-				</h:panelGrid>
-			</p:panel>
-
-		</h:form>
-
-		<h:form>
-
-			<h:dataTable value="#{alimentoController.listAlimento()}" var="ali">
-				<h:column>
-					<p:graphicImage width="300px"
-						value="#{alimentoController.mostrarimagem}" cache="false" />
-					<h:outputText value="#{ali.nomeAlimento}">
-					</h:outputText>
-				</h:column>
-			</h:dataTable>
-
-
-		</h:form>
-
-
-</h:body>
+	</h:body>
+</f:view>
 </html>
