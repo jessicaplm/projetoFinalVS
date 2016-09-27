@@ -21,27 +21,27 @@
 
 			<p:panelGrid columns="2">
 				<p:panel header="Você Sabia?">
-					<div class="container segment">
-					A Organização Mundial de Saúde aponta a obesidade como
-						um dos maiores problemas de saúde pública no mundo. A projeção é
-						que, em 2025, cerca de 2,3 bilhões de adultos estejam com
-						sobrepeso; e mais de 700 milhões, obesos. O número de crianças com
-						sobrepeso e obesidade no mundo poderia chegar a 75 milhões, caso
-						nada seja feito. No Brasil, a obesidade vem crescendo cada vez
-						mais. Alguns levantamentos apontam que mais de 50% da população
-						está acima do peso, ou seja, na faixa de sobrepeso e obesidade. Na
-						mesa do jamaicano Usain Bolt, o homem mais veloz do mundo, não
-						falta mandioca. Ela é a principal fonte de energia atleta, segundo
-						revelou seu pai durante as Olimpíadas de Pequim em 2008. E faz
-						sentido: essa raiz tem dois tipos de carboidrato, a amilopectina e
-						a amilose, que, juntos, liberam a glicose mais lentamente para o
-						corpo. Isso facilita a digestão, evita picos de açúcar no sangue e
-						dá gás de sobra para o dia a dia. Frango Ajuda Na Proteção contra
-						o Câncer: O Frango é rica em Niacina (vitamina B3), uma vitamina
-						que é essencial para a proteção contra o câncer. Uma pequena
-						porção de Frango podem atender às suas necessidades de niacina
-						para o dia inteiro. O Selênio na carne de frango também ajuda na
-						proteção contra o câncer.</div>
+					<div class="container segment">A Organização Mundial de Saúde
+						aponta a obesidade como um dos maiores problemas de saúde pública
+						no mundo. A projeção é que, em 2025, cerca de 2,3 bilhões de
+						adultos estejam com sobrepeso; e mais de 700 milhões, obesos. O
+						número de crianças com sobrepeso e obesidade no mundo poderia
+						chegar a 75 milhões, caso nada seja feito. No Brasil, a obesidade
+						vem crescendo cada vez mais. Alguns levantamentos apontam que mais
+						de 50% da população está acima do peso, ou seja, na faixa de
+						sobrepeso e obesidade. Na mesa do jamaicano Usain Bolt, o homem
+						mais veloz do mundo, não falta mandioca. Ela é a principal fonte
+						de energia atleta, segundo revelou seu pai durante as Olimpíadas
+						de Pequim em 2008. E faz sentido: essa raiz tem dois tipos de
+						carboidrato, a amilopectina e a amilose, que, juntos, liberam a
+						glicose mais lentamente para o corpo. Isso facilita a digestão,
+						evita picos de açúcar no sangue e dá gás de sobra para o dia a
+						dia. Frango Ajuda Na Proteção contra o Câncer: O Frango é rica em
+						Niacina (vitamina B3), uma vitamina que é essencial para a
+						proteção contra o câncer. Uma pequena porção de Frango podem
+						atender às suas necessidades de niacina para o dia inteiro. O
+						Selênio na carne de frango também ajuda na proteção contra o
+						câncer.</div>
 				</p:panel>
 				<p:panel>
 					<p:imageSwitch effect="fade" widgetVar="switcher"
@@ -50,14 +50,15 @@
 						<p:graphicImage url="imagens/sal.jpg" width="800" height="230" />
 						<p:graphicImage url="imagens/agua.jpg" width="800" height="230" />
 					</p:imageSwitch>
-					<p:commandButton altype="button" onclick="PF('switcher').previous();"
+					<p:commandButton altype="button"
+						onclick="PF('switcher').previous();"
 						icon="ui-icon-circle-triangle-w" id="prev" />
 					<p:commandButton type="button" onclick="PF('switcher').next();"
 						icon="ui-icon-circle-triangle-e" id="next" />
 				</p:panel>
 
 			</p:panelGrid>
-
+			<ui:include src="footer.xhtml" />
 		</h:form>
 	</h:body>
 </f:view>
