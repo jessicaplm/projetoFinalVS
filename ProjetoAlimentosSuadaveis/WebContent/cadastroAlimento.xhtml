@@ -17,7 +17,7 @@
 	<h:form enctype="multipart/form-data" id="cadastroalimento">
 
 
-		
+
 
 		<p:menubar styleClass="menu ">
 			<p:submenu label="File" icon="ui-icon-home" rendered="">
@@ -138,6 +138,7 @@
 			</h:panelGrid>
 		</p:panel>
 
+
 		<p:panel id="listacomp" header="Componentes Já cadastrados"
 			footer="Movie Details" style="margin-bottom:20px">
 
@@ -147,36 +148,46 @@
 					<h:outputText value="#{comp.nm_componente}" />
 				</p:column>
 				<p:column headerText="Adicionar Item ao Alimento">
-					<p:commandButton value="Adicionar" ajax="false"
-						action="#{alimentoController.addListComponentes(comp)}"></p:commandButton>
+
+					<p:commandButton value="Adicionar" ajax="false" process="@this"
+						update=":formlistaddcomp:listanovocomp"
+						actionListener="#{alimentoController.addListComponentes(comp)}"></p:commandButton>
+
 				</p:column>
 
 			</p:dataTable>
 
 		</p:panel>
 
+		<h:form id="formlistaddcomp">
+			<p:panel id="listanovocomp"
+				header="Lista de componentes para adicionar ao alimento"
+				footer="Movie Details" style="margin-bottom:20px">
 
-		<p:panel id="listanovocomp"
-			header="Lista de componentes para adicionar ao alimento"
-			footer="Movie Details" style="margin-bottom:20px">
+				<p:dataTable var="comp" value="#{alimentoController.componentes}">
+					<p:column headerText="Nome">
+						<h:outputText value="#{comp.nm_componente}" />
+					</p:column>
+					<p:column headerText="deletar">
 
-			<p:dataTable var="comp" value="#{alimentoController.componentes}">
-				<p:column headerText="Nome">
-					<h:outputText value="#{comp.nm_componente}" />
-				</p:column>
-				<p:column headerText="deletar">
-					<p:commandButton value="Adicionar" ajax="false"
-						action="#{alimentoController.removerListComponentes(comp)}"></p:commandButton>
-				</p:column>
+						<p:commandButton value="Remover" ajax="false"
+							action="#{alimentoController.removerListComponentes(comp)}"></p:commandButton>
+					</p:column>
 
-			</p:dataTable>
+				</p:dataTable>
 
-		</p:panel>
+			</p:panel>
+		</h:form>
 		<!-- procurar como usar o hidden e o show  -->
 		<!--	<p:commandButton value="submit" actionListener="#{alimentoController.hideOrShow()}" rendered="#{alimentoController.hidden}" ajax="false" validateClient="false" >
-		
+	
 		</p:commandButton> -->
+
+
+	</h:form>
+	<h:form>
 		<p:commandButton value="Adicionar" ajax="false"
+			update=":cadastroalimento"
 			action="#{alimentoController.addAlimento(alimentoController.alimento)}"></p:commandButton>
 	</h:form>
 </h:body>

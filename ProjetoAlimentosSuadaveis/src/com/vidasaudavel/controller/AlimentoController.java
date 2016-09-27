@@ -52,15 +52,14 @@ public class AlimentoController {
 			// TODO: handle exception
 			e.getMessage();
 		}
-		for (Componente comp : componentes) {
-			a.getListaComponentes().add(comp);
+		if(componentes.size()>0){
+		a.setListaComponentes(componentes);
 		}
-		
+
 		this.alimentoService.addAlimento(a);
 
 	}
 
-	
 	public void addListComponentes(Componente a) {
 		try {
 
@@ -83,16 +82,12 @@ public class AlimentoController {
 				break;
 			}
 		}
-		if (existe = false) {
+		if (existe == false) {
 
 			Componente comp = new Componente();
 			comp.setBenef_componente(a.getBenef_componente());
 			comp.setDs_componente(a.getDs_componente());
-			
-			if (a.getId_componente() < 0) {
-				comp.setId_componente(a.getId_componente());
-			}
-
+			comp.setId_componente(a.getId_componente());
 			comp.setLink_componente(a.getLink_componente());
 			comp.setMalef_componente(a.getMalef_componente());
 			comp.setNm_componente(a.getNm_componente());
@@ -179,7 +174,7 @@ public class AlimentoController {
 	public PeriodoDia[] getPeriodosDia() {
 		return PeriodoDia.values();
 	}
-	
+
 	public Componente getComponente() {
 		return componente;
 	}
@@ -191,21 +186,20 @@ public class AlimentoController {
 	public void hideOrShow() {
 
 		if (!hidden) {
-		
+
 			hidden = true;
 		} else {
-		
+
 			hidden = false;
 		}
 	}
-	
 
 	public boolean isHidden() {
-	    return hidden;
+		return hidden;
 	}
 
 	public void setHidden(boolean hidden) {
-	    this.hidden = hidden;
+		this.hidden = hidden;
 	}
 
 }
