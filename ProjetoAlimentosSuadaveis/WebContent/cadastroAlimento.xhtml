@@ -6,78 +6,136 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
+
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<title>Insert title here</title>
-
-
+	<h:link href="css/arquivo.css" rel="stylesheet" />
+	<link href="css/arquivo.css" rel="stylesheet" />
 </h:head>
 <h:body>
-	<h:form enctype="multipart/form-data">
+
+	<h:form enctype="multipart/form-data" id="cadastroalimento">
+
+
+		<p:growl id="messages" />
+
+		<p:menubar styleClass="menu ">
+			<p:submenu label="File" icon="ui-icon-home" rendered="">
+			</p:submenu>
+
+
+
+			<f:facet name="options">
+				<p:inputText style="margin-right:10px" placeholder="Search" />
+				<p:commandButton type="button" value="Logout" icon="ui-icon-extlink" />
+			</f:facet>
+		</p:menubar>
+
+
+
+
 		<p:panel id="caampos" header="Formulario de Cadastro de Alimentos"
-			footer="Movie Details" style="margin-bottom:20px">
+			footer="Movie Details" style="margin-bottom:20px;margin-top:20px">
 
 			<p:messages id="messages1" />
-			<h:panelGrid style="margin-top:20px" columns="2">
+			<h:panelGrid style="margin-top:20px" columns="3">
 
 
 				<h:panelGrid columns="1" cellspacing="6">
 					<p:outputLabel for="nome" value="Nome do Alimento:" />
-					<p:inputText id="nome" value="#{mbAlimento.nomeAlimento}"
-						required="true" label="nome">
+					<p:inputText id="nome"
+						value="#{alimentoController.alimento.nm_alimento}" required="true"
+						label="nome">
 						<f:validateLength minimum="2" />
 					</p:inputText>
 					<p:message for="nome" />
 				</h:panelGrid>
-				<h:panelGrid columns="1" cellspacing="6">
-					<p:outputLabel for="valorEnergetico" value="Valor calorico:" />
-					<p:inputText id="valorEnergetico"
-						value="#{mbAlimento.valorEnergetico}" required="true"
-						label="valorEnergetico" />
 
-					<p:message for="valorEnergetico" />
+				<h:panelGrid columns="1" cellspacing="6">
+					<p:outputLabel for="calorias" value="Valor calorico:" />
+					<p:inputText id="calorias"
+						value="#{alimentoController.alimento.calorias}" required="true"
+						label="calorias" />
+
+					<p:message for="calorias" />
+				</h:panelGrid>
+
+				<h:panelGrid columns="1" cellspacing="6">
+					<p:outputLabel for="porcao" value="Porção:" />
+					<h:panelGrid columns="2" cellspacing="6">
+						<p:inputText id="porcao"
+							value="#{alimentoController.alimento.porcao}" required="true"
+							label="porcao" />
+						<p:outputLabel value="g/ml" />
+					</h:panelGrid>
+
+					<p:message for="porcao" />
+				</h:panelGrid>
+
+
+			</h:panelGrid>
+
+			<h:panelGrid style="margin-top:20px" columns="2">
+
+
+				<h:panelGrid columns="1" cellspacing="6">
+					<p:outputLabel for="nome" value="Região que mais consome:" />
+
+					<p:selectOneMenu id="regiao"
+						value="#{alimentoController.alimento.regiao_tipica}"
+						style="width:125px">
+
+						<f:selectItems value="#{alimentoController.tipoRegioes}" var="reg"
+							itemValue="#{reg}" itemLabel="#{reg.valor}" />
+
+					</p:selectOneMenu>
+					<p:message for="nome" />
+				</h:panelGrid>
+
+				<h:panelGrid columns="1" cellspacing="6">
+					<p:outputLabel for="periodo" value="Periodo que é mais consumido:" />
+
+					<p:selectOneMenu id="periodo"
+						value="#{alimentoController.alimento.periodo_dia}"
+						style="width:125px">
+
+						<f:selectItems value="#{alimentoController.periodosDia}" var="pd"
+							itemValue="#{pd}" itemLabel="#{pd.valor}" />
+
+					</p:selectOneMenu>
+					<p:message for="periodo" />
+				</h:panelGrid>
+
+			</h:panelGrid>
+
+			<h:panelGrid style="margin-top:20px" columns="1">
+
+				<h:panelGrid columns="1" cellspacing="6">
+					<p:outputLabel for="imagem" value="Url da Imagem:" />
+					<p:inputText id="imagem"
+						value="#{alimentoController.alimento.url_imagem_alimento}"
+						required="true" label="imagem" style="width:500px">
+						<f:validateLength minimum="2" />
+					</p:inputText>
+					<p:message for="imagem" />
 				</h:panelGrid>
 
 
 			</h:panelGrid>
 		</p:panel>
 
-	
-			<p:panel id="editorGeral" header="Detalhes Gerais"
-				footer="Movie Details" style="margin-bottom:20px">
 
-				<!--Editor Detalhes Gerais-->
-				<h:panelGrid columns="1" cellpadding="10">
-
-					<p:editor id="editor" widgetVar="editorWidget"
-						value="#{mbAlimento.descricaoGeral}" width="600" />
-
-					<h:panelGrid columns="2" style="margin-top: 10px">
-						<p:commandButton value="Submit" update="display"
-							oncomplete="PF('dlg').show()" icon="ui-icon-disk" />
-
-						<p:commandButton value="Clear" type="button"
-							onclick="PF('editorWidget').clear();" icon="ui-icon-close" />
-					</h:panelGrid>
-
-					<p:dialog header="Content" widgetVar="dlg" showEffect="fade"
-						hideEffect="fade">
-						<h:outputText id="display" value="#{mbAlimento.descricaoGeral}"
-							escape="false" />
-					</p:dialog>
-				</h:panelGrid>
-			</p:panel>
-		
-		
-		<p:panel id="editorEspecifico" header="Detalhes Especificos"
+		<p:panel id="editorDescricao" header="Descricao do Alimento"
 			footer="Movie Details" style="margin-bottom:20px">
-			<!--Editor Detalhes Especificos-->
+
+			<!--Editor Detalhes Gerais-->
 			<h:panelGrid columns="1" cellpadding="10">
 
-				<p:editor id="editor2" widgetVar="editorWidget"
-					value="#{mbAlimento.descricaoEspecifica}" width="600" />
+				<p:editor id="editor" widgetVar="editorWidget"
+					value="#{alimentoController.alimento.desc_alimento}" width="600" />
 
 				<h:panelGrid columns="2" style="margin-top: 10px">
-					<p:commandButton value="Submit" update="display2"
+					<p:commandButton value="Submit" update="display"
 						oncomplete="PF('dlg').show()" icon="ui-icon-disk" />
 
 					<p:commandButton value="Clear" type="button"
@@ -85,80 +143,54 @@
 				</h:panelGrid>
 
 				<p:dialog header="Content" widgetVar="dlg" showEffect="fade"
-					hideEffect="fade">
-					<h:outputText id="display2"
-						value="#{mbAlimento.descricaoEspecifica}" escape="false" />
+					hideEffect="fade" width="400px" height="300px">
+					<h:outputText id="display"
+						value="#{alimentoController.alimento.desc_alimento}"
+						escape="false" />
 				</p:dialog>
 			</h:panelGrid>
-
 		</p:panel>
 
-
-		<p:panel id="beneficios" header="Beneficios e Maleficios"
+		<p:panel id="listacomp" header="Componentes Já cadastrados"
 			footer="Movie Details" style="margin-bottom:20px">
-			<!--Editor Detalhes Especificos-->
-			<h:panelGrid columns="2" cellpadding="10">
-				<h:panelGrid columns="1" cellpadding="5">
 
-					<p:editor id="editor3" widgetVar="editorWidget"
-						value="#{mbAlimento.beneficios}" width="600" />
+			<p:dataTable var="comp"
+				value="#{componenteController.listComponente()}">
+				<p:column headerText="Nome">
+					<h:outputText value="#{comp.nm_componente}" />
+				</p:column>
+				<p:column headerText="Adicionar Item ao Alimento">
+					<p:commandButton value="Adicionar" ajax="false"
+						action="#{alimentoController.addListComponentes(comp)}"></p:commandButton>
+				</p:column>
 
-					<h:panelGrid columns="2" style="margin-top: 10px">
-						<p:commandButton value="Submit" update="display3"
-							oncomplete="PF('dlg').show()" icon="ui-icon-disk" />
+			</p:dataTable>
 
-						<p:commandButton value="Clear" type="button"
-							onclick="PF('editorWidget').clear();" icon="ui-icon-close" />
-					</h:panelGrid>
-
-					<p:dialog header="Content" widgetVar="dlg" showEffect="fade"
-						hideEffect="fade">
-						<h:outputText id="display3" value="#{mbAlimento.beneficios}"
-							escape="false" />
-					</p:dialog>
-
-				</h:panelGrid>
-				<h:panelGrid columns="1" cellpadding="5">
-
-					<p:editor id="editor4" widgetVar="editorWidget"
-						value="#{mbAlimento.maleficios}" width="600" />
-
-					<h:panelGrid columns="2" style="margin-top: 10px">
-						<p:commandButton value="Submit" update="display4"
-							oncomplete="PF('dlg').show()" icon="ui-icon-disk" />
-
-						<p:commandButton value="Clear" type="button"
-							onclick="PF('editorWidget').clear();" icon="ui-icon-close" />
-					</h:panelGrid>
-
-					<p:dialog header="Content" widgetVar="dlg" showEffect="fade"
-						hideEffect="fade">
-						<h:outputText id="display4" value="#{mbAlimento.maleficios}"
-							escape="false" />
-					</p:dialog>
-				</h:panelGrid>
-			</h:panelGrid>
 		</p:panel>
 
-		<p:panel id="uploadImagem" header="Carregar Imagem"
+
+		<p:panel id="listanovocomp"
+			header="Lista de componentes para adicionar ao alimento"
 			footer="Movie Details" style="margin-bottom:20px">
-			<!--Editor Detalhes Especificos-->
-			<h:panelGrid columns="3" cellpadding="10">
 
-				<!-- <p:growl id="messages" showDetail="true" /> -->
+			<p:dataTable var="comp" value="#{alimentoController.componentes}">
+				<p:column headerText="Nome">
+					<h:outputText value="#{comp.nm_componente}" />
+				</p:column>
+				<p:column headerText="deletar">
+					<p:commandButton value="Adicionar" ajax="false"
+						action="#{alimentoController.removerListComponentes(comp)}"></p:commandButton>
+				</p:column>
 
-				<p:fileUpload value="#{alimentoController.file}" mode="simple"
-					skinSimple="true" />
-
-				<p:commandButton value="Submit" ajax="false"
-					actionListener="#{alimentoController.upload}" disabled="true" />
-
-			</h:panelGrid>
+			</p:dataTable>
 
 		</p:panel>
-
+		<!-- procurar como usar o hidden e o show  -->
+		<!--	<p:commandButton value="submit" actionListener="#{alimentoController.hideOrShow()}" rendered="#{alimentoController.hidden}" ajax="false" validateClient="false" >
+		
+		</p:commandButton> -->
 		<p:commandButton value="Adicionar" ajax="false"
-			action="#{alimentoController.addAlimento(mbAlimento)}"></p:commandButton>
+			action="#{alimentoController.addAlimento(alimentoController.alimento)}"></p:commandButton>
 	</h:form>
 </h:body>
 </html>

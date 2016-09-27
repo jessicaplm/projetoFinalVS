@@ -14,35 +14,60 @@
 <h:body>
 
 	<h:form enctype="multipart/form-data">
-	 <p:growl id="msgs" showDetail="true" />
-		<p:panel id="caampos" header="Formulario de Cadastro de Componentes"
+		<p:growl id="msgs" showDetail="true" />
+
+		<p:panel id="cadastronovoComp" header="Componentes Já cadastrados"
 			footer="Movie Details" style="margin-bottom:20px">
 
-			<p:messages id="messages1" />
-			<h:panelGrid style="margin-top:20px" columns="3">
+			<h:panelGrid style="margin-top:20px" columns="1">
 
+				<h:panelGrid columns="1" cellspacing="6">
+					<p:outputLabel for="nomeComponete" value="Nome do Componente:" />
+					<p:inputText id="nomeComponete"
+						value="#{componenteController.componente.nm_componente}"
+						required="true" label="nome">
+						<f:validateLength minimum="2" />
+					</p:inputText>
+					<p:message for="nomeComponete" />
+				</h:panelGrid>
 
+			</h:panelGrid>
 
-				<p:outputLabel for="nome" value="Nome do Componente" />
-				<p:inputText id="nome" value="#{mbComponente.nomeComponente}"
-					required="true" label="nome">
-					<f:validateLength minimum="2" />
-				</p:inputText>
-				<p:message for="nome" />
+			<h:panelGrid style="margin-top:20px" columns="1">
+				<h:panelGrid columns="1" cellspacing="6">
+					<p:outputLabel for="imagemcomp"
+						value="Url da Imagem do componente:" />
+					<p:inputText id="imagemcomp"
+						value="#{componenteController.componente.url_imagem_componente}"
+						required="true" label="imagemcomp" />
 
+					<p:message for="imagemcomp" />
+				</h:panelGrid>
+
+			</h:panelGrid>
+
+			<h:panelGrid style="margin-top:20px" columns="1">
+				<h:panelGrid columns="1" cellspacing="6">
+					<p:outputLabel for="linkbusca" value="Link recomendado de busca:" />
+					<p:inputText id="linkbusca"
+						value="#{componenteController.componente.link_componente}"
+						required="true" label="linkbusca" />
+
+					<p:message for="linkbusca" />
+				</h:panelGrid>
 
 			</h:panelGrid>
 		</p:panel>
-
-
+	
 		<p:panel id="descricaoComponente" header="Descrição do Componente"
 			footer="Movie Details" style="margin-bottom:20px">
 
-			<!--Editor Detalhes Gerais-->
+
 			<h:panelGrid columns="1" cellpadding="10">
 
 				<p:editor id="editor" widgetVar="editorWidget"
-					value="#{mbComponente.descricaoComponente}" width="600" />
+					value="#{componenteController.componente.ds_componente}"
+					width="600" />
 
 				<h:panelGrid columns="2" style="margin-top: 10px">
 					<p:commandButton value="Submit" update="display"
@@ -55,43 +80,91 @@
 				<p:dialog header="Content" widgetVar="dlg" showEffect="fade"
 					hideEffect="fade">
 					<h:outputText id="display"
-						value="#{mbComponente.descricaoComponente}" escape="false" />
+						value="#{componenteController.componente.ds_componente}"
+						escape="false" />
 				</p:dialog>
 			</h:panelGrid>
 		</p:panel>
+	
+		<p:panel id="benefmalef" header="Beneficios e Maleficios"
+			footer="Movie Details" style="margin-bottom:20px">
+			<h:panelGrid columns="2" cellpadding="10">
+
+				<h:panelGrid columns="1" cellpadding="10">
+
+					<p:editor id="editor2" widgetVar="editorWidget"
+						value="#{componenteController.componente.benef_componente}"
+						width="400" />
+
+					<h:panelGrid columns="2" style="margin-top: 10px">
+						<p:commandButton value="Submit" update="display2"
+							oncomplete="PF('dlg').show()" icon="ui-icon-disk" />
+
+						<p:commandButton value="Clear" type="button"
+							onclick="PF('editorWidget').clear();" icon="ui-icon-close" />
+					</h:panelGrid>
+
+					<p:dialog header="Content" widgetVar="dlg" showEffect="fade"
+						hideEffect="fade">
+						<h:outputText id="display2"
+							value="#{componenteController.componente.benef_componente}"
+							escape="false" />
+					</p:dialog>
+				</h:panelGrid>
+
+				<h:panelGrid columns="1" cellpadding="10">
+
+					<p:editor id="editor3" widgetVar="editorWidget"
+						value="#{componenteController.componente.malef_componente}"
+						width="400" />
+
+					<h:panelGrid columns="2" style="margin-top: 10px">
+						<p:commandButton value="Submit" update="display3"
+							oncomplete="PF('dlg').show()" icon="ui-icon-disk" />
+
+						<p:commandButton value="Clear" type="button"
+							onclick="PF('editorWidget').clear();" icon="ui-icon-close" />
+					</h:panelGrid>
+
+					<p:dialog header="Content" widgetVar="dlg" showEffect="fade"
+						hideEffect="fade">
+						<h:outputText id="display3"
+							value="#{componenteController.componente.malef_componente}"
+							escape="false" />
+					</p:dialog>
+				</h:panelGrid>
+			</h:panelGrid>
+		</p:panel>
+
+
+
 
 		<p:commandButton value="Adicionar a Lista" ajax="false"
-			action="#{componenteController.addComponentes(mbComponente)}"></p:commandButton>
+			action="#{componenteController.addComponentes(componenteController.componente)}"></p:commandButton>
 
-	</h:form>
-	<h:form>
+	
+
 		<p:dataTable id="basicDT" var="compo"
 			value="#{componenteController.componentes}">
 			<f:facet name="header">
             Componentes Adicionados
         </f:facet>
 			<p:column headerText="Nome Componente">
-				<h:outputText value="#{compo.nomeComponente}" />
-			</p:column>
-			<p:column headerText="Descricao Componente">
-				<h:outputText value="#{compo.descricaoComponente}" />
+				<h:outputText value="#{compo.nm_componente}" />
 			</p:column>
 
 			<p:column style="width:120px;text-align: center">
-				<p:commandButton ajax="false" value="Deletar" 
+				<p:commandButton ajax="false" value="Deletar"
 					action="#{componenteController.deletComponente(compo)}"
 					title="View">
-					<!--  <f:setPropertyActionListener value="#{car}" target="#{dtSelectionView.selectedCar}" /> -->
 				</p:commandButton>
 			</p:column>
 		</p:dataTable>
 
 
-	</h:form>
-	<h:form>
-		<p:commandButton ajax="false" value="Adicionar Componentes"
-			action="#{componenteController.addComponente()}" title="View">
-			<!--  <f:setPropertyActionListener value="#{car}" target="#{dtSelectionView.selectedCar}" /> -->
+	
+		<p:commandButton ajax="false" value="Adicionar Componentes" 
+			action="#{componenteController.addComponente(componenteController.componente)}" >
 		</p:commandButton>
 	</h:form>
 </h:body>
