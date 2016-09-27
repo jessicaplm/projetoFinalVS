@@ -14,11 +14,23 @@
 <h:body>
 
 	<h:form enctype="multipart/form-data">
-		<p:growl id="msgs" showDetail="true" />
+
+		<p:menubar styleClass="menu ">
+			<p:submenu label="File" icon="ui-icon-home" rendered="">
+			</p:submenu>
+
+			<f:facet name="options">
+				<p:inputText style="margin-right:10px" placeholder="Search" />
+				<p:commandButton type="button" value="Logout" icon="ui-icon-extlink" />
+			</f:facet>
+		</p:menubar>
+
+
+
 
 		<p:panel id="cadastronovoComp" header="Componentes Já cadastrados"
 			footer="Movie Details" style="margin-bottom:20px">
-
+			<p:growl id="msgs" showDetail="true" />
 			<h:panelGrid style="margin-top:20px" columns="1">
 
 				<h:panelGrid columns="1" cellspacing="6">
@@ -58,81 +70,43 @@
 
 			</h:panelGrid>
 		</p:panel>
-	
+
 		<p:panel id="descricaoComponente" header="Descrição do Componente"
 			footer="Movie Details" style="margin-bottom:20px">
 
-
 			<h:panelGrid columns="1" cellpadding="10">
-
-				<p:editor id="editor" widgetVar="editorWidget"
+				<p:inputTextarea rows="10" cols="100" height="150px"
+					for="descricaoComponente" autoResize="true" maxlength="400"
 					value="#{componenteController.componente.ds_componente}"
-					width="600" />
-
-				<h:panelGrid columns="2" style="margin-top: 10px">
-					<p:commandButton value="Submit" update="display"
-						oncomplete="PF('dlg').show()" icon="ui-icon-disk" />
-
-					<p:commandButton value="Clear" type="button"
-						onclick="PF('editorWidget').clear();" icon="ui-icon-close" />
-				</h:panelGrid>
-
-				<p:dialog header="Content" widgetVar="dlg" showEffect="fade"
-					hideEffect="fade">
-					<h:outputText id="display"
-						value="#{componenteController.componente.ds_componente}"
-						escape="false" />
-				</p:dialog>
+					id="descricaocomp" />
+				<p:message for="descricaocomp" />
 			</h:panelGrid>
+
 		</p:panel>
-	
+
 		<p:panel id="benefmalef" header="Beneficios e Maleficios"
 			footer="Movie Details" style="margin-bottom:20px">
-			<h:panelGrid columns="2" cellpadding="10">
+			<h:panelGrid columns="2" cellpadding="5">
 
-				<h:panelGrid columns="1" cellpadding="10">
-
-					<p:editor id="editor2" widgetVar="editorWidget"
+				<h:panelGrid columns="1" cellpadding="2">
+					<p:outputLabel for="benefcomp" value="Maleficios:" />
+					<p:inputTextarea rows="10" cols="40" height="70px"
+						autoResize="true" maxlength="400"
 						value="#{componenteController.componente.benef_componente}"
-						width="400" />
-
-					<h:panelGrid columns="2" style="margin-top: 10px">
-						<p:commandButton value="Submit" update="display2"
-							oncomplete="PF('dlg').show()" icon="ui-icon-disk" />
-
-						<p:commandButton value="Clear" type="button"
-							onclick="PF('editorWidget').clear();" icon="ui-icon-close" />
-					</h:panelGrid>
-
-					<p:dialog header="Content" widgetVar="dlg" showEffect="fade"
-						hideEffect="fade">
-						<h:outputText id="display2"
-							value="#{componenteController.componente.benef_componente}"
-							escape="false" />
-					</p:dialog>
+						id="benefcomp" />
+					<p:message for="benefcomp" />
 				</h:panelGrid>
 
-				<h:panelGrid columns="1" cellpadding="10">
-
-					<p:editor id="editor3" widgetVar="editorWidget"
+				<h:panelGrid columns="1" cellpadding="2">
+					<p:outputLabel for="malefcomp" value="Beneficios:" />
+					<p:inputTextarea rows="10" cols="40" height="70px"
+						autoResize="true" maxlength="400"
 						value="#{componenteController.componente.malef_componente}"
-						width="400" />
-
-					<h:panelGrid columns="2" style="margin-top: 10px">
-						<p:commandButton value="Submit" update="display3"
-							oncomplete="PF('dlg').show()" icon="ui-icon-disk" />
-
-						<p:commandButton value="Clear" type="button"
-							onclick="PF('editorWidget').clear();" icon="ui-icon-close" />
-					</h:panelGrid>
-
-					<p:dialog header="Content" widgetVar="dlg" showEffect="fade"
-						hideEffect="fade">
-						<h:outputText id="display3"
-							value="#{componenteController.componente.malef_componente}"
-							escape="false" />
-					</p:dialog>
+						id="malefcomp" />
+					<p:message for="malefcomp" />
 				</h:panelGrid>
+
+
 			</h:panelGrid>
 		</p:panel>
 
@@ -142,7 +116,7 @@
 		<p:commandButton value="Adicionar a Lista" ajax="false"
 			action="#{componenteController.addComponentes(componenteController.componente)}"></p:commandButton>
 
-	
+
 
 		<p:dataTable id="basicDT" var="compo"
 			value="#{componenteController.componentes}">
@@ -162,9 +136,9 @@
 		</p:dataTable>
 
 
-	
-		<p:commandButton ajax="false" value="Adicionar Componentes" 
-			action="#{componenteController.addComponente(componenteController.componente)}" >
+
+		<p:commandButton ajax="false" value="Adicionar Componentes"
+			action="#{componenteController.addComponente(componenteController.componente)}">
 		</p:commandButton>
 	</h:form>
 </h:body>

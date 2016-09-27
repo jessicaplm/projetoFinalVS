@@ -25,9 +25,9 @@ public class Sugestao implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long idAlimento;
-	@Column
+	@Column(length=30,nullable=false)
 	private String nome;
-	@Column
+	@Column(length=30,nullable=false)
 	private String tipo_sugestao;
 	
 	public long getIdAlimento() {

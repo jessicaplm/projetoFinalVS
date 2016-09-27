@@ -17,7 +17,7 @@
 	<h:form enctype="multipart/form-data" id="cadastroalimento">
 
 
-		<p:growl id="messages" />
+		
 
 		<p:menubar styleClass="menu ">
 			<p:submenu label="File" icon="ui-icon-home" rendered="">
@@ -33,11 +33,10 @@
 
 
 
-
 		<p:panel id="caampos" header="Formulario de Cadastro de Alimentos"
 			footer="Movie Details" style="margin-bottom:20px;margin-top:20px">
 
-			<p:messages id="messages1" />
+			<p:growl id="messages" />
 			<h:panelGrid style="margin-top:20px" columns="3">
 
 
@@ -131,23 +130,11 @@
 			<!--Editor Detalhes Gerais-->
 			<h:panelGrid columns="1" cellpadding="10">
 
-				<p:editor id="editor" widgetVar="editorWidget"
-					value="#{alimentoController.alimento.desc_alimento}" width="600" />
-
-				<h:panelGrid columns="2" style="margin-top: 10px">
-					<p:commandButton value="Submit" update="display"
-						oncomplete="PF('dlg').show()" icon="ui-icon-disk" />
-
-					<p:commandButton value="Clear" type="button"
-						onclick="PF('editorWidget').clear();" icon="ui-icon-close" />
-				</h:panelGrid>
-
-				<p:dialog header="Content" widgetVar="dlg" showEffect="fade"
-					hideEffect="fade" width="400px" height="300px">
-					<h:outputText id="display"
-						value="#{alimentoController.alimento.desc_alimento}"
-						escape="false" />
-				</p:dialog>
+				<p:inputTextarea rows="10" cols="100" height="150px"
+					autoResize="false" maxlength="400"
+					value="#{alimentoController.alimento.desc_alimento}"
+					id="descricaoalimento" />
+				<p:message for="descricaoalimento" />
 			</h:panelGrid>
 		</p:panel>
 
