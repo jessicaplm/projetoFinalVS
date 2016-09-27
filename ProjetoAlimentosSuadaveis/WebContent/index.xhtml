@@ -17,44 +17,42 @@
 		<h:form>
 			<p:layout fullPage="true">
 
-				<p:layoutUnit position="north" size="255" resizable="false">
-					<h:graphicImage url="imagens/logo.png" width="1000" height="160" />
-					<p:tabMenu activeIndex="#{param.i}">
-						<p:menuitem value="Inicio" icon="ui-icon-home">
+				<p:panelGrid>
+					<p:panel>
+						<h:graphicImage url="imagens/logo.png" width="1000" height="160" />
+						<p:tabMenu>
+							<p:menuitem value="Inicio" icon="ui-icon-home">
 
-						</p:menuitem>
-						<p:menuitem value="Alimentos">
+							</p:menuitem>
+							<p:menuitem value="Alimentos">
 
-						</p:menuitem>
-						<p:menuitem value="Ingredientes">
+							</p:menuitem>
+							<p:menuitem value="Ingredientes">
 
-						</p:menuitem>
-						<p:menuitem value="Questionário">
+							</p:menuitem>
+							<p:menuitem value="Questionario">
 
-						</p:menuitem>
-						<p:menuitem value="Informativos">
+							</p:menuitem>
+							<p:menuitem value="Informativos">
 
-						</p:menuitem>
-					</p:tabMenu>
-				</p:layoutUnit>
+							</p:menuitem>
+						</p:tabMenu>
+					</p:panel>
+				</p:panelGrid>
 
-				<p:layoutUnit position="center" size="700">
-				
-				
-						<p:panel id="curiosidade" header="Você Sabia?"
-							style="margin-bottom:20px">
-							<h:panelGrid columns="2" cellpadding="10">
-								<p:graphicImage url="imagens/leite.jpg" width="300" height="200" />
-								<h:outputText
-									value="Leite é bom para a saúde bucal. Ele contém nutrientes como cálcio, fósforo, magnésio e vitamina D que ajudam no desenvolvimento dos dentes e tecidos orais, protegendo contra as cáries." />
-							</h:panelGrid>
-						</p:panel>
-					<p:imageSwitch effect="fade" >
-						<p:graphicImage url="imagens/feijao.jpg"/>
-						<p:graphicImage url="imagens/sal.jpg" />
-						<p:graphicImage url="imagens/agua.jpg" />
-					</p:imageSwitch>
-				</p:layoutUnit>
+				<p:panelGrid columns="2">
+					<p:panel  header="Você Sabia?">
+						<p:graphicImage url="imagens/leite.jpg" width="250" height="380" />
+					</p:panel>
+					
+						<p:imageSwitch effect="fade">
+							<p:graphicImage url="imagens/feijao.jpg" width="800" height="230" />
+							<p:graphicImage url="imagens/sal.jpg" width="800" height="230" />
+							<p:graphicImage url="imagens/agua.jpg" width="800" height="230" />
+						</p:imageSwitch>
+					
+				</p:panelGrid>
+
 
 			</p:layout>
 
