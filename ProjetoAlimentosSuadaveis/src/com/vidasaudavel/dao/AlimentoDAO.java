@@ -14,4 +14,5 @@ public interface AlimentoDAO {
 
 	public void removeAlimentoById(int id);
 
+	public List<Alimento> getByNameAlimento(String n);
 }

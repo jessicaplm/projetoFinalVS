@@ -185,10 +185,22 @@
 
 
 	</h:form>
-	<h:form>
-		<p:commandButton value="Adicionar" ajax="false"
-			update=":cadastroalimento"
-			action="#{alimentoController.addAlimento(alimentoController.alimento)}"></p:commandButton>
-	</h:form>
+	<h:panelGrid columns="2" cellpadding="10">
+		<h:form>
+
+			<p:commandButton value="Adicionar" ajax="false"
+				update=":cadastroalimento"
+				action="#{alimentoController.addAlimento(alimentoController.alimento)}"></p:commandButton>
+
+
+		</h:form>
+		<h:form>
+
+			<p:commandLink value="Adicionar Novo Componente"
+				action="cadastroComponentes.xhtml" ajax="false"></p:commandLink>
+
+		</h:form>
+	</h:panelGrid>
+
 </h:body>
 </html>

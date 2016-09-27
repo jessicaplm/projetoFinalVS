@@ -109,4 +109,32 @@ public class AlimentoDAOImpl implements AlimentoDAO {
 
 	}
 
+	@Override
+	public List<Alimento> getByNameAlimento(String n) {
+		// TODO Auto-generated method stub
+
+		try {
+
+			Session session = this.sessionFactory.getCurrentSession();
+			List<Alimento> alimentoList = session.createQuery("from Alimento a where a.nm_alimento=%'"+n+"'%" )
+					.list();
+			for (Alimento a : alimentoList) {
+
+				logger.info("lista= " + a);
+
+			}
+			return alimentoList;
+
+		} catch (HibernateException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+
+			logger.info("Erro Ao Listar");
+
+		}
+		return null;
+	
+	}
+
 }

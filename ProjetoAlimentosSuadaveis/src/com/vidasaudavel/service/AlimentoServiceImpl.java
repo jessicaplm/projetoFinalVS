@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import com.vidasaudavel.dao.AlimentoDAO;
 import com.vidasaudavel.model.Alimento;
 
@@ -42,6 +43,12 @@ public class AlimentoServiceImpl implements AlimentoService {
 	public void removeAlimentoById(int id) {
 		// TODO Auto-generated method stub
 		this.alimentoDAO.removeAlimentoById(id);
+	}
+
+	@Override
+	public List<Alimento> getByNameAlimento(String n) {
+		
+		return this.alimentoDAO.getByNameAlimento(n);
 	}
 
 }

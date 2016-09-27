@@ -120,6 +120,10 @@ public class AlimentoController {
 		return alimentos;
 
 	}
+	public List<Alimento> getByNameAlimento(String n) {
+		
+		return this.alimentoService.getByNameAlimento(n);
+	}
 
 	public void updateAlimento(Alimento a) {
 
@@ -201,5 +205,6 @@ public class AlimentoController {
 	public void setHidden(boolean hidden) {
 		this.hidden = hidden;
 	}
+	
 
 }

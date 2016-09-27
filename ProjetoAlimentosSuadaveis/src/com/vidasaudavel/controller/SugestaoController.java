@@ -20,7 +20,7 @@ public class SugestaoController {
 		this.sugestaoService = sugestaoService;
 	}
 	
-	public TipoSugestao[] getSexos() {
+	public TipoSugestao[] getTipoSugestao() {
 		return TipoSugestao.values();
 	}
 }

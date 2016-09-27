@@ -5,11 +5,14 @@ import java.util.List;
 import com.vidasaudavel.model.Alimento;
 
 public interface AlimentoService {
-	
 
-	public void addAlimento(Alimento a );
+	public void addAlimento(Alimento a);
+
 	public List<Alimento> listAlimento();
-	public void updateAlimento(Alimento a);
-	public void removeAlimentoById(int id );
 
+	public void updateAlimento(Alimento a);
+
+	public void removeAlimentoById(int id);
+
+	public List<Alimento> getByNameAlimento(String n);
 }
