@@ -30,19 +30,26 @@ public class Alimento implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id_alimento;
-	@Column
+	
+	@Column(length=30,nullable=false)
 	private String nm_alimento;
-	@Column
+	
+	@Column(length=20,nullable=false)
 	private String regiao_tipica;
-	@Column
+	
+	@Column(length=8,nullable=false)
 	private String periodo_dia;
-	@Column
+	
+	@Column(nullable=false)
 	private int calorias;
-	@Column
+	
+	@Column(length=20)
 	private String porcao;
-	@Column
+	
+	@Column(length=100)
 	private String url_imagem_alimento;
-	@Column
+	
+	@Column(length=500)
 	private String desc_alimento;
 
 	@ManyToMany(fetch=FetchType.LAZY)

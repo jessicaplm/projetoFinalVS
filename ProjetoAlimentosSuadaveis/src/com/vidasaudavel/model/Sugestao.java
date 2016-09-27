@@ -29,6 +29,7 @@ public class Sugestao implements Serializable{
 	private String nome;
 	@Column
 	private String tipo_sugestao;
+	
 	public long getIdAlimento() {
 		return idAlimento;
 	}
