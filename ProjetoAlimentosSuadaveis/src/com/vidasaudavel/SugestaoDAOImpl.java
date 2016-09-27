@@ -9,21 +9,21 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
-import com.vidasaudavel.model.Componente;
-import com.vidasaudavel.model.SugestaoComponente;
+
+import com.vidasaudavel.model.Sugestao;
+
 @Repository
-public class SugestaoComponenteDAOImpl implements SugestaoComponenteDAO {
+public class SugestaoDAOImpl  implements SugestaoDAO{
 
 	private static final Logger logger = LoggerFactory
-			.getLogger(SugestaoComponenteDAOImpl.class);
+			.getLogger(SugestaoDAOImpl.class);
 	private SessionFactory sessionFactory;
 
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
-	
 	@Override
-	public void addSugestaoComponente(SugestaoComponente c) {
+	public void addSugestao(Sugestao c) {
 		// TODO Auto-generated method stub
 		try {
 
@@ -40,19 +40,19 @@ public class SugestaoComponenteDAOImpl implements SugestaoComponenteDAO {
 	}
 
 	@Override
-	public List<SugestaoComponente> listSugestaoComponente() {
+	public List<Sugestao> listSugestao() {
 		// TODO Auto-generated method stub
 		try {
 
 			Session session = this.sessionFactory.getCurrentSession();
-			List<SugestaoComponente> sugestaoComponenteList = session.createQuery("from SugestaoComponente")
+			List<Sugestao> sugestaoList = session.createQuery("from Sugestao")
 					.list();
-			for (SugestaoComponente c : sugestaoComponenteList) {
+			for (Sugestao c : sugestaoList) {
 
 				logger.info("lista= " +c);
 
 			}
-			return sugestaoComponenteList;
+			return sugestaoList;
 
 		} catch (HibernateException e) {
 			// TODO: handle exception
@@ -66,7 +66,7 @@ public class SugestaoComponenteDAOImpl implements SugestaoComponenteDAO {
 	}
 
 	@Override
-	public void updateSugestaoComponente(SugestaoComponente c) {
+	public void updateSugestao(Sugestao c) {
 		// TODO Auto-generated method stub
 		try {
 
@@ -84,11 +84,11 @@ public class SugestaoComponenteDAOImpl implements SugestaoComponenteDAO {
 	}
 
 	@Override
-	public void removeSugestaoComponenteById(int id) {
+	public void removeSugestaoById(int id) {
 		// TODO Auto-generated method stub
 		try {
 			Session session = this.sessionFactory.getCurrentSession();
-			SugestaoComponente c = (SugestaoComponente) session.load(SugestaoComponente.class,
+			Sugestao c = (Sugestao) session.load(Sugestao.class,
 					new Integer(id));
 			if (null != c) {
 

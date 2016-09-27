@@ -25,31 +25,80 @@ public class Componente implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private long idComponente;
-	@Column
-	private String nomeComponente;
-	@Column
-	private String descricaoComponente;
+	private long id_componente;
+	
+	@Column(length=50,nullable=false)
+	private String nm_componente;
+	
+	@Column(length=500,nullable=false)
+	private String ds_componente;
+	
+	@Column(length=400)
+	private String benef_componente;
+	
+	@Column(length=400)
+	private String malef_componente;
+	
+	@Column(length=100,nullable=false)
+	private String url_imagem_componente;
+	
+	@Column(length=100,nullable=false)
+	private String link_componente;
 	
 	
-	public long getIdComponente() {
-		return idComponente;
+	public long getId_componente() {
+		return id_componente;
 	}
-	public void setIdComponente(long idComponente) {
-		this.idComponente = idComponente;
+	public void setId_componente(long id_componente) {
+		this.id_componente = id_componente;
 	}
-	public String getNomeComponente() {
-		return nomeComponente;
+	public String getNm_componente() {
+		return nm_componente;
 	}
-	public void setNomeComponente(String nomeComponente) {
-		this.nomeComponente = nomeComponente;
+	public void setNm_componente(String nm_componente) {
+		this.nm_componente = nm_componente;
 	}
-	public String getDescricaoComponente() {
-		return descricaoComponente;
+	public String getDs_componente() {
+		return ds_componente;
 	}
-	public void setDescricaoComponente(String descricaoComponente) {
-		this.descricaoComponente = descricaoComponente;
+	public void setDs_componente(String ds_componente) {
+		this.ds_componente = ds_componente;
 	}
+	public String getBenef_componente() {
+		return benef_componente;
+	}
+	public void setBenef_componente(String benef_componente) {
+		this.benef_componente = benef_componente;
+	}
+	public String getMalef_componente() {
+		return malef_componente;
+	}
+	public void setMalef_componente(String malef_componente) {
+		this.malef_componente = malef_componente;
+	}
+	public String getUrl_imagem_componente() {
+		return url_imagem_componente;
+	}
+	public void setUrl_imagem_componente(String url_imagem_componente) {
+		this.url_imagem_componente = url_imagem_componente;
+	}
+	public String getLink_componente() {
+		return link_componente;
+	}
+	public void setLink_componente(String link_componente) {
+		this.link_componente = link_componente;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
