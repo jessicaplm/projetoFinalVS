@@ -5,6 +5,7 @@ import javax.faces.bean.SessionScoped;
 
 import org.springframework.stereotype.Controller;
 
+import com.vidasaudavel.model.Sugestao;
 import com.vidasaudavel.model.TipoSugestao;
 import com.vidasaudavel.service.SugestaoService;
 
@@ -18,6 +19,17 @@ public class SugestaoController {
 	public void setSugestaoService(
 			SugestaoService sugestaoService) {
 		this.sugestaoService = sugestaoService;
+	}
+	public SugestaoController(){
+		
+		
+	}
+	
+	public void addSugestao(Sugestao c){
+		c.setTipo_sugestao(TipoSugestao.Alim.getValor());
+		
+		sugestaoService.addSugestao(c);
+		
 	}
 	
 	public TipoSugestao[] getTipoSugestao() {

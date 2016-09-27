@@ -53,7 +53,7 @@
 				<h:panelGrid columns="1" cellspacing="6">
 					<p:outputLabel for="calorias" value="Valor calorico:" />
 					<p:inputText id="calorias"
-						value="#{alimentoController.alimento.calorias}" required="true"
+						value="#{alimentoController.alimento.calorias}" required="true"  
 						label="calorias" />
 
 					<p:message for="calorias" />
@@ -63,7 +63,7 @@
 					<p:outputLabel for="porcao" value="Porção:" />
 					<h:panelGrid columns="2" cellspacing="6">
 						<p:inputText id="porcao"
-							value="#{alimentoController.alimento.porcao}" required="true"
+							value="#{alimentoController.alimento.porcao}" required="true" disabled="true"
 							label="porcao" />
 						<p:outputLabel value="g/ml" />
 					</h:panelGrid>
@@ -151,7 +151,7 @@
 
 					<p:commandButton value="Adicionar" ajax="false" process="@this"
 						update=":formlistaddcomp:listanovocomp"
-						actionListener="#{alimentoController.addListComponentes(comp)}"></p:commandButton>
+						actionListener="#{alimentoController.addListComponentes(comp)}" immediate="true" ></p:commandButton>
 
 				</p:column>
 
@@ -171,17 +171,14 @@
 					<p:column headerText="deletar">
 
 						<p:commandButton value="Remover" ajax="false"
-							action="#{alimentoController.removerListComponentes(comp)}"></p:commandButton>
+							action="#{alimentoController.removerListComponentes(comp)}" immediate="true"></p:commandButton>
 					</p:column>
 
 				</p:dataTable>
 
 			</p:panel>
 		</h:form>
-		<!-- procurar como usar o hidden e o show  -->
-		<!--	<p:commandButton value="submit" actionListener="#{alimentoController.hideOrShow()}" rendered="#{alimentoController.hidden}" ajax="false" validateClient="false" >
-	
-		</p:commandButton> -->
+
 
 
 	</h:form>

@@ -106,4 +106,10 @@ public class ComponenteDAOImpl implements ComponenteDAO {
 		}
 	}
 
+	@Override
+	public void getByNameComponente(String n) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

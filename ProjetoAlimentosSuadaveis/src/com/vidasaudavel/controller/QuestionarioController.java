@@ -20,7 +20,7 @@ public class QuestionarioController {
 		this.questionarioService = questionarioService;
 	}
 
-	public TipoRegiao[] getSexos() {
+	public TipoRegiao[] getTipoRegiao() {
 		return TipoRegiao.values();
 	}
 }

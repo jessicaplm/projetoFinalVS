@@ -29,7 +29,10 @@ public class AlimentoController {
 	private AlimentoService alimentoService;
 	private List<Alimento> alimentos;
 	private List<Componente> componentes;
-	private boolean hidden;
+	private List<Alimento> pesquisaAlimentos;
+	private String valorPesquisa;
+	
+//	private boolean hidden;
 
 	public void setAlimentoService(AlimentoService alimentoService) {
 		this.alimentoService = alimentoService;
@@ -42,6 +45,7 @@ public class AlimentoController {
 		componente = new Componente();
 		alimentos = new ArrayList<Alimento>();
 		componentes = new ArrayList<Componente>();
+		pesquisaAlimentos = new ArrayList<Alimento>();
 		alimento.setPorcao("100");
 	}
 
@@ -120,6 +124,7 @@ public class AlimentoController {
 		return alimentos;
 
 	}
+	
 	public List<Alimento> getByNameAlimento(String n) {
 		
 		return this.alimentoService.getByNameAlimento(n);
@@ -187,24 +192,40 @@ public class AlimentoController {
 		this.componente = componente;
 	}
 
-	public void hideOrShow() {
-
-		if (!hidden) {
-
-			hidden = true;
-		} else {
-
-			hidden = false;
-		}
+	public List<Alimento> getPesquisaAlimentos() {
+		return pesquisaAlimentos;
 	}
 
-	public boolean isHidden() {
-		return hidden;
+	public void setPesquisaAlimentos(List<Alimento> pesquisaAlimentos) {
+		this.pesquisaAlimentos = pesquisaAlimentos;
 	}
 
-	public void setHidden(boolean hidden) {
-		this.hidden = hidden;
+	public String getValorPesquisa() {
+		return valorPesquisa;
 	}
+
+	public void setValorPesquisa(String valorPesquisa) {
+		this.valorPesquisa = valorPesquisa;
+	}
+
+//	public void hideOrShow() {
+//
+//		if (!hidden) {
+//
+//			hidden = true;
+//		} else {
+//
+//			hidden = false;
+//		}
+//	}
+//
+//	public boolean isHidden() {
+//		return hidden;
+//	}
+//
+//	public void setHidden(boolean hidden) {
+//		this.hidden = hidden;
+//	}
 	
 
 }
