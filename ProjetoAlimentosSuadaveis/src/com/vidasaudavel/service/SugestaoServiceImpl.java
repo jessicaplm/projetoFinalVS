@@ -12,7 +12,7 @@ public class SugestaoServiceImpl implements SugestaoService {
 
 	private SugestaoDAO sugestaoDAO;
 
-
+	
 	public void setSugestaoDAO(SugestaoDAO sugestaoDAO) {
 		this.sugestaoDAO = sugestaoDAO;
 	}
@@ -21,7 +21,7 @@ public class SugestaoServiceImpl implements SugestaoService {
 	@Transactional(readOnly = false)
 	public void addSugestao(Sugestao c) {
 		// TODO Auto-generated method stub
-		sugestaoDAO.addSugestao(c);
+		this.sugestaoDAO.addSugestao(c);
 	}
 
 	@Override

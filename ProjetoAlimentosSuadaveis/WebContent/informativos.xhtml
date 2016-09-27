@@ -14,31 +14,10 @@
 	</h:head>
 
 	<h:body>
-		<h:form>
-			<p:layout fullPage="true">
-
-				<p:layoutUnit position="north" size="240" resizable="false">
-					<h:graphicImage url="/VoeBem.png" width="1000" height="160" />
-					<p:tabMenu activeIndex="#{param.i}">
-						<p:menuitem value="Inicio" icon="ui-icon-home">
-
-						</p:menuitem>
-						<p:menuitem value="Alimentos">
-
-						</p:menuitem>
-						<p:menuitem value="Ingredientes">
-
-						</p:menuitem>
-						<p:menuitem value="Questionario">
-
-						</p:menuitem>
-						<p:menuitem value="Informativos">
-
-						</p:menuitem>
-					</p:tabMenu>
-				</p:layoutUnit>
-				<p:layoutUnit position="center" size="500">
-
+		<ui:include src="header.xhtml" />
+		<h:form styleClass="ui segment">
+			<p:layoutUnit position="center" size="500">
+				<div class="ui form">
 					<p:panel id="noticia1"
 						header="Obesidade impulsiona a desnutrição no mundo"
 						style="margin-bottom:2px">
@@ -52,7 +31,8 @@
 							value="Fonte:  http://veja.abril.com.br/saude/obesidade-impulsiona-a-desnutricao-no-mundo/"
 							style="font-size:60%"></h:outputText>
 					</p:panel>
-
+				</div>
+				<div class="ui form">
 					<p:panel id="noticia2"
 						header="IBGE: mais da metade dos brasileiros está acima do peso"
 						style="margin-bottom:5px">
@@ -65,7 +45,8 @@
 							value="Fonte:  http://veja.abril.com.br/saude/ibge-mais-da-metade-dos-brasileiros-esta-acima-do-peso/"
 							style="font-size:60%"></h:outputText>
 					</p:panel>
-
+				</div>
+				<div class="ui form">
 					<p:panel id="noticia3" header="O segredo dos Esquimós"
 						style="margin-bottom:5px">
 						<h:panelGrid columns="2" cellpadding="10">
@@ -77,8 +58,9 @@
 							value="Fonte:  https://dietanutricaoesaude.com.br/10-curiosidades-sobre-omega-3/"
 							style="font-size:60%"></h:outputText>
 					</p:panel>
-				</p:layoutUnit>
-			</p:layout>
+				</div>
+			</p:layoutUnit>
+
 
 		</h:form>
 	</h:body>

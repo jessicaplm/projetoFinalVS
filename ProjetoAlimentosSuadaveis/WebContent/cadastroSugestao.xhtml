@@ -49,25 +49,24 @@
 
 
 					<h:panelGrid columns="3" cellspacing="">
-						<p:outputLabel for="nome" value="Sugestão:" />
-						<p:inputText id="nome"
-							value="#{sugestaoController.sugestao.nome}"
-							 label="nome">
-						</p:inputText>
+						<p:panel>
+							<p:outputLabel for="nome" value="Sugestão:" />
+							<p:inputText id="nome" value="#{sugestaoController.sugestao.nome}" label="nome">
+							</p:inputText>
+						</p:panel>
+
+						<p:panel>
+							<p:outputLabel value="Categoria:" />
+							<p:selectOneMenu id="tipo_sugestao"
+								value="#{sugestaoController.sugestao.tipo_sugestao}"
+								style="width:150px">
 
 
-						<p:outputLabel value="Categoria:" />
+								<f:selectItems value="#{sugestaoController.tipoSugestao}" var="tip" itemValue="#{tip}"
+									itemLabel="#{tip.valor}" />
 
-						<p:selectOneMenu id="tipo_sugestao"
-							value="sugestaoController.sugestao.tipo_sugestao"
-							style="width:150px">
-
-
-							<f:selectItems value="#{sugestaoController.tipoSugestao}"
-								var="tip" itemValue="#{tip}" itemLabel="#{tip.valor}" />
-
-						</p:selectOneMenu>
-
+							</p:selectOneMenu>
+						</p:panel>
 					</h:panelGrid>
 
 					<p></p>

@@ -17,9 +17,6 @@ public class SugestaoController {
 	private SugestaoService sugestaoService;
 	private Sugestao sugestao;
 	
-	
-	
-
 	public Sugestao getSugestao() {
 		return sugestao;
 	}
@@ -28,8 +25,7 @@ public class SugestaoController {
 		this.sugestao = sugestao;
 	}
 
-	public void setSugestaoService(
-			SugestaoService sugestaoService) {
+	public void setSugestaoService(SugestaoService sugestaoService) {
 		this.sugestaoService = sugestaoService;
 	}
 	
@@ -39,9 +35,11 @@ public class SugestaoController {
 	}
 	
 	public void addSugestao(Sugestao c){
-		c.setTipo_sugestao(TipoSugestao.Alim.getValor());	
-		sugestaoService.addSugestao(c);
-		
+		try{
+		this.sugestaoService.addSugestao(c);
+		}catch (Exception e) {
+			e.getMessage();
+		}
 	}
 	
 	public TipoSugestao[] getTipoSugestao() {
