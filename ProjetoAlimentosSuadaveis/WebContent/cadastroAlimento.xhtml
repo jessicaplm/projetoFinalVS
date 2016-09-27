@@ -14,7 +14,7 @@
 </h:head>
 <h:body>
 
-	<h:form enctype="multipart/form-data">
+	<h:form enctype="multipart/form-data" id="cadastroalimento">
 
 
 		<p:growl id="messages" />
@@ -151,22 +151,44 @@
 			</h:panelGrid>
 		</p:panel>
 
-		<p:panel id="editorDescricao" header="Componentes Já cadastrados"
+		<p:panel id="listacomp" header="Componentes Já cadastrados"
 			footer="Movie Details" style="margin-bottom:20px">
 
-			<p:dataTable var="comp" value="#{componenteController.listComponente()}">
+			<p:dataTable var="comp"
+				value="#{componenteController.listComponente()}">
 				<p:column headerText="Nome">
 					<h:outputText value="#{comp.nm_componente}" />
 				</p:column>
 				<p:column headerText="Adicionar Item ao Alimento">
-				<p:commandButton value="Adicionar" ajax="false"
-			action="#{alimentoController.addAlimento(alimentoController.alimento)}"></p:commandButton>
+					<p:commandButton value="Adicionar" ajax="false"
+						action="#{alimentoController.addListComponentes(comp)}"></p:commandButton>
 				</p:column>
 
 			</p:dataTable>
 
 		</p:panel>
 
+
+		<p:panel id="listanovocomp"
+			header="Lista de componentes para adicionar ao alimento"
+			footer="Movie Details" style="margin-bottom:20px">
+
+			<p:dataTable var="comp" value="#{alimentoController.componentes}">
+				<p:column headerText="Nome">
+					<h:outputText value="#{comp.nm_componente}" />
+				</p:column>
+				<p:column headerText="deletar">
+					<p:commandButton value="Adicionar" ajax="false"
+						action="#{alimentoController.removerListComponentes(comp)}"></p:commandButton>
+				</p:column>
+
+			</p:dataTable>
+
+		</p:panel>
+		<!-- procurar como usar o hidden e o show  -->
+		<!--	<p:commandButton value="submit" actionListener="#{alimentoController.hideOrShow()}" rendered="#{alimentoController.hidden}" ajax="false" validateClient="false" >
+		
+		</p:commandButton> -->
 		<p:commandButton value="Adicionar" ajax="false"
 			action="#{alimentoController.addAlimento(alimentoController.alimento)}"></p:commandButton>
 	</h:form>
