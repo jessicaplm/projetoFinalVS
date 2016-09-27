@@ -46,9 +46,9 @@ public class AlimentoServiceImpl implements AlimentoService {
 	}
 
 	@Override
-	public List<Alimento> getByNameAlimento(String n) {
+	public List<Alimento>  listByNameAlimento(String n) {
 		
-		return this.alimentoDAO.getByNameAlimento(n);
+		return this.alimentoDAO.listByNameAlimento(n);
 	}
 
 }

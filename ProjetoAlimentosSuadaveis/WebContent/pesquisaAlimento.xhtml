@@ -13,10 +13,45 @@
 
 
 	<h:form>
-	<p:inputText value="#{alimentoController.alimento.nm_alimento}"/><p:commandButton type="button"  action="#" icon="ui-icon-search"/>
-		
-		
+		<p:inputText value="#{mbAlimento.nm_alimento}" />
+		<p:commandButton ajax="false"
+			actionListener="#{alimentoController.listByNameAlimento(mbAlimento.nm_alimento)}"
+			icon="ui-icon-search" />
 	</h:form>
+
+	<h:form>
+		<h:panelGrid style="margin-top:20px" columns="1">
+
+			<h:panelGrid columns="1" cellspacing="6">
+				<p:dataTable var="ali"
+					value="#{alimentoController.pesquisaAlimentos}">
+					<p:column headerText="Nome Alimentos">
+						<h:outputText value="#{ali.nm_alimento}" />
+					</p:column>
+					<p:column headerText="Calorias">
+						<h:outputText value="#{ali.calorias}" />
+					</p:column>
+					<p:column headerText="Ver Detalhes do Alimento">
+				
+							<p:commandButton value="Ver Detalhes" ajax="false"
+							 	action="detalhesAlimento.xhtml" >
+								
+								<f:setPropertyActionListener value="#{ali}"
+									target="#{alimentoController.alimentoSelecionado}"></f:setPropertyActionListener>
+
+							</p:commandButton>
+						
+					</p:column>
+
+				</p:dataTable>
+			</h:panelGrid>
+
+
+		</h:panelGrid>
+
+	</h:form>
+
+
 
 
 </h:body>
