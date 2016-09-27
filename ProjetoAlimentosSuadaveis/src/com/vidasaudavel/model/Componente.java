@@ -26,17 +26,23 @@ public class Componente implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id_componente;
-	@Column
+	
+	@Column(length=50,nullable=false)
 	private String nm_componente;
-	@Column
+	
+	@Column(length=500,nullable=false)
 	private String ds_componente;
-	@Column
+	
+	@Column(length=400)
 	private String benef_componente;
-	@Column
+	
+	@Column(length=400)
 	private String malef_componente;
-	@Column
+	
+	@Column(length=100,nullable=false)
 	private String url_imagem_componente;
-	@Column
+	
+	@Column(length=100,nullable=false)
 	private String link_componente;
 	
 	

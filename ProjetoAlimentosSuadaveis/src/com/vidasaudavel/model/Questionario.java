@@ -30,17 +30,22 @@ public class Questionario implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id_questionario;
-	@Column
-	private String nm_usuario;
+	@Column(length=40,nullable=false)
+	private String nm_usuario;	
+	
 	@Column
 	private int idade;
-	@Column
+	
+	@Column(nullable=false)
 	private double peso;
-	@Column
+	
+	@Column(nullable=false)
 	private double altura;
-	@Column
+	
+	@Column(nullable=false)
 	private double imc;
-	@Column
+	
+	@Column(length=30,nullable=false)
 	private String regiao_usuario;
 	
 	@ManyToMany(fetch=FetchType.LAZY)
