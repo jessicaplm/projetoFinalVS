@@ -80,6 +80,7 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
 	<beans:bean id="componenteController"
 		class="com.vidasaudavel.controller.ComponenteController">
 		<beans:property name="componenteService" ref="componenteService"></beans:property>
+		<beans:property name="sugestaoService" ref="sugestaoService"></beans:property>
 	</beans:bean>
 	<!--Componentes -->
 	

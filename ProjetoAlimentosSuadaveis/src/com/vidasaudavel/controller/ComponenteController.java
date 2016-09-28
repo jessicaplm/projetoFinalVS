@@ -16,8 +16,11 @@ import antlr.CppCodeGenerator;
 
 import com.vidasaudavel.model.Alimento;
 import com.vidasaudavel.model.Componente;
+import com.vidasaudavel.model.Sugestao;
+import com.vidasaudavel.model.TipoSugestao;
 import com.vidasaudavel.service.AlimentoService;
 import com.vidasaudavel.service.ComponenteService;
+import com.vidasaudavel.service.SugestaoService;
 
 @Controller
 @ManagedBean(name = "componenteController")
@@ -30,13 +33,47 @@ public class ComponenteController {
 	private List<Componente> componenteslista;
 	private List<Componente> pesquisaComponentes;
 	private Componente componenteSelecionado;
+	private boolean showSugestao = false;
+
 
 	private ComponenteService componenteService;
 
 	public void setComponenteService(ComponenteService componenteService) {
 		this.componenteService = componenteService;
 	}
+	
+	private Sugestao sugestao;
+	private SugestaoService sugestaoService;
 
+	public void setSugestaoService(SugestaoService sugestaoService) {
+		this.sugestaoService = sugestaoService;
+	}
+
+	public void addSugestaoComponente(String nmSugestao) {
+		try {
+			sugestao = new Sugestao();
+
+			sugestao.setTipo_sugestao(TipoSugestao.Componente.getValor());
+			sugestao.setNome(nmSugestao);
+			this.sugestaoService.addSugestao(sugestao);
+			showSugestao = false;
+			
+			FacesMessage message = new FacesMessage(
+					"O item já foi adicionado as Sugestoes",
+					nmSugestao + "  foi adicionado as Sugestoes!");
+			FacesContext.getCurrentInstance().addMessage(null, message);
+			
+		} catch (Exception e) {
+			e.getMessage();
+		}
+	}
+
+
+	public boolean isShowSugestao() {
+		return showSugestao;
+	}
+
+	
 	public ComponenteController() {
 		componentes = new ArrayList<Componente>();
 		componenteslista = new ArrayList<Componente>();
@@ -176,5 +213,11 @@ public class ComponenteController {
 	public void setComponentes(List<Componente> componentes) {
 		this.componentes = componentes;
 	}
+	
+
+	public void setShowSugestao(boolean showSugestao) {
+		this.showSugestao = showSugestao;
+	}
+
 
 }
