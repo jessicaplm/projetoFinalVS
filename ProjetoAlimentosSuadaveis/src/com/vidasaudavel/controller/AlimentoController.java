@@ -13,11 +13,13 @@ import org.springframework.stereotype.Controller;
 import com.vidasaudavel.model.Alimento;
 import com.vidasaudavel.model.Componente;
 import com.vidasaudavel.model.PeriodoDia;
+import com.vidasaudavel.model.Sugestao;
 import com.vidasaudavel.model.TipoRegiao;
 import com.vidasaudavel.model.TipoSugestao;
 import com.vidasaudavel.service.AlimentoService;
 import com.vidasaudavel.service.ComponenteService;
 import com.vidasaudavel.service.ComponenteServiceImpl;
+import com.vidasaudavel.service.SugestaoService;
 
 @Controller
 @ManagedBean(name = "alimentoController")
@@ -35,6 +37,30 @@ public class AlimentoController {
 	private Alimento alimentoSelecionado;
 	private boolean showSugestao = false;
 
+	
+	//depos apagar se nao der certo
+	private Sugestao sugestao;
+	private SugestaoService sugestaoService;
+
+	public void setSugestaoService(SugestaoService sugestaoService) {
+		this.sugestaoService = sugestaoService;
+	}
+	
+	
+	public void addSugestaoAlimento(String nmSugestao) {
+		try {
+			sugestao = new Sugestao();
+
+			sugestao.setTipo_sugestao(TipoSugestao.Alimento.getValor());
+			sugestao.setNome(nmSugestao);
+			this.sugestaoService.addSugestao(sugestao);
+			showSugestao = false;
+		} catch (Exception e) {
+			e.getMessage();
+		}
+	}
+	
+	//
 
 	public boolean isShowSugestao() {
 		return showSugestao;
@@ -51,6 +77,10 @@ public class AlimentoController {
 	private ComponenteService componenteService;
 
 	public AlimentoController() {
+		//depois apagar se nao der certo
+		sugestao = new Sugestao();
+		//
+		
 		alimento = new Alimento();
 		alimentoSelecionado = new Alimento();
 		componente = new Componente();

@@ -64,6 +64,7 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
 	<beans:bean id="alimentoController"
 		class="com.vidasaudavel.controller.AlimentoController">
 		<beans:property name="alimentoService" ref="alimentoService"></beans:property>
+		<beans:property name="sugestaoService" ref="sugestaoService"></beans:property>
 	</beans:bean>
 	<!--Alimentos -->
 
@@ -109,6 +110,7 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
 	<beans:bean id="questionarioController"
 		class="com.vidasaudavel.controller.QuestionarioController">
 		<beans:property name="questionarioService" ref="questionarioService"></beans:property>
+		
 	</beans:bean>
 	<!--Questionario -->
 

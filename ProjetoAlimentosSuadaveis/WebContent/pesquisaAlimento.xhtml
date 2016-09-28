@@ -11,10 +11,12 @@
 
 	<link rel="stylesheet" type="text/css" href="css/semantic.min.css"></link>
 	<script src="js/semantic.min.js"></script>
+
+
 </h:head>
 <h:body>
 
-	<ui:include src="header.xhtml" />
+
 
 	<h:form>
 
@@ -41,9 +43,9 @@
 			</h:panelGrid>
 			<h:panelGrid style="margin-top:20px" columns="2">
 				<h4 style="color: aqua;">Alimento não encontrado?</h4>
-				<p:commandButton widgetVar="dlg3"
+				<p:commandButton id="ocultar"
 					rendered="#{alimentoController.showSugestao}" ajax="false"
-					actionListener="#{sugestaoController.addSugestaoAlimento(mbAlimento.nm_alimento)}"
+					actionListener="#{alimentoController.addSugestaoAlimento(mbAlimento.nm_alimento)}"
 					value="Sugerir Alimento">
 
 				</p:commandButton>
@@ -87,12 +89,6 @@
 	</h:form>
 
 
-	<script>
-		document.getElementById('dialogoSelect').style.display = "block";
-		$('.ui.basic.modal').modal('show');
-	</script>
 
 </h:body>
-<ui:include src="footer.xhtml" />
-
 </html>
