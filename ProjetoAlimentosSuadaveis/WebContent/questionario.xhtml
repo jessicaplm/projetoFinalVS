@@ -70,9 +70,11 @@
 					style="width:200px; margin-left:auto; margin-right:auto;">
 					<p:graphicImage url="imagens/imc.jpg" height="180" width="420" />
 
-					<h:panelGrid columns="1" cellspacing="10" style="width:200px; margin-left:auto; margin-right:auto;">
+					<h:panelGrid columns="1" cellspacing="10"
+						style="width:200px; margin-left:auto; margin-right:auto;">
 						<h:outputText value="Seu IMC é:" />
-						<p:inputText disabled="true"> </p:inputText>
+						<p:inputText disabled="true">
+						</p:inputText>
 					</h:panelGrid>
 				</h:panelGrid>
 			</p:panelGrid>
@@ -81,5 +83,6 @@
 			</p:panelGrid>
 		</h:form>
 	</h:body>
+	<ui:include src="footer.xhtml" />
 </f:view>
 </html>

@@ -10,9 +10,10 @@
 	<title>Vida Saudavel</title>
 </h:head>
 <h:body>
+	<ui:include src="header.xhtml" />
 	<h:form>
 		<p:inputText value="#{mbComponente.nm_componente}" />
-			<p:commandButton icon="ui-icon-search" ajax="false"
+		<p:commandButton icon="ui-icon-search" ajax="false"
 			actionListener="#{componenteController.listComponentebyName(mbComponente.nm_componente)}">
 		</p:commandButton>
 	</h:form>
@@ -35,7 +36,7 @@
 								target="#{componenteController.componenteSelecionado}"></f:setPropertyActionListener>
 
 						</p:commandButton>
-					
+
 					</p:column>
 				</p:dataTable>
 			</h:panelGrid>
@@ -43,8 +44,8 @@
 
 	</h:form>
 
-
-
-
 </h:body>
+<ui:include src="footer.xhtml" />
 </html>
+
+
