@@ -26,6 +26,7 @@ public class AlimentoController {
 
 	private Alimento alimento;
 	private Componente componente;
+	private List<Componente> listComponentesAlimento;
 	private AlimentoService alimentoService;
 	private List<Alimento> alimentos;
 	private List<Componente> componentes;
@@ -47,6 +48,7 @@ public class AlimentoController {
 		alimentos = new ArrayList<Alimento>();
 		componentes = new ArrayList<Componente>();
 		pesquisaAlimentos = new ArrayList<Alimento>();
+		listComponentesAlimento = new ArrayList<Componente>();
 		alimento.setPorcao("100");
 	}
 
@@ -128,9 +130,19 @@ public class AlimentoController {
 	
 	public List<Alimento>  listByNameAlimento(String n) {
 		
+		
 		pesquisaAlimentos = this.alimentoService.listByNameAlimento(n);
 		
+		
+		if (pesquisaAlimentos.size() <=0) {
+			org.primefaces.context.RequestContext.getCurrentInstance().execute("PF('dlg3').show();");
+		}
 		return pesquisaAlimentos;
+	}
+	
+	public void fecharDialogo(){
+		org.primefaces.context.RequestContext.getCurrentInstance().execute("PF('dlg3').hide();");
+		
 	}
 	public String mostrardadosAlimento(){
 		
@@ -197,6 +209,14 @@ public class AlimentoController {
 
 	public void setComponente(Componente componente) {
 		this.componente = componente;
+	}
+
+	public List<Componente> getListComponentesAlimento() {
+		return listComponentesAlimento;
+	}
+
+	public void setListComponentesAlimento(List<Componente> listComponentesAlimento) {
+		this.listComponentesAlimento = listComponentesAlimento;
 	}
 
 	public List<Alimento> getPesquisaAlimentos() {

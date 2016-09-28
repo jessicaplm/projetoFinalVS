@@ -52,7 +52,7 @@ public class Alimento implements Serializable {
 	@Column(length=500)
 	private String desc_alimento;
 
-	@ManyToMany(fetch=FetchType.LAZY)
+	@ManyToMany(fetch=FetchType.EAGER)
 	@JoinTable(name = "alimento_componente_rel",
 	joinColumns = { @JoinColumn(name = "id_alimento") }, 
 	inverseJoinColumns = { @JoinColumn(name = "id_componente")})
