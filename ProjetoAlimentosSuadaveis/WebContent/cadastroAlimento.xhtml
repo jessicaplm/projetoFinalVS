@@ -159,26 +159,26 @@
 
 		</p:panel>
 
-	
-			<p:panel id="listanovocomp"
-				header="Lista de componentes para adicionar ao alimento"
-				footer="Movie Details" style="margin-bottom:20px">
 
-				<p:dataTable var="comp" value="#{alimentoController.componentes}">
-					<p:column headerText="Nome">
-						<h:outputText value="#{comp.nm_componente}" />
-					</p:column>
-					<p:column headerText="deletar">
+		<p:panel id="listanovocomp"
+			header="Lista de componentes para adicionar ao alimento"
+			footer="Movie Details" style="margin-bottom:20px">
 
-						<p:commandButton value="Remover" ajax="false"
-							action="#{alimentoController.removerListComponentes(comp)}"
-							immediate="true"></p:commandButton>
-					</p:column>
+			<p:dataTable var="comp" value="#{alimentoController.componentes}">
+				<p:column headerText="Nome">
+					<h:outputText value="#{comp.nm_componente}" />
+				</p:column>
+				<p:column headerText="deletar">
 
-				</p:dataTable>
+					<p:commandButton value="Remover" ajax="false"
+						action="#{alimentoController.removerListComponentes(comp)}"
+						immediate="true"></p:commandButton>
+				</p:column>
 
-			</p:panel>
-	
+			</p:dataTable>
+
+		</p:panel>
+
 
 
 
@@ -197,10 +197,6 @@
 
 		</h:panelGrid>
 	</h:form>
-	<h:form>
-		<p:commandButton value="Adicionar" ajax="false"
-			update=":cadastroalimento"
-			action="#{alimentoController.addAlimento(alimentoController.alimento)}"></p:commandButton>
-	</h:form>
+
 </h:body>
 </html>

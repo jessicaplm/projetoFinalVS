@@ -39,12 +39,13 @@
 					update="dialogoSelect">
 				</p:commandButton>
 			</h:panelGrid>
-			<h:panelGrid style="margin-top:20px" columns="1">
+			<h:panelGrid style="margin-top:20px" columns="2">
+				<h4 style="color: aqua;">Alimento não encontrado?</h4>
 				<p:commandButton widgetVar="dlg3"
 					rendered="#{alimentoController.showSugestao}"
 					actionListener="#{sugestaoController.addSugestaoAlimento(mbAlimento.nm_alimento)}"
 					value="Sugerir Alimento">
-					<h4 style="color: aqua;">Alimento não encontrado?</h4>
+
 				</p:commandButton>
 			</h:panelGrid>
 		</h:panelGrid>
