@@ -15,4 +15,6 @@ public interface ComponenteDAO {
 	public void removeComponenteById(int id);
 
 	public void getByNameComponente(String n);
+	
+	public List<Componente> listByNameComponente(String n);
 }

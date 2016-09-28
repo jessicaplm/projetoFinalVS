@@ -28,6 +28,8 @@ public class ComponenteController {
 
 	private List<Componente> componentes;
 	private List<Componente> componenteslista;
+	private List<Componente> pesquisaComponentes;
+	private Componente componenteSelecionado;
 
 	private ComponenteService componenteService;
 
@@ -39,44 +41,42 @@ public class ComponenteController {
 		componentes = new ArrayList<Componente>();
 		componenteslista = new ArrayList<Componente>();
 		componente = new Componente();
+		componenteSelecionado = new Componente();
+		pesquisaComponentes = new ArrayList<Componente>();
 	}
 
 	public void addComponentes(Componente c) {
 		Componente comp = new Componente();
 		componenteslista = listComponente();
-		
-		//componente = new Componente();
+
+		// componente = new Componente();
 		boolean existe = false;
 
 		for (int i = 0; i < componentes.size(); i++) {
 			comp = componentes.get(i);
-			if (c.getNm_componente()
-					.equalsIgnoreCase(comp.getNm_componente())) {
+			if (c.getNm_componente().equalsIgnoreCase(comp.getNm_componente())) {
 
-				FacesMessage msg = new FacesMessage("Componente ja Inserido",
-						"");
+				FacesMessage msg = new FacesMessage("Componente ja Inserido", "");
 				FacesContext.getCurrentInstance().addMessage(null, msg);
 
 				existe = true;
 				break;
 			}
-//		\
+			// \
 		}
 
 		if (existe == false) {
 
 			for (int i = 1; i < componenteslista.size(); i++) {
 				comp = componenteslista.get(i);
-				if (c.getNm_componente().equalsIgnoreCase(
-						comp.getNm_componente())) {
+				if (c.getNm_componente().equalsIgnoreCase(comp.getNm_componente())) {
 
 					existe = true;
 					break;
 				}
-//				comp = null;
+				// comp = null;
 			}
-			
-			
+
 			if (existe == false) {
 				Componente cp = new Componente();
 				cp.setNm_componente(c.getNm_componente());
@@ -87,16 +87,15 @@ public class ComponenteController {
 				cp.setMalef_componente(c.getMalef_componente());
 				componentes.add(cp);
 			}
-			
-			
+
 		}
 	}
-	
-	 public void deletComponente(Componente c) {
-	
-	 componentes.remove(c);
-	 }
-	
+
+	public void deletComponente(Componente c) {
+
+		componentes.remove(c);
+	}
+
 	public void addComponente(Componente c) {
 		try {
 			for (int i = 0; i < componentes.size(); i++) {
@@ -109,51 +108,73 @@ public class ComponenteController {
 		}
 
 	}
-	
-	
+
 	public List<Componente> listComponente() {
 
 		return this.componenteService.listComponente();
 
 	}
+
+	public void updateComponente(Componente c) {
+
+		try {
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.getMessage();
+		}
+		this.componenteService.updateComponente(c);
+	}
+
+	public void removeComponenteById(int id) {
+
+		try {
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.getMessage();
+		}
+		this.componenteService.removeComponenteById(id);
+	}
+
+	public List<Componente> listComponentebyName(String n) {
+
+		pesquisaComponentes = this.componenteService.listByNameComponente(n);
+
+		return pesquisaComponentes;
+
+	}
 	
-	
-	 public void updateComponente(Componente c) {
-	
-	 try {
-	
-	 } catch (Exception e) {
-	 // TODO: handle exception
-	 e.getMessage();
-	 }
-	 this.componenteService.updateComponente(c);
-	 }
-	
-	 public void removeComponenteById(int id) {
-	
-	 try {
-	
-	 } catch (Exception e) {
-	 // TODO: handle exception
-	 e.getMessage();
-	 }
-	 this.componenteService.removeComponenteById(id);
-	 }
-	
-	 public Componente getComponente() {
-	 return componente;
-	 }
-	
-	 public void setComponente(Componente componente) {
-	 this.componente = componente;
-	 }
-	
-	 public List<Componente> getComponentes() {
-	 return componentes;
-	 }
-	
-	 public void setComponentes(List<Componente> componentes) {
-	 this.componentes = componentes;
-	 }
+	public List<Componente> getPesquisaComponentes() {
+		return pesquisaComponentes;
+	}
+
+	public void setPesquisaComponentes(List<Componente> pesquisaComponentes) {
+		this.pesquisaComponentes = pesquisaComponentes;
+	}
+
+	public Componente getComponenteSelecionado() {
+		return componenteSelecionado;
+	}
+
+	public void setComponenteSelecionado(Componente componenteSelecionado) {
+		this.componenteSelecionado = componenteSelecionado;
+	}
+
+	public Componente getComponente() {
+		return componente;
+	}
+
+	public void setComponente(Componente componente) {
+		this.componente = componente;
+	}
+
+	public List<Componente> getComponentes() {
+		return componentes;
+	}
+
+	public void setComponentes(List<Componente> componentes) {
+		this.componentes = componentes;
+	}
 
 }

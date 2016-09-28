@@ -45,6 +45,12 @@ public class ComponenteServiceImpl implements ComponenteService {
 		// TODO Auto-generated method stub
 		componenteDAO.removeComponenteById(id);
 	}
+
+	@Override
+	public List<Componente> listByNameComponente(String n) {
+		// TODO Auto-generated method stub
+		return componenteDAO.listByNameComponente(n);
+	}
 	
 
 

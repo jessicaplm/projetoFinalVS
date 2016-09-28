@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Vida Saudavel</title>
+</h:head>
+<h:body>
+	<h:form>
+		<p:inputText value="#{mbComponente.nm_componente}" />
+			<p:commandButton icon="ui-icon-search" ajax="false"
+			actionListener="#{componenteController.listComponentebyName(mbComponente.nm_componente)}">
+		</p:commandButton>
+	</h:form>
+	<h:form>
+		<h:panelGrid style="margin-top:20px" columns="1">
+			<h:panelGrid columns="1" cellspacing="6">
+				<p:dataTable var="com"
+					value="#{componenteController.pesquisaComponentes}">
+					<p:column headerText="Nome Ingrediantes">
+						<h:outputText value="#{com.nm_componente}" />
+					</p:column>
+					<p:column headerText="Link">
+						<h:outputText value="#{com.link_componente}" />
+					</p:column>
+					<p:column headerText="Ver Detalhes do ingrediantes">
+						<p:commandButton value="Ver Detalhes" ajax="false"
+							action="detalhesComponente.xhtml">
+
+							<f:setPropertyActionListener value="#{com}"
+								target="#{componenteController.componenteSelecionado}"></f:setPropertyActionListener>
+
+						</p:commandButton>
+					
+					</p:column>
+				</p:dataTable>
+			</h:panelGrid>
+		</h:panelGrid>
+
+	</h:form>
+
+
+
+
+</h:body>
+</html>

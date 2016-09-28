@@ -11,5 +11,6 @@ public interface ComponenteService {
 	public List<Componente> listComponente();
 	public void updateComponente(Componente c);
 	public void removeComponenteById(int id );
+	public List<Componente> listByNameComponente(String n);
 
 }

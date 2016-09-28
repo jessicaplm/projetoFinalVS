@@ -9,21 +9,18 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
-import com.vidasaudavel.model.Alimento;
 import com.vidasaudavel.model.Componente;
-
 
 @Repository
 public class ComponenteDAOImpl implements ComponenteDAO {
 
-	private static final Logger logger = LoggerFactory
-			.getLogger(ComponenteDAOImpl.class);
+	private static final Logger logger = LoggerFactory.getLogger(ComponenteDAOImpl.class);
 	private SessionFactory sessionFactory;
 
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
-	
+
 	@Override
 	public void addComponente(Componente c) {
 		// TODO Auto-generated method stub
@@ -47,11 +44,10 @@ public class ComponenteDAOImpl implements ComponenteDAO {
 		try {
 
 			Session session = this.sessionFactory.getCurrentSession();
-			List<Componente> componenteList = session.createQuery("from Componente")
-					.list();
+			List<Componente> componenteList = session.createQuery("from Componente").list();
 			for (Componente c : componenteList) {
 
-				logger.info("lista= " +c);
+				logger.info("lista= " + c);
 
 			}
 			return componenteList;
@@ -90,8 +86,7 @@ public class ComponenteDAOImpl implements ComponenteDAO {
 		// TODO Auto-generated method stub
 		try {
 			Session session = this.sessionFactory.getCurrentSession();
-			Componente c = (Componente) session.load(Componente.class,
-					new Integer(id));
+			Componente c = (Componente) session.load(Componente.class, new Integer(id));
 			if (null != c) {
 
 				session.delete(c);
@@ -109,7 +104,33 @@ public class ComponenteDAOImpl implements ComponenteDAO {
 	@Override
 	public void getByNameComponente(String n) {
 		// TODO Auto-generated method stub
-		
+
+	}
+
+	@Override
+	public List<Componente> listByNameComponente(String n) {
+		try {
+
+			Session session = this.sessionFactory.getCurrentSession();
+			List<Componente> componenteList = session
+					.createQuery("Select a from Componente as a where a.nm_componente like'%" + n + "%'").list();
+			for (Componente a : componenteList) {
+
+				logger.info("lista= " + a);
+
+			}
+			return componenteList;
+
+		} catch (HibernateException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+
+			logger.info("Erro Ao Listar");
+
+		}
+		return null;
+
 	}
 
 }
