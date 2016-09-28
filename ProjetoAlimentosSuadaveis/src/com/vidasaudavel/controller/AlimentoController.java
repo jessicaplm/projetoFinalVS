@@ -37,16 +37,14 @@ public class AlimentoController {
 	private Alimento alimentoSelecionado;
 	private boolean showSugestao = false;
 
-	
-	//depos apagar se nao der certo
+	// depos apagar se nao der certo
 	private Sugestao sugestao;
 	private SugestaoService sugestaoService;
 
 	public void setSugestaoService(SugestaoService sugestaoService) {
 		this.sugestaoService = sugestaoService;
 	}
-	
-	
+
 	public void addSugestaoAlimento(String nmSugestao) {
 		try {
 			sugestao = new Sugestao();
@@ -55,11 +53,17 @@ public class AlimentoController {
 			sugestao.setNome(nmSugestao);
 			this.sugestaoService.addSugestao(sugestao);
 			showSugestao = false;
+			
+			FacesMessage message = new FacesMessage(
+					"O item já foi adicionado as Sugestoes",
+					nmSugestao + "  foi adicionado as Sugestoes!");
+			FacesContext.getCurrentInstance().addMessage(null, message);
+			
 		} catch (Exception e) {
 			e.getMessage();
 		}
 	}
-	
+
 	//
 
 	public boolean isShowSugestao() {
@@ -77,10 +81,10 @@ public class AlimentoController {
 	private ComponenteService componenteService;
 
 	public AlimentoController() {
-		//depois apagar se nao der certo
+		// depois apagar se nao der certo
 		sugestao = new Sugestao();
 		//
-		
+
 		alimento = new Alimento();
 		alimentoSelecionado = new Alimento();
 		componente = new Componente();
@@ -104,8 +108,7 @@ public class AlimentoController {
 		}
 
 		this.alimentoService.addAlimento(a);
-		FacesMessage message = new FacesMessage(
-				"Alimento Adicionado!",
+		FacesMessage message = new FacesMessage("Alimento Adicionado!",
 				a.getNm_alimento() + " foi adicionado!");
 		FacesContext.getCurrentInstance().addMessage(null, message);
 
@@ -178,7 +181,7 @@ public class AlimentoController {
 
 		if (pesquisaAlimentos.size() <= 0) {
 			showSugestao = true;
-		
+
 		}
 		return pesquisaAlimentos;
 	}

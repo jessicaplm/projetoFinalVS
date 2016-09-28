@@ -23,17 +23,14 @@
 		<p:menubar styleClass="menu ">
 			<p:submenu label="File" icon="ui-icon-home" rendered="">
 			</p:submenu>
-
-
-
 			<f:facet name="options">
 				<p:inputText style="margin-right:10px" placeholder="Search" />
 				<p:commandButton type="button" value="Logout" icon="ui-icon-extlink" />
 			</f:facet>
 		</p:menubar>
 
-		<h:panelGrid style="margin-top:20px" columns="2">
-
+		<h:panelGrid style="margin-top:20px" columns="3">
+			<p:growl id="messages" />
 			<h:panelGrid style="margin-top:20px" columns="2">
 				<p:inputText value="#{mbAlimento.nm_alimento}" />
 				<p:commandButton icon="ui-icon-search" ajax="false"
@@ -41,10 +38,10 @@
 					update="dialogoSelect">
 				</p:commandButton>
 			</h:panelGrid>
-			<h:panelGrid style="margin-top:20px" columns="2">
+			<h:panelGrid style="margin-top:20px" columns="2"
+				rendered="#{alimentoController.showSugestao}">
 				<h4 style="color: aqua;">Alimento não encontrado?</h4>
-				<p:commandButton id="ocultar"
-					rendered="#{alimentoController.showSugestao}" ajax="false"
+				<p:commandButton id="ocultar" ajax="false"
 					actionListener="#{alimentoController.addSugestaoAlimento(mbAlimento.nm_alimento)}"
 					value="Sugerir Alimento">
 
