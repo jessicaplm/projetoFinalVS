@@ -135,11 +135,20 @@
 			</p:column>
 		</p:dataTable>
 
-
-
-		<p:commandButton ajax="false" value="Adicionar Componentes"
-			action="#{componenteController.addComponente(componenteController.componente)}">
-		</p:commandButton>
 	</h:form>
+	<h:panelGrid columns="2" cellpadding="10">
+		<h:form>
+			<p:commandButton ajax="false" value="Adicionar Componentes"
+				action="#{componenteController.addComponente(componenteController.componente)}">
+			</p:commandButton>
+		</h:form>
+
+		<h:form>
+
+			<p:commandLink value="Ir para pagina de cadastro de Alimentos"
+				action="cadastroAlimento.xhtml" ajax="false"></p:commandLink>
+
+		</h:form>
+	</h:panelGrid>
 </h:body>
 </html>

@@ -33,7 +33,16 @@ public class AlimentoController {
 	private List<Alimento> pesquisaAlimentos;
 	private String valorPesquisa;
 	private Alimento alimentoSelecionado;
-//	private boolean hidden;
+	private boolean showSugestao = false;
+
+
+	public boolean isShowSugestao() {
+		return showSugestao;
+	}
+
+	public void setShowSugestao(boolean showSugestao) {
+		this.showSugestao = showSugestao;
+	}
 
 	public void setAlimentoService(AlimentoService alimentoService) {
 		this.alimentoService = alimentoService;
@@ -50,6 +59,7 @@ public class AlimentoController {
 		pesquisaAlimentos = new ArrayList<Alimento>();
 		listComponentesAlimento = new ArrayList<Componente>();
 		alimento.setPorcao("100");
+
 	}
 
 	public void addAlimento(Alimento a) {
@@ -59,11 +69,15 @@ public class AlimentoController {
 			// TODO: handle exception
 			e.getMessage();
 		}
-		if(componentes.size()>0){
-		a.setListaComponentes(componentes);
+		if (componentes.size() > 0) {
+			a.setListaComponentes(componentes);
 		}
 
 		this.alimentoService.addAlimento(a);
+		FacesMessage message = new FacesMessage(
+				"Alimento Adicionado!",
+				a.getNm_alimento() + " foi adicionado!");
+		FacesContext.getCurrentInstance().addMessage(null, message);
 
 	}
 
@@ -127,25 +141,26 @@ public class AlimentoController {
 		return alimentos;
 
 	}
-	
-	public List<Alimento>  listByNameAlimento(String n) {
-		
-		
+
+	public List<Alimento> listByNameAlimento(String n) {
+
 		pesquisaAlimentos = this.alimentoService.listByNameAlimento(n);
+
+		if (pesquisaAlimentos.size() <= 0) {
+			showSugestao = true;
 		
-		
-		if (pesquisaAlimentos.size() <=0) {
-			org.primefaces.context.RequestContext.getCurrentInstance().execute("PF('dlg3').show();");
 		}
 		return pesquisaAlimentos;
 	}
-	
-	public void fecharDialogo(){
-		org.primefaces.context.RequestContext.getCurrentInstance().execute("PF('dlg3').hide();");
-		
+
+	public void fecharDialogo() {
+		org.primefaces.context.RequestContext.getCurrentInstance().execute(
+				"PF('dlg3').hide();");
+
 	}
-	public String mostrardadosAlimento(){
-		
+
+	public String mostrardadosAlimento() {
+
 		return "/destalhesAlimento.xhtml";
 	}
 
@@ -215,7 +230,8 @@ public class AlimentoController {
 		return listComponentesAlimento;
 	}
 
-	public void setListComponentesAlimento(List<Componente> listComponentesAlimento) {
+	public void setListComponentesAlimento(
+			List<Componente> listComponentesAlimento) {
 		this.listComponentesAlimento = listComponentesAlimento;
 	}
 
@@ -242,8 +258,5 @@ public class AlimentoController {
 	public void setValorPesquisa(String valorPesquisa) {
 		this.valorPesquisa = valorPesquisa;
 	}
-
-
-	
 
 }

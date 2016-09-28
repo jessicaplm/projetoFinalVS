@@ -31,13 +31,13 @@ public class Alimento implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id_alimento;
 	
-	@Column(length=30,nullable=false)
+	@Column(length=50,nullable=false)
 	private String nm_alimento;
 	
 	@Column(length=20,nullable=false)
 	private String regiao_tipica;
 	
-	@Column(length=8,nullable=false)
+	@Column(length=20,nullable=false)
 	private String periodo_dia;
 	
 	@Column(nullable=false)
@@ -46,7 +46,7 @@ public class Alimento implements Serializable {
 	@Column(length=20)
 	private String porcao;
 	
-	@Column(length=100)
+	@Column(length=200)
 	private String url_imagem_alimento;
 	
 	@Column(length=500)

@@ -8,25 +8,51 @@
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<title>Vida Saudavel</title>
+
+	<link rel="stylesheet" type="text/css" href="css/semantic.min.css"></link>
+	<script src="js/semantic.min.js"></script>
 </h:head>
 <h:body>
 
 
 
 	<h:form>
-		<p:inputText value="#{mbAlimento.nm_alimento}" />
-			<p:commandButton icon="ui-icon-search" ajax="false"
-			actionListener="#{alimentoController.listByNameAlimento(mbAlimento.nm_alimento)}">
-		</p:commandButton>
-		<p:dialog header="Não encontardo, deseja sugerir este Alimento?" widgetVar="dlg3" showEffect="explode"
-			hideEffect="bounce" height="100" id="dialog">
-			<p:commandButton value="Sim" type="button"
-				action="#{sugestaoController.addSugestaoAlimento(mbAlimento.nm_alimento)}" styleClass="ui-confirmdialog-yes"
-				icon="ui-icon-check" />
-		</p:dialog>
+
+		<p:menubar styleClass="menu ">
+			<p:submenu label="File" icon="ui-icon-home" rendered="">
+			</p:submenu>
+
+
+
+			<f:facet name="options">
+				<p:inputText style="margin-right:10px" placeholder="Search" />
+				<p:commandButton type="button" value="Logout" icon="ui-icon-extlink" />
+			</f:facet>
+		</p:menubar>
+
+		<h:panelGrid style="margin-top:20px" columns="2">
+
+			<h:panelGrid style="margin-top:20px" columns="2">
+				<p:inputText value="#{mbAlimento.nm_alimento}" />
+				<p:commandButton icon="ui-icon-search" ajax="false"
+					actionListener="#{alimentoController.listByNameAlimento(mbAlimento.nm_alimento)}"
+					update="dialogoSelect">
+				</p:commandButton>
+			</h:panelGrid>
+			<h:panelGrid style="margin-top:20px" columns="1">
+				<p:commandButton widgetVar="dlg3"
+					rendered="#{alimentoController.showSugestao}"
+					actionListener="#{sugestaoController.addSugestaoAlimento(mbAlimento.nm_alimento)}"
+					value="Sugerir Alimento">
+					<h4 style="color: aqua;">Alimento não encontrado?</h4>
+				</p:commandButton>
+			</h:panelGrid>
+		</h:panelGrid>
+
+
 
 	</h:form>
-	
+
 	<h:form>
 		<h:panelGrid style="margin-top:20px" columns="1">
 
@@ -60,7 +86,10 @@
 	</h:form>
 
 
-
+	<script>
+		document.getElementById('dialogoSelect').style.display = "block";
+		$('.ui.basic.modal').modal('show');
+	</script>
 
 </h:body>
 </html>

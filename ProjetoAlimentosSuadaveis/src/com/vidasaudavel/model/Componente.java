@@ -39,10 +39,10 @@ public class Componente implements Serializable{
 	@Column(length=400)
 	private String malef_componente;
 	
-	@Column(length=100,nullable=false)
+	@Column(length=200,nullable=false)
 	private String url_imagem_componente;
 	
-	@Column(length=100,nullable=false)
+	@Column(length=200,nullable=false)
 	private String link_componente;
 	
 	

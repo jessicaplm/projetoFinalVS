@@ -97,18 +97,18 @@ public class ComponenteController {
 	 componentes.remove(c);
 	 }
 	
-	 public void addComponente(Componente c) {
-	 try {
-	 for (int i = 0; i < componentes.size(); i++) {
-	 this.componenteService.addComponente(componentes.get(i));
-	 }
-	
-	 } catch (Exception e) {
-	 // TODO: handle exception
-	 e.getMessage();
-	 }
-	
-	 }
+	public void addComponente(Componente c) {
+		try {
+			for (int i = 0; i < componentes.size(); i++) {
+				this.componenteService.addComponente(componentes.get(i));
+			}
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.getMessage();
+		}
+
+	}
 	
 	
 	public List<Componente> listComponente() {
