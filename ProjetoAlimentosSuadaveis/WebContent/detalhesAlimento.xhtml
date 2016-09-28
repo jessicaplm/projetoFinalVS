@@ -29,10 +29,8 @@
 			</f:facet>
 		</p:menubar>
 
-		<h:panelGrid style="margin-top:20px;height:100%;"
-			columns="2">
-			<h:panelGrid style="margin-top:20px;"
-				columns="1">
+		<h:panelGrid style="margin-top:20px;height:100%;" columns="2">
+			<h:panelGrid style="margin-top:20px;" columns="1">
 				<p:panel style="">
 
 					<h:panelGrid style="" columns="1">
@@ -70,8 +68,7 @@
 
 				</p:panel>
 			</h:panelGrid>
-			<h:panelGrid style="margin-top:20px;"
-				columns="1">
+			<h:panelGrid style="margin-top:20px;" columns="1">
 				<p:panel style="">
 					<h:panelGrid style="" columns="1">
 						<p:panel header="Informações do Alimento"
@@ -91,12 +88,17 @@
 								value="#{alimentoController.alimentoSelecionado.listaComponentes}"
 								var="comp">
 								<h:panelGrid style="" columns="2">
-									<p:graphicImage url="#{comp.url_imagem_componente}"
-										width="100px" height="100px" />
+									<h:panelGrid style="" columns="1">
+										<p:graphicImage url="#{comp.url_imagem_componente}"
+											width="100px" height="100px" />
 
-									<h4 style="color: aqua;">
-										<p:outputLabel value="#{comp.nm_componente}"></p:outputLabel>
-									</h4>
+										<h4 style="color: aqua;">
+											<p:outputLabel value="#{comp.nm_componente}"></p:outputLabel>
+										</h4>
+									</h:panelGrid>
+									<h:panelGrid style="" columns="1">
+										<p:outputLabel value="#{comp.ds_componente}"></p:outputLabel>
+									</h:panelGrid>
 								</h:panelGrid>
 							</p:repeat>
 						</p:panel>

@@ -93,8 +93,8 @@ public class ComponenteController {
 			comp = componentes.get(i);
 			if (c.getNm_componente().equalsIgnoreCase(comp.getNm_componente())) {
 
-				FacesMessage msg = new FacesMessage("Componente ja Inserido", "");
-				FacesContext.getCurrentInstance().addMessage(null, msg);
+				FacesMessage msgs = new FacesMessage("Componente ja Inserido", "");
+				FacesContext.getCurrentInstance().addMessage(null, msgs);
 
 				existe = true;
 				break;
@@ -109,6 +109,8 @@ public class ComponenteController {
 				if (c.getNm_componente().equalsIgnoreCase(comp.getNm_componente())) {
 
 					existe = true;
+					
+			
 					break;
 				}
 				// comp = null;
@@ -122,9 +124,15 @@ public class ComponenteController {
 				cp.setLink_componente(c.getLink_componente());
 				cp.setUrl_imagem_componente(c.getUrl_imagem_componente());
 				cp.setMalef_componente(c.getMalef_componente());
+			
+				FacesMessage msgs = new FacesMessage("Componente adicionado a lista!", "");
+				FacesContext.getCurrentInstance().addMessage(null, msgs);
+
 				componentes.add(cp);
 			}
 
+			
+				
 		}
 	}
 

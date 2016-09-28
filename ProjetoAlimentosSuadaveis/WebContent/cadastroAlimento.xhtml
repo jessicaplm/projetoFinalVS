@@ -20,21 +20,22 @@
 
 
 		<p:menubar styleClass="menu ">
-			<p:submenu label="File" icon="ui-icon-home" rendered="">
-			</p:submenu>
-
-
+			<p:menuitem value="Cadastro Alimento" url="cadastroAlimento.xhtml"
+				icon="ui-icon-plusthick"></p:menuitem>
+			<p:menuitem value="Cadastro Componente"
+				url="cadastroComponentes.xhtml" icon="ui-icon-plusthick">
+			</p:menuitem>
 
 			<f:facet name="options">
-				<p:inputText style="margin-right:10px" placeholder="Search" />
-				<p:commandButton type="button" value="Logout" icon="ui-icon-extlink" />
+				<p:commandButton type="button" immediate="true" action="#"
+					value="Logout" icon="ui-icon-extlink" />
 			</f:facet>
 		</p:menubar>
 
 
 
 		<p:panel id="caampos" header="Formulario de Cadastro de Alimentos"
-			footer="Movie Details" style="margin-bottom:20px;margin-top:20px">
+			style="margin-bottom:20px;margin-top:20px">
 
 			<p:growl id="messages" />
 			<h:panelGrid style="margin-top:20px" columns="3">
@@ -42,9 +43,9 @@
 				<h:panelGrid columns="1" cellspacing="6">
 					<p:outputLabel for="nome" value="Nome do Alimento:" />
 					<p:inputText id="nome"
-						value="#{alimentoController.alimento.nm_alimento}" required="true"
-						label="nome">
-						<f:validateLength minimum="2" />
+						value="#{alimentoController.alimento.nm_alimento}" maxlength="50"
+						required="true" label="nome">
+						<f:validateLength minimum="2" maximum="50" />
 					</p:inputText>
 					<p:message for="nome" />
 				</h:panelGrid>
@@ -66,7 +67,6 @@
 							disabled="true" label="porcao" />
 						<p:outputLabel value="g/ml" />
 					</h:panelGrid>
-
 					<p:message for="porcao" />
 				</h:panelGrid>
 
@@ -113,7 +113,7 @@
 					<p:inputText id="imagem"
 						value="#{alimentoController.alimento.url_imagem_alimento}"
 						required="true" label="imagem" style="width:500px">
-						<f:validateLength minimum="2" />
+						<f:validateLength minimum="2" maximum="200" />
 					</p:inputText>
 					<p:message for="imagem" />
 				</h:panelGrid>
@@ -124,22 +124,24 @@
 
 
 		<p:panel id="editorDescricao" header="Descricao do Alimento"
-			footer="Movie Details" style="margin-bottom:20px">
+			style="margin-bottom:20px">
 
 			<!--Editor Detalhes Gerais-->
 			<h:panelGrid columns="1" cellpadding="10">
 
 				<p:inputTextarea rows="10" cols="100" height="150px"
-					autoResize="false" maxlength="400"
+					autoResize="false" maxlength="500"
 					value="#{alimentoController.alimento.desc_alimento}"
-					id="descricaoalimento" />
+					id="descricaoalimento">
+					<f:validateLength minimum="2" maximum="500" />
+				</p:inputTextarea>
 				<p:message for="descricaoalimento" />
 			</h:panelGrid>
 		</p:panel>
 
 
 		<p:panel id="listacomp" header="Componentes Já cadastrados"
-			footer="Movie Details" style="margin-bottom:20px">
+			style="margin-bottom:20px">
 
 			<p:dataTable var="comp"
 				value="#{componenteController.listComponente()}">
@@ -162,7 +164,7 @@
 
 		<p:panel id="listanovocomp"
 			header="Lista de componentes para adicionar ao alimento"
-			footer="Movie Details" style="margin-bottom:20px">
+			style="margin-bottom:20px">
 
 			<p:dataTable var="comp" value="#{alimentoController.componentes}">
 				<p:column headerText="Nome">
@@ -183,7 +185,7 @@
 
 
 		<h:panelGrid columns="2" cellpadding="10">
-
+          
 
 			<p:commandButton value="Adicionar" ajax="false"
 				update=":cadastroalimento"

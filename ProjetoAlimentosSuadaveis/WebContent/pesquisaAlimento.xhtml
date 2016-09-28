@@ -15,25 +15,15 @@
 
 </h:head>
 <h:body>
-
-	<h:form>
-
-		<p:menubar styleClass="menu ">
-			<p:submenu label="File" icon="ui-icon-home" rendered="">
-			</p:submenu>
-			<f:facet name="options">
-				<p:inputText style="margin-right:10px" placeholder="Search" />
-				<p:commandButton type="button" value="Logout" icon="ui-icon-extlink" />
-			</f:facet>
-		</p:menubar>
-
+	<ui:include src="header.xhtml" />
+	<h:form id="botoesListar">
 		<h:panelGrid style="margin-top:20px" columns="3">
 			<p:growl id="messages" />
 			<h:panelGrid style="margin-top:20px" columns="2">
 				<p:inputText value="#{mbAlimento.nm_alimento}" />
 				<p:commandButton icon="ui-icon-search" ajax="false"
 					actionListener="#{alimentoController.listByNameAlimento(mbAlimento.nm_alimento)}"
-					update="dialogoSelect">
+					update="tabelaList" render="@form:tabelaList:botoesListar" >
 				</p:commandButton>
 			</h:panelGrid>
 			<h:panelGrid style="margin-top:20px" columns="2"
@@ -42,20 +32,15 @@
 				<p:commandButton id="ocultar" ajax="false"
 					actionListener="#{alimentoController.addSugestaoAlimento(mbAlimento.nm_alimento)}"
 					value="Sugerir Alimento">
-
 				</p:commandButton>
 			</h:panelGrid>
 		</h:panelGrid>
-
-
-
 	</h:form>
 
-	<h:form>
+	<h:form  id="tabelaList">
 		<h:panelGrid style="margin-top:20px" columns="1">
-
 			<h:panelGrid columns="1" cellspacing="6">
-				<p:dataTable var="ali"
+				<p:dataTable var="ali" 
 					value="#{alimentoController.pesquisaAlimentos}">
 					<p:column headerText="Nome Alimentos">
 						<h:outputText value="#{ali.nm_alimento}" />
@@ -64,26 +49,17 @@
 						<h:outputText value="#{ali.calorias}" />
 					</p:column>
 					<p:column headerText="Ver Detalhes do Alimento">
-
 						<p:commandButton value="Ver Detalhes" ajax="false"
 							action="detalhesAlimento.xhtml">
 
 							<f:setPropertyActionListener value="#{ali}"
 								target="#{alimentoController.alimentoSelecionado}"></f:setPropertyActionListener>
-
 						</p:commandButton>
-
 					</p:column>
-
 				</p:dataTable>
 			</h:panelGrid>
-
-
 		</h:panelGrid>
-
 	</h:form>
-
-
-
+	<ui:include src="footer.xhtml" />
 </h:body>
 </html>
