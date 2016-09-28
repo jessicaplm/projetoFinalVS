@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Insert title here</title>
+</h:head>
+<h:body>
+
+
+
+
+
+	<h:form>
+
+		<p:menubar styleClass="menu ">
+			<p:submenu label="File" icon="ui-icon-home" rendered="">
+			</p:submenu>
+
+
+
+			<f:facet name="options">
+				<p:inputText style="margin-right:10px" placeholder="Search" />
+				<p:commandButton type="button" value="Logout" icon="ui-icon-extlink" />
+			</f:facet>
+		</p:menubar>
+
+		<h:panelGrid style="margin-top:20px" columns="2">
+			<p:panel style="margin-bottom:20px;margin-top:20px">
+
+				<h:panelGrid style="margin-top:20px" columns="1">
+
+					<p:graphicImage
+						url="#{alimentoController.alimentoSelecionado.url_imagem_alimento}"
+						width="300px" height="300px" />
+
+					<h4 style="color: aqua;">
+						<p:outputLabel
+							value="#{alimentoController.alimentoSelecionado.nm_alimento}"></p:outputLabel>
+					</h4>
+
+					<h:panelGrid style="margin-top:20px" columns="3">
+						<p:outputLabel value="Calorias:"></p:outputLabel>
+						<p:outputLabel
+							value="#{alimentoController.alimentoSelecionado.calorias}Kcal em"></p:outputLabel>
+						<p:outputLabel
+							value="#{alimentoController.alimentoSelecionado.porcao}g ou ml"></p:outputLabel>
+					</h:panelGrid>
+
+					<h:panelGrid style="margin-top:20px" columns="1">
+						<p:outputLabel value="Regiao que mais Cnsome:"></p:outputLabel>
+						<p:outputLabel
+							value="#{alimentoController.alimentoSelecionado.regiao_tipica}"></p:outputLabel>
+					</h:panelGrid>
+					<h:panelGrid style="margin-top:20px" columns="1">
+						<p:outputLabel value="Mais Consumido no:"></p:outputLabel>
+						<p:outputLabel
+							value="#{alimentoController.alimentoSelecionado.periodo_dia}"></p:outputLabel>
+					</h:panelGrid>
+
+				</h:panelGrid>
+
+			</p:panel>
+
+			<h:panelGrid style="margin-top:-70px" columns="1">
+				<p:panel header="Informações do Alimento"
+					style="margin-bottom:20px;margin-top:20px">
+					<p:outputPanel deferred="true">
+						<h4 style="color: aqua;">
+							<p:outputLabel
+								value="#{alimentoController.alimentoSelecionado.nm_alimento}"></p:outputLabel>
+						</h4>
+						<h3>#{alimentoController.alimentoSelecionado.desc_alimento}</h3>
+					</p:outputPanel>
+				</p:panel>
+
+				<p:panel header="Lista de ingredientes"
+					style="margin-bottom:20px;margin-top:20px">
+					<p:repeat
+						value="#{alimentoController.alimentoSelecionado.listaComponentes}"
+						var="comp">
+						<h:panelGrid style="margin-top:-70px" columns="2">
+							<p:graphicImage url="#{comp.url_imagem_componente}" width="150px"
+								height="150px" />
+							
+							<h4 style="color: aqua;">
+								<p:outputLabel
+									value="#{comp.nm_componente}"></p:outputLabel>
+							</h4>
+						</h:panelGrid>
+					</p:repeat>
+				</p:panel>
+
+			</h:panelGrid>
+
+		</h:panelGrid>
+
+	</h:form>
+
+
+</h:body>
+</html>

@@ -110,13 +110,13 @@ public class AlimentoDAOImpl implements AlimentoDAO {
 	}
 
 	@Override
-	public List<Alimento> getByNameAlimento(String n) {
+	public List<Alimento>  listByNameAlimento(String n) {
 		// TODO Auto-generated method stub
 
 		try {
 
 			Session session = this.sessionFactory.getCurrentSession();
-			List<Alimento> alimentoList = session.createQuery("from Alimento a where a.nm_alimento=%'"+n+"'%" )
+			List<Alimento> alimentoList = session.createQuery("Select a from Alimento as a where a.nm_alimento like'%"+n+"%'" )
 					.list();
 			for (Alimento a : alimentoList) {
 
@@ -136,5 +136,6 @@ public class AlimentoDAOImpl implements AlimentoDAO {
 		return null;
 	
 	}
+
 
 }

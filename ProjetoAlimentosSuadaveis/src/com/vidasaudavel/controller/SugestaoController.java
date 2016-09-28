@@ -15,21 +15,45 @@ import com.vidasaudavel.service.SugestaoService;
 public class SugestaoController {
 
 	private SugestaoService sugestaoService;
-
-	public void setSugestaoService(
-			SugestaoService sugestaoService) {
+	private Sugestao sugestao;
+	
+	public void setSugestaoService(SugestaoService sugestaoService) {
 		this.sugestaoService = sugestaoService;
 	}
+	
 	public SugestaoController(){
 		
 		
 	}
 	
-	public void addSugestao(Sugestao c){
-		c.setTipo_sugestao(TipoSugestao.Alim.getValor());
-		
-		sugestaoService.addSugestao(c);
-		
+	public void addSugestaoAlimento(String nmSugestao){
+		try{
+			sugestao = new Sugestao();
+			sugestao.setTipo_sugestao(TipoSugestao.Alimento.getValor());
+			sugestao.setNome(nmSugestao);
+			org.primefaces.context.RequestContext.getCurrentInstance().execute("PF('dlg3').hide();");
+		this.sugestaoService.addSugestao(sugestao);
+		}catch (Exception e) {
+			e.getMessage();
+		}
+	}
+	public void addSugestaoComponente(String nmSugestao){
+		try{
+			sugestao = new Sugestao();
+			sugestao.setTipo_sugestao(TipoSugestao.Componente.getValor());
+			sugestao.setNome(nmSugestao);
+			org.primefaces.context.RequestContext.getCurrentInstance().execute("PF('dlg3').hide();");
+		this.sugestaoService.addSugestao(sugestao);
+		}catch (Exception e) {
+			e.getMessage();
+		}
+	}
+	public Sugestao getSugestao() {
+		return sugestao;
+	}
+
+	public void setSugestao(Sugestao sugestao) {
+		this.sugestao = sugestao;
 	}
 	
 	public TipoSugestao[] getTipoSugestao() {

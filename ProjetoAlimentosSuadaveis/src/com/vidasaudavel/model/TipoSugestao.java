@@ -2,8 +2,8 @@ package com.vidasaudavel.model;
 
 public enum TipoSugestao {
 
-	Comp("Componente"),
-	Alim("Alimento");
+	Componente("Componente"),
+	Alimento("Alimento");
 	
 	private final String valor;
 	TipoSugestao(String valorOpcao){

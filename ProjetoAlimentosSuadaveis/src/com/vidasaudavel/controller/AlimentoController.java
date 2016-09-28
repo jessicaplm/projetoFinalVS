@@ -26,12 +26,13 @@ public class AlimentoController {
 
 	private Alimento alimento;
 	private Componente componente;
+	private List<Componente> listComponentesAlimento;
 	private AlimentoService alimentoService;
 	private List<Alimento> alimentos;
 	private List<Componente> componentes;
 	private List<Alimento> pesquisaAlimentos;
 	private String valorPesquisa;
-	
+	private Alimento alimentoSelecionado;
 //	private boolean hidden;
 
 	public void setAlimentoService(AlimentoService alimentoService) {
@@ -42,10 +43,12 @@ public class AlimentoController {
 
 	public AlimentoController() {
 		alimento = new Alimento();
+		alimentoSelecionado = new Alimento();
 		componente = new Componente();
 		alimentos = new ArrayList<Alimento>();
 		componentes = new ArrayList<Componente>();
 		pesquisaAlimentos = new ArrayList<Alimento>();
+		listComponentesAlimento = new ArrayList<Componente>();
 		alimento.setPorcao("100");
 	}
 
@@ -125,9 +128,25 @@ public class AlimentoController {
 
 	}
 	
-	public List<Alimento> getByNameAlimento(String n) {
+	public List<Alimento>  listByNameAlimento(String n) {
 		
-		return this.alimentoService.getByNameAlimento(n);
+		
+		pesquisaAlimentos = this.alimentoService.listByNameAlimento(n);
+		
+		
+		if (pesquisaAlimentos.size() <=0) {
+			org.primefaces.context.RequestContext.getCurrentInstance().execute("PF('dlg3').show();");
+		}
+		return pesquisaAlimentos;
+	}
+	
+	public void fecharDialogo(){
+		org.primefaces.context.RequestContext.getCurrentInstance().execute("PF('dlg3').hide();");
+		
+	}
+	public String mostrardadosAlimento(){
+		
+		return "/destalhesAlimento.xhtml";
 	}
 
 	public void updateAlimento(Alimento a) {
@@ -192,6 +211,14 @@ public class AlimentoController {
 		this.componente = componente;
 	}
 
+	public List<Componente> getListComponentesAlimento() {
+		return listComponentesAlimento;
+	}
+
+	public void setListComponentesAlimento(List<Componente> listComponentesAlimento) {
+		this.listComponentesAlimento = listComponentesAlimento;
+	}
+
 	public List<Alimento> getPesquisaAlimentos() {
 		return pesquisaAlimentos;
 	}
@@ -204,28 +231,19 @@ public class AlimentoController {
 		return valorPesquisa;
 	}
 
+	public Alimento getAlimentoSelecionado() {
+		return alimentoSelecionado;
+	}
+
+	public void setAlimentoSelecionado(Alimento alimentoSelecionado) {
+		this.alimentoSelecionado = alimentoSelecionado;
+	}
+
 	public void setValorPesquisa(String valorPesquisa) {
 		this.valorPesquisa = valorPesquisa;
 	}
 
-//	public void hideOrShow() {
-//
-//		if (!hidden) {
-//
-//			hidden = true;
-//		} else {
-//
-//			hidden = false;
-//		}
-//	}
-//
-//	public boolean isHidden() {
-//		return hidden;
-//	}
-//
-//	public void setHidden(boolean hidden) {
-//		this.hidden = hidden;
-//	}
+
 	
 
 }

@@ -12,7 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 
-@ManagedBean(name="mbSugestaoAlimento")
+@ManagedBean(name="mbSugestao")
 @SessionScoped
 @Entity
 @Table(name="sugestao")
