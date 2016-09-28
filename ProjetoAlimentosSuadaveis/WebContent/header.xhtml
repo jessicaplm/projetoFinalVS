@@ -20,24 +20,23 @@
 			<p:panelGrid>
 				<p:panel>
 					<h:graphicImage url="imagens/logo1.png" height="100%" width="100%"/>
-					<p:tabMenu>
-
-								<p:menuitem value="Inicio" icon="ui-icon-home" >
-								</p:menuitem>
-
-								<p:menuitem value="Alimentos" icon="ui-icon-cart">
-								</p:menuitem>
-
-								<p:menuitem value="Ingredientes" icon="ui-icon-document">
-								</p:menuitem>
-
-								<p:menuitem value="Questionario" icon="ui-icon-pencil">
-								</p:menuitem>
-
-								<p:menuitem value="Informativos" icon="ui-icon-info">
-								</p:menuitem>
-
-							</p:tabMenu>
+					<p:tabMenu activeIndex="#{param.i}">
+						<p:menuitem value="Inicio" outcome="index" icon="ui-icon-home">
+							<f:param name="i" value="0"  />
+						</p:menuitem>
+						<p:menuitem value="Alimentos" outcome="pesquisaAlimento">
+							<f:param name="i" value="1" />
+						</p:menuitem>
+						<p:menuitem value="Ingredientes" outcome="pesquisaComponente">
+							<f:param name="i" value="2" />
+						</p:menuitem>
+						<p:menuitem value="Questionario" outcome="questionario">
+							<f:param name="i" value="3" />
+						</p:menuitem>
+						<p:menuitem value="Informativos" outcome="informativos">
+							<f:param name="i" value="4" />
+						</p:menuitem>
+					</p:tabMenu>
 				</p:panel>
 			</p:panelGrid>
 		</h:form>
