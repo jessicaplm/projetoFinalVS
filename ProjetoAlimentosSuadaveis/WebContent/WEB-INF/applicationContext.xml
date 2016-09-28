@@ -91,7 +91,7 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
 		class="com.vidasaudavel.service.SugestaoServiceImpl">
 		<beans:property name="sugestaoDAO" ref="sugestaoDAO"></beans:property>
 	</beans:bean>
-	<beans:bean id="sugestaoAlimentoController"
+	<beans:bean id="sugestaoController"
 		class="com.vidasaudavel.controller.SugestaoController">
 		<beans:property name="sugestaoService" ref="sugestaoService"></beans:property>
 	</beans:bean>

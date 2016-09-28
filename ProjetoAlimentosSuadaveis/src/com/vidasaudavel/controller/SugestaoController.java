@@ -16,6 +16,11 @@ import com.vidasaudavel.service.SugestaoService;
 public class SugestaoController {
 
 	private SugestaoService sugestaoService;
+
+	public void setSugestaoService(SugestaoService sugestaoService) {
+		this.sugestaoService = sugestaoService;
+	}
+
 	private Sugestao sugestao;
 	private boolean showSugestao = false;
 
@@ -27,10 +32,6 @@ public class SugestaoController {
 		this.showSugestao = showSugestao;
 	}
 
-	public void setSugestaoService(SugestaoService sugestaoService) {
-		this.sugestaoService = sugestaoService;
-	}
-
 	public SugestaoController() {
 
 	}
@@ -38,10 +39,11 @@ public class SugestaoController {
 	public void addSugestaoAlimento(String nmSugestao) {
 		try {
 			sugestao = new Sugestao();
+
 			sugestao.setTipo_sugestao(TipoSugestao.Alimento.getValor());
 			sugestao.setNome(nmSugestao);
 			this.sugestaoService.addSugestao(sugestao);
-			showSugestao = true;
+			showSugestao = false;
 		} catch (Exception e) {
 			e.getMessage();
 		}
@@ -52,8 +54,7 @@ public class SugestaoController {
 			sugestao = new Sugestao();
 			sugestao.setTipo_sugestao(TipoSugestao.Componente.getValor());
 			sugestao.setNome(nmSugestao);
-			org.primefaces.context.RequestContext.getCurrentInstance().execute(
-					"PF('dlg3').hide();");
+			showSugestao = false;
 			this.sugestaoService.addSugestao(sugestao);
 		} catch (Exception e) {
 			e.getMessage();
