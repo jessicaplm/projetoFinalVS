@@ -21,6 +21,14 @@
 
 				<h:panelGrid columns="1" cellspacing="10">
 					<h:panelGrid columns="1" cellspacing="6">
+						<p:outputLabel for="nomeusuario" value="Nome:" />
+						<h:panelGrid columns="2" cellspacing="6">
+							<p:inputText id="nomeusuario" required="true" label="nomeusuario"
+								value="#{questionarioController.questionario.nm_usuario}" />
+						</h:panelGrid>
+					</h:panelGrid>
+
+					<h:panelGrid columns="1" cellspacing="6">
 						<p:outputLabel for="idade" value="Idade:" />
 						<h:panelGrid columns="2" cellspacing="6">
 							<p:inputText id="idade" required="true" label="idade"
@@ -42,7 +50,7 @@
 						<h:panelGrid columns="2" cellspacing="6">
 							<p:inputMask id="altura"
 								value="#{questionarioController.questionario.altura}"
-								required="true" mask="9,99" size="1" />
+								required="true" mask="9.99" size="1" />
 						</h:panelGrid>
 					</h:panelGrid>
 
@@ -61,7 +69,8 @@
 					</h:panelGrid>
 
 					<h:panelGrid columns="1" cellspacing="6">
-						<p:commandButton value="Confirmar"></p:commandButton>
+						<p:commandButton value="Confirmar" ajax="false"
+							action="#{questionarioController.addQuestionario(questionarioController.questionario)}"></p:commandButton>
 					</h:panelGrid>
 
 				</h:panelGrid>

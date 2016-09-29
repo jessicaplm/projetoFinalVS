@@ -37,7 +37,7 @@ public class AlimentoController {
 	private Alimento alimentoSelecionado;
 	private boolean showSugestao = false;
 
-	// depos apagar se nao der certo
+	// Service do model sugestao
 	private Sugestao sugestao;
 	private SugestaoService sugestaoService;
 

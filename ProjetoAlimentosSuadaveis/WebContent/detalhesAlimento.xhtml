@@ -8,42 +8,38 @@
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<title>Insert title here</title>
+	<script src="js/semantic.min.js"></script>
 </h:head>
 <h:body>
 
 
 
 
-
+	<ui:include src="header.xhtml" />
 	<h:form>
 
-		<p:menubar styleClass="menu ">
-			<p:submenu label="File" icon="ui-icon-home" rendered="">
-			</p:submenu>
 
 
 
-			<f:facet name="options">
-				<p:inputText style="margin-right:10px" placeholder="Search" />
-				<p:commandButton type="button" value="Logout" icon="ui-icon-extlink" />
-			</f:facet>
-		</p:menubar>
-
-		<h:panelGrid style="margin-top:20px;height:100%;" columns="2">
-			<h:panelGrid style="margin-top:20px;" columns="1">
+		<div class="ui-g">
+			<div class="ui-g-8 ui-md-4">
 				<p:panel style="">
 
 					<h:panelGrid style="" columns="1">
-						<p:commandLink value="Buscar Novo Alimento"
-							action="pesquisaAlimento.xhtml" ajax="false"></p:commandLink>
+						<p:commandLink action="pesquisaAlimento.xhtml"
+							icon="ui-icon-circle-zoomout" style="color:green" ajax="false">
+							<h3>Buscar Novo Alimento</h3>
+						</p:commandLink>
+
 						<p:graphicImage
 							url="#{alimentoController.alimentoSelecionado.url_imagem_alimento}"
-							width="250px" height="250px" />
+							width="280px" height="300px" />
 
-						<h3 style="color: aqua;">
-							<p:outputLabel
-								value="#{alimentoController.alimentoSelecionado.nm_alimento}"></p:outputLabel>
-						</h3>
+
+						<p:outputLabel style="color:green;    font-size: xx-large;"
+							icon="ui-icon-caret-1-e"
+							value="#{alimentoController.alimentoSelecionado.nm_alimento}"></p:outputLabel>
+
 
 						<h:panelGrid style="margin-top:20px" columns="3">
 							<p:outputLabel value="Calorias:"></p:outputLabel>
@@ -67,50 +63,76 @@
 					</h:panelGrid>
 
 				</p:panel>
-			</h:panelGrid>
-			<h:panelGrid style="margin-top:20px;" columns="1">
+
+
+			</div>
+			<div class="ui-g-12 ui-md-8" style="margin-top: 7px">
+
 				<p:panel style="">
-					<h:panelGrid style="" columns="1">
-						<p:panel header="Informações do Alimento"
-							style="margin-bottom:20px;">
-							<p:outputPanel deferred="true">
-								<h3 style="color: aqua;">
-									<p:outputLabel
-										value="#{alimentoController.alimentoSelecionado.nm_alimento}"></p:outputLabel>
-								</h3>
-								<h4>#{alimentoController.alimentoSelecionado.desc_alimento}</h4>
-							</p:outputPanel>
-						</p:panel>
 
-						<p:panel header="Lista de ingredientes"
-							style="margin-bottom:20px;">
-							<p:repeat
-								value="#{alimentoController.alimentoSelecionado.listaComponentes}"
-								var="comp">
-								<h:panelGrid style="" columns="2">
-									<h:panelGrid style="" columns="1">
-										<p:graphicImage url="#{comp.url_imagem_componente}"
-											width="100px" height="100px" />
+					<p:panel header="Informações do Alimento"
+						style="margin-bottom:20px;">
+						<p:outputPanel deferred="true">
+							<h3 style="color: aqua;">
+								<p:outputLabel
+									value="#{alimentoController.alimentoSelecionado.nm_alimento}"></p:outputLabel>
+							</h3>
+							<h4>#{alimentoController.alimentoSelecionado.desc_alimento}</h4>
+						</p:outputPanel>
+					</p:panel>
 
-										<h4 style="color: aqua;">
-											<p:outputLabel value="#{comp.nm_componente}"></p:outputLabel>
-										</h4>
-									</h:panelGrid>
-									<h:panelGrid style="" columns="1">
-										<p:outputLabel value="#{comp.ds_componente}"></p:outputLabel>
-									</h:panelGrid>
+					<p:panel header="Lista de ingredientes" style="margin-bottom:20px;">
+						<p:repeat
+							value="#{alimentoController.alimentoSelecionado.listaComponentes}"
+							var="comp">
+							<h:panelGrid style="" columns="3">
+								<h:panelGrid style="" columns="1">
+									<p:graphicImage url="#{comp.url_imagem_componente}"
+										width="100px" height="100px" />
+
+
+									<p:outputLabel style="color:green;    font-size: large;"
+										value="#{comp.nm_componente}"></p:outputLabel>
+
 								</h:panelGrid>
-							</p:repeat>
-						</p:panel>
 
-					</h:panelGrid>
+								<div class="ui-g-12 ui-md-1"></div>
+
+								<h:panelGrid columns="1" style="margin-top:-50px">
+									<p:outputLabel value="#{comp.ds_componente}"></p:outputLabel>
+								</h:panelGrid>
+							</h:panelGrid>
+							<h:panelGrid style="" columns="1">
+								<div class="ui-g-12 ui-md-5"></div>
+								<div class="ui-g-12 ui-md-7">
+
+									<p:commandLink action="detalhesComponente.xhtml"
+										value="Ver detalhes do ingrediente " ajax="false">
+										<f:setPropertyActionListener target="#{componenteController.componenteSelecionado}" value="#{comp}"></f:setPropertyActionListener>
+										</p:commandLink>
+
+								</div>
+							</h:panelGrid>
+						</p:repeat>
+					</p:panel>
+
+
 				</p:panel>
-			</h:panelGrid>
 
-		</h:panelGrid>
+
+			</div>
+
+		</div>
+
+
+
+
 
 	</h:form>
 
+
+
+	<ui:include src="footer.xhtml" />
 
 </h:body>
 </html>

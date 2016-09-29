@@ -24,6 +24,21 @@ public class QuestionarioController {
 	questionario = new Questionario();
 	}
 
+	
+	public void addQuestionario(Questionario q){
+		
+		q.setImc( q.getPeso() / ( q.getAltura()*q.getAltura())); 
+		questionario.setImc(q.getImc());
+		
+		//Logica que vai gerar as Informaccoes que a gente vai mostrar na tela !
+		//mo caso as recomendacoes
+		
+		questionarioService.addQuestionario(q);	
+		
+	}
+	
+	
+	
 	public Questionario getQuestionario() {
 		return questionario;
 	}
