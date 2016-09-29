@@ -82,14 +82,87 @@
 					<h:panelGrid columns="1" cellspacing="10"
 						style="width:200px; margin-left:auto; margin-right:auto;">
 						<h:outputText value="Seu IMC é:" />
-						<p:inputText disabled="true" value="#{questionarioController.questionario.imc}" >
+						<p:inputText disabled="true"
+							value="#{questionarioController.questionario.imc}">
 						</p:inputText>
 					</h:panelGrid>
 				</h:panelGrid>
 			</p:panelGrid>
 			<p:panelGrid columns="1" style="width: 100%">
-				<h:outputText value="OS RESULTADOS DO QUESTIONÁRIO FICARÃO AQUI"></h:outputText>
+				<!-- 		<h:outputText value="OS RESULTADOS DO QUESTIONÁRIO FICARÃO AQUI"></h:outputText> -->
 			</p:panelGrid>
+
+			<p:panel render="#{}">
+				<div class="ui-g">
+
+
+
+					<div class="ui-g-12 ui-md-12 ui-lg-12">
+
+						<div class="ui-g-12 ui-md-12 ui-lg-4">
+							<p:dataList style="margin-bottom: 10px;"
+								value="#{questionarioController.alimentosRespostaManha}"
+								var="alim" type="definition">
+								<f:facet name="header">
+						         De Manhã
+						    </f:facet>
+
+
+								<p:graphicImage url="#{alim.url_imagem_alimento}"
+									style="width: 30%; height: 30%; margin-left:15px " />
+
+								<p:commandLink
+									style=" margin-left: 10px;color: green; position: absolute;" ajax="false" immediate="true"
+									value="#{alim.nm_alimento}" action="detalhesAlimento.xhtml">
+									<f:setPropertyActionListener value="#{alim}" target="#{alimentoController.alimentoSelecionado}"></f:setPropertyActionListener>
+								</p:commandLink>
+
+
+							</p:dataList>
+						</div>
+						<div class="ui-g-12 ui-md-12 ui-lg-4">
+							<p:dataList style="margin-bottom: 10px;"
+								value="#{questionarioController.alimentosRespostaTarde}"
+								var="alim" type="definition">
+								<f:facet name="header">
+						         A Tarde
+						    </f:facet>
+
+								<p:graphicImage url="#{alim.url_imagem_alimento}"
+									style="width: 30%; height: 30%; margin-left:15px" />
+
+								<p:commandLink
+									style=" margin-left: 10px;color: green; position: absolute;"
+									value="#{alim.nm_alimento}">
+								</p:commandLink>
+
+							</p:dataList>
+						</div>
+						<div class="ui-g-12 ui-md-12 ui-lg-4">
+							<p:dataList style="margin-bottom: 10px;"
+								value="#{questionarioController.alimentosRespostaNoite}"
+								var="alim" type="definition">
+								<f:facet name="header">
+						         A Noite
+						    </f:facet>
+								<p:graphicImage url="#{alim.url_imagem_alimento}"
+									style="width: 30%; height: 30%;     margin-left: 15px;" />
+
+								<p:commandLink
+									style=" margin-left: 10px;color: green; position: absolute;"
+									value="#{alim.nm_alimento}">
+
+								</p:commandLink>
+
+							</p:dataList>
+						</div>
+
+					</div>
+
+
+				</div>
+			</p:panel>
+
 		</h:form>
 	</h:body>
 	<ui:include src="footer.xhtml" />

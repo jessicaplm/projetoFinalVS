@@ -29,7 +29,7 @@ public class QuestionarioController {
 	private List<Alimento> alimentosRespostaManha;
 	private List<Alimento> alimentosRespostaTarde;
 	private List<Alimento> alimentosRespostaNoite;
-
+    private boolean mostrarPesquisa = false;
 	public QuestionarioController() {
 		questionario = new Questionario();
 		alimento = new Alimento();
@@ -54,32 +54,49 @@ public class QuestionarioController {
 
 	public void addQuestionario(Questionario q) {
 
+		alimentosRespostaManha = new ArrayList<Alimento>();
+		alimentosRespostaTarde = new ArrayList<Alimento>();
+		alimentosRespostaNoite = new ArrayList<Alimento>();
+		
 		double imc = (q.getPeso() / (q.getAltura() * q.getAltura()));
 
 		BigDecimal bd = new BigDecimal(imc).setScale(1, RoundingMode.HALF_EVEN);
 
 		questionario.setImc(bd.doubleValue());
 
-		questionarioService.addQuestionario(q);
-
-		limparCampos();
+		
 
 		recomendarListaAlimentos(q);
 
+			q.setListaAlimento(new ArrayList<Alimento>());
+		for (int i = 0; i < alimentosRespostaManha.size(); i++) {
+
+			q.getListaAlimento().add(alimentosRespostaManha.get(i));
+		}
+		for (int i = 0; i < alimentosRespostaTarde.size(); i++) {
+			q.getListaAlimento().add(alimentosRespostaTarde.get(i));
+		}
+		for (int i = 0; i < alimentosRespostaNoite.size(); i++) {
+			q.getListaAlimento().add(alimentosRespostaNoite.get(i));
+		}
+
+		questionarioService.addQuestionario(q);
+		mostrarPesquisa = true;
+		limparCampos();
 	}
 
 	public void recomendarListaAlimentos(Questionario q) {
 		// PARTE QUE VAI VIRAR UM METODO SÓ SETANDO O QUESTIONARIO COMO
 		// PARAMETRO
 		alimentos = alimentoService.listAlimento();
-		
+
 		for (int i = 0; i < alimentos.size(); i++) {
 
 			if (questionario.getRegiao_usuario().equalsIgnoreCase(
 					alimentos.get(i).getRegiao_tipica())) {
 				// Abaixo do peso
 				if (questionario.getImc() < 18.5
-						&& alimentos.get(i).getCalorias() > 300) {
+						&& alimentos.get(i).getCalorias() >= 300) {
 
 					verificacaoDiaria(i);
 
@@ -103,10 +120,10 @@ public class QuestionarioController {
 					verificacaoDiaria(i);
 
 				}
-				
+
 				// Obesidade
 				if (questionario.getImc() > 29.9
-							&& alimentos.get(i).getCalorias() < 100) {
+						&& alimentos.get(i).getCalorias() <= 100) {
 
 					verificacaoDiaria(i);
 
@@ -121,17 +138,17 @@ public class QuestionarioController {
 
 	public void verificacaoDiaria(int i) {
 		if (alimentos.get(i).getPeriodo_dia()
-				.equalsIgnoreCase(PeriodoDia.Manha.getValor())) {
+				.equalsIgnoreCase(PeriodoDia.Manha.name())) {
 			alimentosRespostaManha.add(alimentos.get(i));
 
 		}
 		if (alimentos.get(i).getPeriodo_dia()
-				.equalsIgnoreCase(PeriodoDia.Tarde.getValor())) {
+				.equalsIgnoreCase(PeriodoDia.Tarde.name())) {
 			alimentosRespostaTarde.add(alimentos.get(i));
 
 		}
 		if (alimentos.get(i).getPeriodo_dia()
-				.equalsIgnoreCase(PeriodoDia.Noite.getValor())) {
+				.equalsIgnoreCase(PeriodoDia.Noite.name())) {
 			alimentosRespostaNoite.add(alimentos.get(i));
 
 		}
@@ -193,5 +210,13 @@ public class QuestionarioController {
 
 	public void setAlimentosRespostaNoite(List<Alimento> alimentosRespostaNoite) {
 		this.alimentosRespostaNoite = alimentosRespostaNoite;
+	}
+
+	public boolean isMostrarPesquisa() {
+		return mostrarPesquisa;
+	}
+
+	public void setMostrarPesquisa(boolean mostrarPesquisa) {
+		this.mostrarPesquisa = mostrarPesquisa;
 	}
 }
