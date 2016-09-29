@@ -187,6 +187,15 @@ public class ComponenteController {
 		return pesquisaComponentes;
 
 	}
+	public List<String> completeText(String query) {
+		List<String> results = new ArrayList<String>();
+		pesquisaComponentes = this.componenteService.listByNameComponente(query);
+        for(int i = 0; i < pesquisaComponentes.size(); i++) {
+            results.add(pesquisaComponentes.get(i).getNm_componente());
+        }
+         
+        return results;
+    }
 
 	public List<Componente> getPesquisaComponentes() {
 		return pesquisaComponentes;

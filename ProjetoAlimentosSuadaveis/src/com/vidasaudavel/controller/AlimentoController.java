@@ -185,6 +185,15 @@ public class AlimentoController {
 		}
 		return pesquisaAlimentos;
 	}
+	public List<String> completeText(String query) {
+		List<String> results = new ArrayList<String>();
+		pesquisaAlimentos = this.alimentoService.listByNameAlimento(query);
+        for(int i = 0; i < pesquisaAlimentos.size(); i++) {
+            results.add(pesquisaAlimentos.get(i).getNm_alimento());
+        }
+         
+        return results;
+    }
 
 	public void fecharDialogo() {
 		org.primefaces.context.RequestContext.getCurrentInstance().execute(
