@@ -35,13 +35,12 @@ public class ComponenteController {
 	private Componente componenteSelecionado;
 	private boolean showSugestao = false;
 
-
 	private ComponenteService componenteService;
 
 	public void setComponenteService(ComponenteService componenteService) {
 		this.componenteService = componenteService;
 	}
-	
+
 	private Sugestao sugestao;
 	private SugestaoService sugestaoService;
 
@@ -57,23 +56,20 @@ public class ComponenteController {
 			sugestao.setNome(nmSugestao);
 			this.sugestaoService.addSugestao(sugestao);
 			showSugestao = false;
-			
-			FacesMessage message = new FacesMessage(
-					"O item já foi adicionado as Sugestoes",
+
+			FacesMessage message = new FacesMessage("O item já foi adicionado as Sugestoes",
 					nmSugestao + "  foi adicionado as Sugestoes!");
 			FacesContext.getCurrentInstance().addMessage(null, message);
-			
+
 		} catch (Exception e) {
 			e.getMessage();
 		}
 	}
 
-
 	public boolean isShowSugestao() {
 		return showSugestao;
 	}
 
-	
 	public ComponenteController() {
 		componentes = new ArrayList<Componente>();
 		componenteslista = new ArrayList<Componente>();
@@ -109,8 +105,7 @@ public class ComponenteController {
 				if (c.getNm_componente().equalsIgnoreCase(comp.getNm_componente())) {
 
 					existe = true;
-					
-			
+
 					break;
 				}
 				// comp = null;
@@ -124,15 +119,13 @@ public class ComponenteController {
 				cp.setLink_componente(c.getLink_componente());
 				cp.setUrl_imagem_componente(c.getUrl_imagem_componente());
 				cp.setMalef_componente(c.getMalef_componente());
-			
+
 				FacesMessage msgs = new FacesMessage("Componente adicionado a lista!", "");
 				FacesContext.getCurrentInstance().addMessage(null, msgs);
 
 				componentes.add(cp);
 			}
 
-			
-				
 		}
 	}
 
@@ -185,11 +178,16 @@ public class ComponenteController {
 	public List<Componente> listComponentebyName(String n) {
 
 		pesquisaComponentes = this.componenteService.listByNameComponente(n);
+		
+		if (pesquisaComponentes.size() <= 0) {
+			showSugestao = true;
+
+		}
 
 		return pesquisaComponentes;
 
 	}
-	
+
 	public List<Componente> getPesquisaComponentes() {
 		return pesquisaComponentes;
 	}
@@ -221,11 +219,9 @@ public class ComponenteController {
 	public void setComponentes(List<Componente> componentes) {
 		this.componentes = componentes;
 	}
-	
 
 	public void setShowSugestao(boolean showSugestao) {
 		this.showSugestao = showSugestao;
 	}
-
 
 }

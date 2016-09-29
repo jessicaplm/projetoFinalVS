@@ -18,7 +18,7 @@
 				<p:inputText value="#{mbComponente.nm_componente}" />
 				<p:commandButton icon="ui-icon-search" ajax="false"
 					actionListener="#{componenteController.listComponentebyName(mbComponente.nm_componente)}"
-					update="dialogoSelect">
+					update="dialogoSelect" render="@form:tabelaList:botoesListar">
 				</p:commandButton>
 			</h:panelGrid>
 			<h:panelGrid style="margin-top:20px" columns="2"
