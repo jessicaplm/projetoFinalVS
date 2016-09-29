@@ -8,6 +8,9 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.event.AbortProcessingException;
+import javax.faces.event.ValueChangeEvent;
+import javax.faces.event.ValueChangeListener;
 
 import org.springframework.stereotype.Controller;
 
@@ -21,7 +24,7 @@ import com.vidasaudavel.service.QuestionarioService;
 @ManagedBean(name = "questionarioController")
 @Controller
 @SessionScoped
-public class QuestionarioController {
+public class QuestionarioController  {
 
 	private Questionario questionario;
 	private Alimento alimento;
@@ -30,6 +33,9 @@ public class QuestionarioController {
 	private List<Alimento> alimentosRespostaTarde;
 	private List<Alimento> alimentosRespostaNoite;
 	private boolean disablePesquisa = false;
+	private boolean selecionarsexmasc = true;
+	private boolean selecionarsexfem = false;
+	private String sexoSelecionado ;
 
 	public QuestionarioController() {
 		questionario = new Questionario();
@@ -38,6 +44,7 @@ public class QuestionarioController {
 		alimentosRespostaManha = new ArrayList<Alimento>();
 		alimentosRespostaTarde = new ArrayList<Alimento>();
 		alimentosRespostaNoite = new ArrayList<Alimento>();
+		sexoSelecionado = "Masculino";
 
 	}
 
@@ -219,5 +226,41 @@ public class QuestionarioController {
 		this.disablePesquisa = disablePesquisa;
 	}
 
+	public boolean isSelecionarsexfem() {
+		return selecionarsexfem;
+	}
+
+	public boolean isSelecionarsexmasc() {
+		return selecionarsexmasc;
+	}
+
+	public void setSelecionarsexmasc(boolean selecionarsexmasc) {
+		this.selecionarsexmasc = selecionarsexmasc;
+	}
+
+	public void setSelecionarsexfem(boolean selecionarsexfem) {
+		this.selecionarsexfem = selecionarsexfem;
+	}
+
+	public String getSexoSelecionado() {
+		return sexoSelecionado;
+	}
+
+	public void setSexoSelecionado(String sexoSelecionado) {
+		this.sexoSelecionado = sexoSelecionado;
+	}
+
+
+	public void processValueChanges() {
+		// TODO Auto-generated method stub
+		if (sexoSelecionado.equalsIgnoreCase("Feminino")) {
+			selecionarsexfem = true;
+			selecionarsexmasc = false;
+		} else if (sexoSelecionado.equalsIgnoreCase("Masculino")) {
+			selecionarsexfem = false;
+			selecionarsexmasc = true;
+		}
+
+	}
 
 }
