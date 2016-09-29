@@ -7,6 +7,7 @@
 
 <f:view contentType="text/html">
 	<h:head>
+		<link rel="shortcut icon" href="imagens/favicon.ico" type="image/x-icon" />
 		<f:facet name="first">
 			<meta content='text/html; charset=UTF-8' http-equiv="Content-Type" />
 			<title>Vida Saudável</title>
@@ -51,7 +52,8 @@
 					<h:panelGrid columns="3" cellspacing="">
 						<p:panel>
 							<p:outputLabel for="nome" value="Sugestão:" />
-							<p:inputText id="nome" value="#{sugestaoController.sugestao.nome}" label="nome">
+							<p:inputText id="nome"
+								value="#{sugestaoController.sugestao.nome}" label="nome">
 							</p:inputText>
 						</p:panel>
 
@@ -62,8 +64,8 @@
 								style="width:150px">
 
 
-								<f:selectItems value="#{sugestaoController.tipoSugestao}" var="tip" itemValue="#{tip}"
-									itemLabel="#{tip.valor}" />
+								<f:selectItems value="#{sugestaoController.tipoSugestao}"
+									var="tip" itemValue="#{tip}" itemLabel="#{tip.valor}" />
 
 							</p:selectOneMenu>
 						</p:panel>
