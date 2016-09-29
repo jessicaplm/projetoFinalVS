@@ -44,11 +44,11 @@
 				<h:panelGrid columns="1" cellspacing="6">
 					<p:dataTable var="com"
 						value="#{componenteController.pesquisaComponentes}">
-						<p:column headerText="Nome Ingrediente">
-							<h:outputText value="#{com.nm_componente}" />
+						<p:column headerText="Foto">
+							<p:graphicImage url="#{com.url_imagem_componente}" width="30%" height="30%" />
 						</p:column>
-						<p:column headerText="Link">
-							<h:outputText value="#{com.link_componente}" />
+						<p:column headerText="Nome">
+							<h:outputText value="#{com.nm_componente}" />
 						</p:column>
 						<p:column headerText="Ver Detalhes do Ingrediente">
 							<p:commandButton value="Ver Detalhes" ajax="false"
