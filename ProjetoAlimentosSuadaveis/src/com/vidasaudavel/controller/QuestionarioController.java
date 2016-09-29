@@ -29,7 +29,8 @@ public class QuestionarioController {
 	private List<Alimento> alimentosRespostaManha;
 	private List<Alimento> alimentosRespostaTarde;
 	private List<Alimento> alimentosRespostaNoite;
-    private boolean mostrarPesquisa = false;
+	private boolean disablePesquisa = false;
+
 	public QuestionarioController() {
 		questionario = new Questionario();
 		alimento = new Alimento();
@@ -57,18 +58,16 @@ public class QuestionarioController {
 		alimentosRespostaManha = new ArrayList<Alimento>();
 		alimentosRespostaTarde = new ArrayList<Alimento>();
 		alimentosRespostaNoite = new ArrayList<Alimento>();
-		
+
 		double imc = (q.getPeso() / (q.getAltura() * q.getAltura()));
 
 		BigDecimal bd = new BigDecimal(imc).setScale(1, RoundingMode.HALF_EVEN);
 
 		questionario.setImc(bd.doubleValue());
 
-		
-
 		recomendarListaAlimentos(q);
 
-			q.setListaAlimento(new ArrayList<Alimento>());
+		q.setListaAlimento(new ArrayList<Alimento>());
 		for (int i = 0; i < alimentosRespostaManha.size(); i++) {
 
 			q.getListaAlimento().add(alimentosRespostaManha.get(i));
@@ -81,7 +80,7 @@ public class QuestionarioController {
 		}
 
 		questionarioService.addQuestionario(q);
-		mostrarPesquisa = true;
+		disablePesquisa = true;
 		limparCampos();
 	}
 
@@ -212,11 +211,13 @@ public class QuestionarioController {
 		this.alimentosRespostaNoite = alimentosRespostaNoite;
 	}
 
-	public boolean isMostrarPesquisa() {
-		return mostrarPesquisa;
+	public boolean isDisablePesquisa() {
+		return disablePesquisa;
 	}
 
-	public void setMostrarPesquisa(boolean mostrarPesquisa) {
-		this.mostrarPesquisa = mostrarPesquisa;
+	public void setDisablePesquisa(boolean disablePesquisa) {
+		this.disablePesquisa = disablePesquisa;
 	}
+
+
 }
