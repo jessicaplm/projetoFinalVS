@@ -81,21 +81,7 @@ public class QuestionarioController {
 				if (questionario.getImc() < 18.5
 						&& alimentos.get(i).getCalorias() > 300) {
 
-					if (alimentos.get(i).getPeriodo_dia()
-							.equalsIgnoreCase(PeriodoDia.Manha.getValor())) {
-						alimentosRespostaManha.add(alimentos.get(i));
-
-					}
-					if (alimentos.get(i).getPeriodo_dia()
-							.equalsIgnoreCase(PeriodoDia.Tarde.getValor())) {
-						alimentosRespostaTarde.add(alimentos.get(i));
-
-					}
-					if (alimentos.get(i).getPeriodo_dia()
-							.equalsIgnoreCase(PeriodoDia.Noite.getValor())) {
-						alimentosRespostaNoite.add(alimentos.get(i));
-
-					}
+					verificacaoDiaria(i);
 
 				}
 				// Peso normal
@@ -105,21 +91,7 @@ public class QuestionarioController {
 						&& alimentos.get(i).getCalorias() < 300
 						&& alimentos.get(i).getCalorias() > 200) {
 
-					if (alimentos.get(i).getPeriodo_dia()
-							.equalsIgnoreCase(PeriodoDia.Manha.getValor())) {
-						alimentosRespostaManha.add(alimentos.get(i));
-
-					}
-					if (alimentos.get(i).getPeriodo_dia()
-							.equalsIgnoreCase(PeriodoDia.Tarde.getValor())) {
-						alimentosRespostaTarde.add(alimentos.get(i));
-
-					}
-					if (alimentos.get(i).getPeriodo_dia()
-							.equalsIgnoreCase(PeriodoDia.Noite.getValor())) {
-						alimentosRespostaNoite.add(alimentos.get(i));
-
-					}
+					verificacaoDiaria(i);
 
 				}
 				// Sobrepeso
@@ -128,21 +100,7 @@ public class QuestionarioController {
 						&& alimentos.get(i).getCalorias() < 200
 						&& alimentos.get(i).getCalorias() > 100) {
 
-					if (alimentos.get(i).getPeriodo_dia()
-							.equalsIgnoreCase(PeriodoDia.Manha.getValor())) {
-						alimentosRespostaManha.add(alimentos.get(i));
-
-					}
-					if (alimentos.get(i).getPeriodo_dia()
-							.equalsIgnoreCase(PeriodoDia.Tarde.getValor())) {
-						alimentosRespostaTarde.add(alimentos.get(i));
-
-					}
-					if (alimentos.get(i).getPeriodo_dia()
-							.equalsIgnoreCase(PeriodoDia.Noite.getValor())) {
-						alimentosRespostaNoite.add(alimentos.get(i));
-
-					}
+					verificacaoDiaria(i);
 
 				}
 				
@@ -150,21 +108,7 @@ public class QuestionarioController {
 				if (questionario.getImc() > 29.9
 							&& alimentos.get(i).getCalorias() < 100) {
 
-					if (alimentos.get(i).getPeriodo_dia()
-							.equalsIgnoreCase(PeriodoDia.Manha.getValor())) {
-						alimentosRespostaManha.add(alimentos.get(i));
-
-					}
-					if (alimentos.get(i).getPeriodo_dia()
-							.equalsIgnoreCase(PeriodoDia.Tarde.getValor())) {
-						alimentosRespostaTarde.add(alimentos.get(i));
-
-					}
-					if (alimentos.get(i).getPeriodo_dia()
-							.equalsIgnoreCase(PeriodoDia.Noite.getValor())) {
-						alimentosRespostaNoite.add(alimentos.get(i));
-
-					}
+					verificacaoDiaria(i);
 
 				}
 
@@ -173,6 +117,24 @@ public class QuestionarioController {
 
 		// PARTE QUE VAI VIRAR UM METODO SÓ SETANDO O QUESTIONARIO COMO
 		// PARAMETRO FIM
+	}
+
+	public void verificacaoDiaria(int i) {
+		if (alimentos.get(i).getPeriodo_dia()
+				.equalsIgnoreCase(PeriodoDia.Manha.getValor())) {
+			alimentosRespostaManha.add(alimentos.get(i));
+
+		}
+		if (alimentos.get(i).getPeriodo_dia()
+				.equalsIgnoreCase(PeriodoDia.Tarde.getValor())) {
+			alimentosRespostaTarde.add(alimentos.get(i));
+
+		}
+		if (alimentos.get(i).getPeriodo_dia()
+				.equalsIgnoreCase(PeriodoDia.Noite.getValor())) {
+			alimentosRespostaNoite.add(alimentos.get(i));
+
+		}
 	}
 
 	public List<Alimento> listAlimento() {
