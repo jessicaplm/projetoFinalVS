@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
@@ -6,16 +6,17 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
-	<link rel="shortcut icon" href="imagens/favicon.ico" type="image/x-icon" />
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-	<title>Vida Saudável</title>
+	<link rel="shortcut icon" href="imagens/favicon.ico"
+		type="image/x-icon" />
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<title>Vida SaudÃ¡vel</title>
 
 	<h:link href="css/arquivo.css" rel="stylesheet" />
 	<link href="css/arquivo.css" rel="stylesheet" />
 </h:head>
 <h:body>
 
-	<h:form enctype="multipart/form-data">
+	<h:form acceptcharset="UTF-8" enctype="application/form-data">
 
 		<p:menubar styleClass="menu ">
 			<p:menuitem value="Cadastro Alimento" url="cadastroAlimento.xhtml"
@@ -33,7 +34,7 @@
 
 
 
-		<p:panel id="cadastronovoComp" header="Componentes Já cadastrados"
+		<p:panel id="cadastronovoComp" header="Componentes JÃ¡ cadastrados"
 			style="margin-bottom:20px;margin-top:20px">
 			<p:growl id="msgs" showDetail="true" />
 			<h:panelGrid style="margin-top:20px" columns="1">
@@ -78,7 +79,7 @@
 			</h:panelGrid>
 		</p:panel>
 
-		<p:panel id="descricaoComponente" header="Descrição do Componente"
+		<p:panel id="descricaoComponente" header="DescriÃ§Ã£o do Componente"
 			style="margin-bottom:20px">
 
 			<h:panelGrid columns="1" cellpadding="10">
@@ -152,7 +153,8 @@
 		</h:panelGrid>
 		<h:panelGrid columns="2" cellpadding="10">
 
-			<p:commandButton ajax="false" value="Adicionar Componentes" immediate="true"
+			<p:commandButton ajax="false" value="Adicionar Componentes"
+				immediate="true"
 				action="#{componenteController.addComponente(componenteController.componente)}">
 			</p:commandButton>
 
