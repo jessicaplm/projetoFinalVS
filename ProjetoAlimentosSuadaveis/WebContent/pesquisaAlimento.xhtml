@@ -1,64 +1,67 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-<h:head>
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-	<title>Vida Saudavel</title>
 
+<h:head>
 	<link rel="stylesheet" type="text/css" href="css/semantic.min.css"></link>
 	<script src="js/semantic.min.js"></script>
 
-
+	<f:facet name="first">
+		<meta content='text/html; charset=UTF-8' http-equiv="Content-Type" />
+		<title>Vida Saudável</title>
+	</f:facet>
 </h:head>
 <h:body>
 	<ui:include src="header.xhtml" />
-	<h:form id="botoesListar">
-		<h:panelGrid style="margin-top:20px" columns="3">
-			<p:growl id="messages" />
-			<h:panelGrid style="margin-top:20px" columns="2">
-				<p:inputText value="#{mbAlimento.nm_alimento}" />
-				<p:commandButton icon="ui-icon-search" ajax="false"
-					actionListener="#{alimentoController.listByNameAlimento(mbAlimento.nm_alimento)}"
-					update="tabelaList" render="@form:tabelaList:botoesListar" >
-				</p:commandButton>
-			</h:panelGrid>
-			<h:panelGrid style="margin-top:20px" columns="2"
-				rendered="#{alimentoController.showSugestao}">
-				<h4 style="color: aqua;">Alimento n�o encontrado?</h4>
-				<p:commandButton id="ocultar" ajax="false"
-					actionListener="#{alimentoController.addSugestaoAlimento(mbAlimento.nm_alimento)}"
-					value="Sugerir Alimento">
-				</p:commandButton>
-			</h:panelGrid>
+	<h:form styleClass="ui segment">
+		<h:panelGrid columns="2" style="width:100%">
+			<p:panel>
+				<p:growl id="messages" />
+				<h:panelGrid style="margin-top:20px" columns="2">
+					<p:inputText value="#{mbAlimento.nm_alimento}" placeholder="Pesquisar Alimento" />
+					<p:commandButton icon="ui-icon-search" ajax="false"
+						actionListener="#{alimentoController.listByNameAlimento(mbAlimento.nm_alimento)}"
+						update="tabelaList" render="@form:tabelaList:botoesListar">
+					</p:commandButton>
+				</h:panelGrid>
+				<h:panelGrid style="margin-top:20px" columns="2"
+					rendered="#{alimentoController.showSugestao}">
+					<h4 style="color: aqua;">Alimento não encontrado?</h4>
+					<p:commandButton id="ocultar" ajax="false"
+						actionListener="#{alimentoController.addSugestaoAlimento(mbAlimento.nm_alimento)}"
+						value="Sugerir Alimento">
+					</p:commandButton>
+				</h:panelGrid>
+			</p:panel>
 		</h:panelGrid>
-	</h:form>
+		<p:panel>
+			<h:form id="tabelaList">
+				<h:panelGrid style="margin-top:20px" columns="1">
+					<h:panelGrid columns="1" cellspacing="6">
+						<p:dataTable var="ali"
+							value="#{alimentoController.pesquisaAlimentos}">
+							<p:column headerText="Nome Alimento">
+								<h:outputText value="#{ali.nm_alimento}" />
+							</p:column>
+							<p:column headerText="Calorias">
+								<h:outputText value="#{ali.calorias}" />
+							</p:column>
+							<p:column headerText="Ver Detalhes do Alimento">
+								<p:commandButton value="Ver Detalhes" ajax="false"
+									action="detalhesAlimento.xhtml">
 
-	<h:form  id="tabelaList">
-		<h:panelGrid style="margin-top:20px" columns="1">
-			<h:panelGrid columns="1" cellspacing="6">
-				<p:dataTable var="ali" 
-					value="#{alimentoController.pesquisaAlimentos}">
-					<p:column headerText="Nome Alimentos">
-						<h:outputText value="#{ali.nm_alimento}" />
-					</p:column>
-					<p:column headerText="Calorias">
-						<h:outputText value="#{ali.calorias}" />
-					</p:column>
-					<p:column headerText="Ver Detalhes do Alimento">
-						<p:commandButton value="Ver Detalhes" ajax="false"
-							action="detalhesAlimento.xhtml">
-
-							<f:setPropertyActionListener value="#{ali}"
-								target="#{alimentoController.alimentoSelecionado}"></f:setPropertyActionListener>
-						</p:commandButton>
-					</p:column>
-				</p:dataTable>
-			</h:panelGrid>
-		</h:panelGrid>
+									<f:setPropertyActionListener value="#{ali}"
+										target="#{alimentoController.alimentoSelecionado}"></f:setPropertyActionListener>
+								</p:commandButton>
+							</p:column>
+						</p:dataTable>
+					</h:panelGrid>
+				</h:panelGrid>
+			</h:form>
+			</p:panel>
 	</h:form>
 	<ui:include src="footer.xhtml" />
 </h:body>
