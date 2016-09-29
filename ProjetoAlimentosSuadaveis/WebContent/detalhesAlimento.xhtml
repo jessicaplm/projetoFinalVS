@@ -22,51 +22,51 @@
 
 
 		<div class="ui-g">
-			<div class="ui-g-8 ui-md-4">
+			<div class="ui-g-12 ui-md-12 ui-lg-3">
 				<p:panel style="">
+					
+						<h:panelGrid style="" columns="1">
+							<p:commandLink action="pesquisaAlimento.xhtml"
+								icon="ui-icon-circle-zoomout" style="color:green" ajax="false">
+								<h3>Buscar Novo Alimento</h3>
+							</p:commandLink>
 
-					<h:panelGrid style="" columns="1">
-						<p:commandLink action="pesquisaAlimento.xhtml"
-							icon="ui-icon-circle-zoomout" style="color:green" ajax="false">
-							<h3>Buscar Novo Alimento</h3>
-						</p:commandLink>
-
-						<p:graphicImage
-							url="#{alimentoController.alimentoSelecionado.url_imagem_alimento}"
-							width="280px" height="300px" />
-
-
-						<p:outputLabel style="color:green;    font-size: xx-large;"
-							icon="ui-icon-caret-1-e"
-							value="#{alimentoController.alimentoSelecionado.nm_alimento}"></p:outputLabel>
+							<p:graphicImage
+								url="#{alimentoController.alimentoSelecionado.url_imagem_alimento}"
+								width="100%" height="100%" />
 
 
-						<h:panelGrid style="margin-top:20px" columns="3">
-							<p:outputLabel value="Calorias:"></p:outputLabel>
-							<p:outputLabel
-								value="#{alimentoController.alimentoSelecionado.calorias}Kcal em"></p:outputLabel>
-							<p:outputLabel
-								value="#{alimentoController.alimentoSelecionado.porcao}g ou ml"></p:outputLabel>
+							<p:outputLabel style="color:green;    font-size: xx-large;"
+								icon="ui-icon-caret-1-e"
+								value="#{alimentoController.alimentoSelecionado.nm_alimento}"></p:outputLabel>
+
+
+							<h:panelGrid style="margin-top:20px" columns="3">
+								<p:outputLabel value="Calorias:"></p:outputLabel>
+								<p:outputLabel
+									value="#{alimentoController.alimentoSelecionado.calorias}Kcal em"></p:outputLabel>
+								<p:outputLabel
+									value="#{alimentoController.alimentoSelecionado.porcao}g ou ml"></p:outputLabel>
+							</h:panelGrid>
+
+							<h:panelGrid style="margin-top:20px" columns="1">
+								<p:outputLabel value="Regiao que mais Cnsome:"></p:outputLabel>
+								<p:outputLabel
+									value="#{alimentoController.alimentoSelecionado.regiao_tipica}"></p:outputLabel>
+							</h:panelGrid>
+							<h:panelGrid style="margin-top:20px" columns="1">
+								<p:outputLabel value="Mais Consumido no:"></p:outputLabel>
+								<p:outputLabel
+									value="#{alimentoController.alimentoSelecionado.periodo_dia}"></p:outputLabel>
+							</h:panelGrid>
+
 						</h:panelGrid>
-
-						<h:panelGrid style="margin-top:20px" columns="1">
-							<p:outputLabel value="Regiao que mais Cnsome:"></p:outputLabel>
-							<p:outputLabel
-								value="#{alimentoController.alimentoSelecionado.regiao_tipica}"></p:outputLabel>
-						</h:panelGrid>
-						<h:panelGrid style="margin-top:20px" columns="1">
-							<p:outputLabel value="Mais Consumido no:"></p:outputLabel>
-							<p:outputLabel
-								value="#{alimentoController.alimentoSelecionado.periodo_dia}"></p:outputLabel>
-						</h:panelGrid>
-
-					</h:panelGrid>
-
+					
 				</p:panel>
 
 
 			</div>
-			<div class="ui-g-12 ui-md-8" style="margin-top: 7px">
+			<div class="ui-g-12 ui-md-12 ui-lg-9" style="margin-top: 7px">
 
 				<p:panel style="">
 
@@ -108,8 +108,10 @@
 
 									<p:commandLink action="detalhesComponente.xhtml"
 										value="Ver detalhes do ingrediente " ajax="false">
-										<f:setPropertyActionListener target="#{componenteController.componenteSelecionado}" value="#{comp}"></f:setPropertyActionListener>
-										</p:commandLink>
+										<f:setPropertyActionListener
+											target="#{componenteController.componenteSelecionado}"
+											value="#{comp}"></f:setPropertyActionListener>
+									</p:commandLink>
 
 								</div>
 							</h:panelGrid>

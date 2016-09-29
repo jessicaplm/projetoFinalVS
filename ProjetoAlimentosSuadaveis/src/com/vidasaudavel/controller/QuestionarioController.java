@@ -31,6 +31,30 @@ public class QuestionarioController {
 		questionario.setImc(q.getImc());
 		
 		//Logica que vai gerar as Informaccoes que a gente vai mostrar na tela !
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		//mo caso as recomendacoes
 		
 		questionarioService.addQuestionario(q);	
