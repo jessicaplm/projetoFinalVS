@@ -13,70 +13,72 @@
 <h:body>
 
 
-
-
 	<ui:include src="header.xhtml" />
 	<h:form>
 
-
-
-
 		<div class="ui-g">
-			<div class="ui-g-12 ui-md-12 ui-lg-3">
+			<div class="ui-g-8 ui-md-4">
 				<p:panel style="">
-					
-						<h:panelGrid style="" columns="1">
-							<p:commandLink action="pesquisaAlimento.xhtml"
-								icon="ui-icon-circle-zoomout" style="color:green" ajax="false">
-								<h3>Buscar Novo Alimento</h3>
-							</p:commandLink>
 
-							<p:graphicImage
-								url="#{alimentoController.alimentoSelecionado.url_imagem_alimento}"
-								width="100%" height="100%" />
+					<h:panelGrid style="" columns="1">
+						<p:commandButton value="Buscar novo alimento" id="buscar"
+							action="pesquisaAlimento.xhtml" ajax="false"
+							styleClass="ui-priority-primary" />
+
+						<div style="margin-bottom: 20px"></div>
 
 
-							<p:outputLabel style="color:green;    font-size: xx-large;"
-								icon="ui-icon-caret-1-e"
-								value="#{alimentoController.alimentoSelecionado.nm_alimento}"></p:outputLabel>
+						<p:graphicImage
+							url="#{alimentoController.alimentoSelecionado.url_imagem_alimento}"
+							width="280px" height="300px" />
 
 
-							<h:panelGrid style="margin-top:20px" columns="3">
-								<p:outputLabel value="Calorias:"></p:outputLabel>
-								<p:outputLabel
-									value="#{alimentoController.alimentoSelecionado.calorias}Kcal em"></p:outputLabel>
-								<p:outputLabel
-									value="#{alimentoController.alimentoSelecionado.porcao}g ou ml"></p:outputLabel>
-							</h:panelGrid>
+						<p:outputLabel style="color:green;    font-size: xx-large;"
+							icon="ui-icon-caret-1-e"
+							value="#{alimentoController.alimentoSelecionado.nm_alimento}"></p:outputLabel>
 
-							<h:panelGrid style="margin-top:20px" columns="1">
-								<p:outputLabel value="Regiao que mais Cnsome:"></p:outputLabel>
-								<p:outputLabel
-									value="#{alimentoController.alimentoSelecionado.regiao_tipica}"></p:outputLabel>
-							</h:panelGrid>
-							<h:panelGrid style="margin-top:20px" columns="1">
-								<p:outputLabel value="Mais Consumido no:"></p:outputLabel>
-								<p:outputLabel
-									value="#{alimentoController.alimentoSelecionado.periodo_dia}"></p:outputLabel>
-							</h:panelGrid>
 
+						<h:panelGrid style="margin-top:20px" columns="1">
+							<p:outputLabel style="font-weight:bold" value="Calorias: "></p:outputLabel>
+							<p:outputLabel
+								value=" #{alimentoController.alimentoSelecionado.calorias} Kcal "></p:outputLabel>
 						</h:panelGrid>
-					
+
+						<h:panelGrid style="margin-top:20px" columns="1">
+							<p:outputLabel style="font-weight:bold" value="Porção: "></p:outputLabel>
+							<p:outputLabel
+								value="#{alimentoController.alimentoSelecionado.porcao} g ou ml "></p:outputLabel>
+						</h:panelGrid>
+
+						<h:panelGrid style="margin-top:20px" columns="1">
+							<p:outputLabel style="font-weight:bold"
+								value="Regiao que mais Consome:"></p:outputLabel>
+							<p:outputLabel
+								value="#{alimentoController.alimentoSelecionado.regiao_tipica}"></p:outputLabel>
+						</h:panelGrid>
+
+
+						<h:panelGrid style="margin-top:20px" columns="1">
+							<p:outputLabel style="font-weight:bold"
+								value="Mais Consumido no:"></p:outputLabel>
+							<p:outputLabel
+								value="#{alimentoController.alimentoSelecionado.periodo_dia}"></p:outputLabel>
+						</h:panelGrid>
+
+					</h:panelGrid>
+
 				</p:panel>
 
 
 			</div>
-			<div class="ui-g-12 ui-md-12 ui-lg-9" style="margin-top: 7px">
+			<div class="ui-g-12 ui-md-8" style="margin-top: 7px">
 
 				<p:panel style="">
 
 					<p:panel header="Informações do Alimento"
 						style="margin-bottom:20px;">
 						<p:outputPanel deferred="true">
-							<h3 style="color: aqua;">
-								<p:outputLabel
-									value="#{alimentoController.alimentoSelecionado.nm_alimento}"></p:outputLabel>
-							</h3>
+							
 							<h4>#{alimentoController.alimentoSelecionado.desc_alimento}</h4>
 						</p:outputPanel>
 					</p:panel>
@@ -125,10 +127,6 @@
 			</div>
 
 		</div>
-
-
-
-
 
 	</h:form>
 

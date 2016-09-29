@@ -8,61 +8,100 @@
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<title>Insert title here</title>
+	<script src="js/semantic.min.js"></script>
 </h:head>
 <h:body>
 
+
+	<ui:include src="header.xhtml" />
 	<h:form>
 
-		<p:menubar styleClass="menu ">
-			<p:submenu label="File" icon="ui-icon-home" rendered="">
-			</p:submenu>
-			<f:facet name="options">
-				<p:inputText style="margin-right:10px" placeholder="Search" />
-				<p:commandButton type="button" value="Logout" icon="ui-icon-extlink" />
-			</f:facet>
-		</p:menubar>
+		<div class="ui-g">
+			<div class="ui-g-8 ui-md-4">
+				<p:panel style="">
 
-		<h:panelGrid style="margin-top:20px" columns="3">
-			<p:panel style="margin-bottom:20px;margin-top:20px">
+					<h:panelGrid columns="2" style="width:100%">
+						<p:panel>
 
-				<h:panelGrid style="margin-top:20px" columns="1">
-					<p:graphicImage
-						url="#{componenteController.componenteSelecionado.url_imagem_componente}"
-						width="300px" height="300px" />
-					<h:panelGrid style="margin-top:20px" columns="1">
-						<p:outputLabel value="Nome:"></p:outputLabel>
-						<p:outputLabel
-							value="#{componenteController.componenteSelecionado.nm_componente}"></p:outputLabel>
-					</h:panelGrid>
-					<h:panelGrid style="margin-top:20px" columns="1">
-						<p:outputLabel value="Detalhes:"></p:outputLabel>
-						<p:inputTextarea
-							value="#{componenteController.componenteSelecionado.ds_componente}"></p:inputTextarea>
-					</h:panelGrid>
-				</h:panelGrid>
+							<p:commandButton value="Buscar novo componente" id="buscar"
+								action="pesquisaComponente.xhtml" ajax="false"
+								styleClass="ui-priority-primary" />
 
-			</p:panel>
+							<div style="margin-bottom: 20px"></div>
 
-			<h:panelGrid style="margin-top:-70px" columns="2">
-				<p:panel style="margin-bottom:20px;margin-top:20px">
-					<h:panelGrid style="margin-top:20px" columns="1">
-						<p:outputLabel value="Detalhes:"></p:outputLabel>
-						<p:inputTextarea
-							value="#{componenteController.componenteSelecionado.benef_componente}"></p:inputTextarea>
+							<p:graphicImage
+								url="#{componenteController.componenteSelecionado.url_imagem_componente}"
+								width="280px" height="300px" />
+
+							<p:outputLabel style="color:green;    font-size: xx-large;"
+								icon="ui-icon-caret-1-e"
+								value="#{componenteController.componenteSelecionado.nm_componente}"></p:outputLabel>
+							
+							<h4></h4>
+							
+							<a href="#{componenteController.componenteSelecionado.link_componente}">--Link para mais informações--</a>
+						</p:panel>
 					</h:panelGrid>
-					<h:panelGrid style="margin-top:20px" columns="1">
-						<p:outputLabel value="Detalhes:"></p:outputLabel>
-						<p:inputTextarea
-							value="#{componenteController.componenteSelecionado.malef_componente}"></p:inputTextarea>
-					</h:panelGrid>
+
 				</p:panel>
-			</h:panelGrid>
-			
 
-		</h:panelGrid>
+
+
+			</div>
+			<div class="ui-g-12 ui-md-8" style="margin-top: 7px">
+
+				<p:panel style="">
+
+
+					<p:panel header="Descrição do Componente"
+						style="margin-bottom:20px;">
+						<p:outputPanel deferred="true">
+							<h3 style="color: green;">
+								<p:outputLabel
+									value="#{componenteController.componenteSelecionado.ds_componente}"></p:outputLabel>
+							</h3>
+							<h4></h4>
+						</p:outputPanel>
+
+					</p:panel>
+
+
+					<p:panel header="Benefícios do Componente"
+						style="margin-bottom:20px;">
+						<p:outputPanel deferred="true">
+							<h3 style="color: green;">
+								<p:outputLabel
+									value="#{componenteController.componenteSelecionado.benef_componente}"></p:outputLabel>
+							</h3>
+							<h4></h4>
+						</p:outputPanel>
+					</p:panel>
+
+
+					<p:panel header="Malefícios do Componente"
+						style="margin-bottom:20px;">
+						<p:outputPanel deferred="true">
+							<h3 style="color: green;">
+								<p:outputLabel
+									value="#{componenteController.componenteSelecionado.malef_componente}"></p:outputLabel>
+							</h3>
+							<h4></h4>
+						</p:outputPanel>
+					</p:panel>
+
+
+				</p:panel>
+
+
+			</div>
+
+		</div>
 
 	</h:form>
 
+
+
+	<ui:include src="footer.xhtml" />
 
 </h:body>
 </html>
