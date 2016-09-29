@@ -1,13 +1,21 @@
 package com.vidasaudavel.controller;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import org.springframework.stereotype.Controller;
 
+import com.vidasaudavel.model.Alimento;
+import com.vidasaudavel.model.PeriodoDia;
 import com.vidasaudavel.model.Questionario;
 import com.vidasaudavel.model.TipoRegiao;
-
+import com.vidasaudavel.service.AlimentoService;
 import com.vidasaudavel.service.QuestionarioService;
 
 @ManagedBean(name = "questionarioController")
@@ -15,54 +23,172 @@ import com.vidasaudavel.service.QuestionarioService;
 @SessionScoped
 public class QuestionarioController {
 
-	private QuestionarioService questionarioService;
 	private Questionario questionario;
+	private Alimento alimento;
+	private List<Alimento> alimentos;
+	private List<Alimento> alimentosRespostaManha;
+	private List<Alimento> alimentosRespostaTarde;
+	private List<Alimento> alimentosRespostaNoite;
 
-	
-	
 	public QuestionarioController() {
-	questionario = new Questionario();
+		questionario = new Questionario();
+		alimento = new Alimento();
+		alimentos = new ArrayList<Alimento>();
+		alimentosRespostaManha = new ArrayList<Alimento>();
+		alimentosRespostaTarde = new ArrayList<Alimento>();
+		alimentosRespostaNoite = new ArrayList<Alimento>();
+
 	}
 
-	
-	public void addQuestionario(Questionario q){
-		
-		q.setImc( q.getPeso() / ( q.getAltura()*q.getAltura())); 
-		questionario.setImc(q.getImc());
-		
-		//Logica que vai gerar as Informaccoes que a gente vai mostrar na tela !
+	private QuestionarioService questionarioService;
 
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		//mo caso as recomendacoes
-		
-		questionarioService.addQuestionario(q);	
-		
+	public void setQuestionarioService(QuestionarioService questionarioService) {
+		this.questionarioService = questionarioService;
 	}
-	
-	
-	
+
+	private AlimentoService alimentoService;
+
+	public void setAlimentoService(AlimentoService alimentoService) {
+		this.alimentoService = alimentoService;
+	}
+
+	public void addQuestionario(Questionario q) {
+
+		double imc = (q.getPeso() / (q.getAltura() * q.getAltura()));
+
+		BigDecimal bd = new BigDecimal(imc).setScale(1, RoundingMode.HALF_EVEN);
+
+		questionario.setImc(bd.doubleValue());
+
+		questionarioService.addQuestionario(q);
+
+		limparCampos();
+
+		recomendarListaAlimentos(q);
+
+	}
+
+	public void recomendarListaAlimentos(Questionario q) {
+		// PARTE QUE VAI VIRAR UM METODO SÓ SETANDO O QUESTIONARIO COMO
+		// PARAMETRO
+		alimentos = alimentoService.listAlimento();
+		
+		for (int i = 0; i < alimentos.size(); i++) {
+
+			if (questionario.getRegiao_usuario().equalsIgnoreCase(
+					alimentos.get(i).getRegiao_tipica())) {
+				// Abaixo do peso
+				if (questionario.getImc() < 18.5
+						&& alimentos.get(i).getCalorias() > 300) {
+
+					if (alimentos.get(i).getPeriodo_dia()
+							.equalsIgnoreCase(PeriodoDia.Manha.getValor())) {
+						alimentosRespostaManha.add(alimentos.get(i));
+
+					}
+					if (alimentos.get(i).getPeriodo_dia()
+							.equalsIgnoreCase(PeriodoDia.Tarde.getValor())) {
+						alimentosRespostaTarde.add(alimentos.get(i));
+
+					}
+					if (alimentos.get(i).getPeriodo_dia()
+							.equalsIgnoreCase(PeriodoDia.Noite.getValor())) {
+						alimentosRespostaNoite.add(alimentos.get(i));
+
+					}
+
+				}
+				// Peso normal
+
+				if (questionario.getImc() > 18.5
+						&& questionario.getImc() < 24.9
+						&& alimentos.get(i).getCalorias() < 300
+						&& alimentos.get(i).getCalorias() > 200) {
+
+					if (alimentos.get(i).getPeriodo_dia()
+							.equalsIgnoreCase(PeriodoDia.Manha.getValor())) {
+						alimentosRespostaManha.add(alimentos.get(i));
+
+					}
+					if (alimentos.get(i).getPeriodo_dia()
+							.equalsIgnoreCase(PeriodoDia.Tarde.getValor())) {
+						alimentosRespostaTarde.add(alimentos.get(i));
+
+					}
+					if (alimentos.get(i).getPeriodo_dia()
+							.equalsIgnoreCase(PeriodoDia.Noite.getValor())) {
+						alimentosRespostaNoite.add(alimentos.get(i));
+
+					}
+
+				}
+				// Sobrepeso
+				if (questionario.getImc() > 24.9
+						&& questionario.getImc() < 29.9
+						&& alimentos.get(i).getCalorias() < 200
+						&& alimentos.get(i).getCalorias() > 100) {
+
+					if (alimentos.get(i).getPeriodo_dia()
+							.equalsIgnoreCase(PeriodoDia.Manha.getValor())) {
+						alimentosRespostaManha.add(alimentos.get(i));
+
+					}
+					if (alimentos.get(i).getPeriodo_dia()
+							.equalsIgnoreCase(PeriodoDia.Tarde.getValor())) {
+						alimentosRespostaTarde.add(alimentos.get(i));
+
+					}
+					if (alimentos.get(i).getPeriodo_dia()
+							.equalsIgnoreCase(PeriodoDia.Noite.getValor())) {
+						alimentosRespostaNoite.add(alimentos.get(i));
+
+					}
+
+				}
+				
+				// Obesidade
+				if (questionario.getImc() > 29.9
+							&& alimentos.get(i).getCalorias() < 100) {
+
+					if (alimentos.get(i).getPeriodo_dia()
+							.equalsIgnoreCase(PeriodoDia.Manha.getValor())) {
+						alimentosRespostaManha.add(alimentos.get(i));
+
+					}
+					if (alimentos.get(i).getPeriodo_dia()
+							.equalsIgnoreCase(PeriodoDia.Tarde.getValor())) {
+						alimentosRespostaTarde.add(alimentos.get(i));
+
+					}
+					if (alimentos.get(i).getPeriodo_dia()
+							.equalsIgnoreCase(PeriodoDia.Noite.getValor())) {
+						alimentosRespostaNoite.add(alimentos.get(i));
+
+					}
+
+				}
+
+			}
+		}
+
+		// PARTE QUE VAI VIRAR UM METODO SÓ SETANDO O QUESTIONARIO COMO
+		// PARAMETRO FIM
+	}
+
+	public List<Alimento> listAlimento() {
+
+		alimentos = this.alimentoService.listAlimento();
+		return alimentos;
+
+	}
+
+	public void limparCampos() {
+		questionario.setAltura(0);
+		questionario.setIdade(0);
+		questionario.setNm_usuario("");
+		questionario.setPeso(0);
+	}
+
 	public Questionario getQuestionario() {
 		return questionario;
 	}
@@ -71,12 +197,39 @@ public class QuestionarioController {
 		this.questionario = questionario;
 	}
 
-
-	public void setQuestionarioService(QuestionarioService questionarioService) {
-		this.questionarioService = questionarioService;
-	}
-
 	public TipoRegiao[] getTipoRegiao() {
 		return TipoRegiao.values();
+	}
+
+	public Alimento getAlimento() {
+		return alimento;
+	}
+
+	public void setAlimento(Alimento alimento) {
+		this.alimento = alimento;
+	}
+
+	public List<Alimento> getAlimentosRespostaManha() {
+		return alimentosRespostaManha;
+	}
+
+	public void setAlimentosRespostaManha(List<Alimento> alimentosRespostaManha) {
+		this.alimentosRespostaManha = alimentosRespostaManha;
+	}
+
+	public List<Alimento> getAlimentosRespostaTarde() {
+		return alimentosRespostaTarde;
+	}
+
+	public void setAlimentosRespostaTarde(List<Alimento> alimentosRespostaTarde) {
+		this.alimentosRespostaTarde = alimentosRespostaTarde;
+	}
+
+	public List<Alimento> getAlimentosRespostaNoite() {
+		return alimentosRespostaNoite;
+	}
+
+	public void setAlimentosRespostaNoite(List<Alimento> alimentosRespostaNoite) {
+		this.alimentosRespostaNoite = alimentosRespostaNoite;
 	}
 }

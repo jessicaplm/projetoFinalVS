@@ -29,16 +29,20 @@ public class AlimentoController {
 	private Alimento alimento;
 	private Componente componente;
 	private List<Componente> listComponentesAlimento;
-	private AlimentoService alimentoService;
 	private List<Alimento> alimentos;
 	private List<Componente> componentes;
 	private List<Alimento> pesquisaAlimentos;
 	private String valorPesquisa;
 	private Alimento alimentoSelecionado;
 	private boolean showSugestao = false;
-
-	// Service do model sugestao
 	private Sugestao sugestao;
+
+	private AlimentoService alimentoService;
+
+	public void setAlimentoService(AlimentoService alimentoService) {
+		this.alimentoService = alimentoService;
+	}
+
 	private SugestaoService sugestaoService;
 
 	public void setSugestaoService(SugestaoService sugestaoService) {
@@ -53,12 +57,12 @@ public class AlimentoController {
 			sugestao.setNome(nmSugestao);
 			this.sugestaoService.addSugestao(sugestao);
 			showSugestao = false;
-			
+
 			FacesMessage message = new FacesMessage(
-					"O item já foi adicionado as Sugestoes",
-					nmSugestao + "  foi adicionado as Sugestoes!");
+					"O item já foi adicionado as Sugestoes", nmSugestao
+							+ "  foi adicionado as Sugestoes!");
 			FacesContext.getCurrentInstance().addMessage(null, message);
-			
+
 		} catch (Exception e) {
 			e.getMessage();
 		}
@@ -72,10 +76,6 @@ public class AlimentoController {
 
 	public void setShowSugestao(boolean showSugestao) {
 		this.showSugestao = showSugestao;
-	}
-
-	public void setAlimentoService(AlimentoService alimentoService) {
-		this.alimentoService = alimentoService;
 	}
 
 	private ComponenteService componenteService;
