@@ -19,9 +19,9 @@
 		<ui:include src="header.xhtml" />
 		<h:form styleClass="ui segment">
 
-			<p:panelGrid columns="2">
+			<p:panelGrid columns="2" >
 				<p:panel header="Você Sabia?">
-					<div ><li><h:outputText  style="font-size:90%" 
+					<div ><li style="font-size:90%; text-align: justify;"> <h:outputText  
 								value="A Organização Mundial de Saúde
 						aponta a obesidade como um dos maiores problemas de saúde pública
 						no mundo. A projeção é que, em 2025, cerca de 2,3 bilhões de
@@ -32,7 +32,7 @@
 						de 50% da população está acima do peso, ou seja, na faixa de
 						sobrepeso e obesidade."/></li>
 						<br/>
-						<li><h:outputText style="font-size:90%"
+						<li style="font-size:90%; text-align: justify;"> <h:outputText 
 								value="Uma pequena porção de Frango podem
 						atender às suas necessidades de niacina para o dia inteiro. O
 						Selênio na carne de frango também ajuda na proteção contra o
@@ -42,9 +42,9 @@
 				<p:panel>
 					<p:imageSwitch effect="fade" widgetVar="switcher"
 						id="manuelSwitcher" slideshowAuto="true">
-						<p:graphicImage url="imagens/feijao.jpg" width="800" height="230" />
-						<p:graphicImage url="imagens/sal.jpg" width="800" height="230" />
-						<p:graphicImage url="imagens/agua.jpg" width="800" height="230" />
+						<p:graphicImage url="imagens/feijao2.jpg" width="800" height="230" />
+						<p:graphicImage url="imagens/sal2.jpg" width="800" height="230" />
+						<p:graphicImage url="imagens/agua2.jpg" width="800" height="230" />
 					</p:imageSwitch>
 					<p:commandButton altype="button"
 						onclick="PF('switcher').previous();"

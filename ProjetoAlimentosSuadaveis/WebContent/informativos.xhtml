@@ -7,6 +7,7 @@
 
 <f:view contentType="text/html">
 	<h:head>
+	
 		<f:facet name="first">
 			<meta content='text/html; charset=UTF-8' http-equiv="Content-Type" />
 			<title>Vida Saudável</title>
@@ -15,16 +16,18 @@
 
 	<h:body>
 		<ui:include src="header.xhtml" />
+		<link rel="stylesheet" type="text/css" href="arquivo.css"></link>
+		
 		<h:form styleClass="ui segment">
 			<p:layoutUnit position="center" size="500">
 				<div class="ui form">
 					<p:panel id="noticia1"
 						header="Obesidade impulsiona a desnutrição no mundo"
 						style="margin-bottom:2px">
-						<h:panelGrid columns="2" cellpadding="10">
-							<p:graphicImage url="imagens/obesidade.jpg" height="220"
-								width="300" />
-							<h:outputText style="font-size:90%"
+						<h:panelGrid columns="2" cellpadding="10" style="font-size:100%; text-align: justify">
+							<p:graphicImage url="imagens/obesidade.jpg" height="220" width="300"/>
+								
+							<h:outputText 
 								value="O mundo está passando por uma crise de desnutrição impulsionada principalmente pela obesidade. De acordo com o Relatório Global de Nutrição 2016, divulgado nesta terça-feira, 44% dos países enfrentam níveis muito severos de subnutrição e obesidade. Ao contrário do que muitas pessoas pensam, os autores ressaltam que a desnutrição se manifesta de muitas formas e é definida pelo não atendimento das necessidades nutricionais do indivíduo. Pessoas com problemas de crescimento e desenvolvimento são consideradas desnutridas. Aquelas com sobrepeso ou com excesso de açúcar no sangue, sal, gordura ou colesterol também. Segundo a pesquisa, que já está em sua terceira edição, quase metade das mortes dos menores de cinco anos no mundo se deve à desnutrição, que, junto com regimes alimentares inadequados, constitui o primeiro risco para a saúde pública. Por outro lado, o número de crianças com menos de cinco anos com sobrepeso se aproxima da quantidade das raquíticas. “Vivemos em um mundo onde ser desnutrido é clichê e isso é totalmente inaceitável”, disse Lawrence Haddad, coautor do estudo, à rede britânica BBC." />
 						</h:panelGrid>
 						<h:outputText
@@ -36,7 +39,7 @@
 					<p:panel id="noticia2"
 						header="IBGE: mais da metade dos brasileiros está acima do peso"
 						style="margin-bottom:5px">
-						<h:panelGrid columns="2" cellpadding="10">
+						<h:panelGrid columns="2" cellpadding="10" style="font-size:110%; text-align: justify">
 							<p:graphicImage url="imagens/obeso.jpg" height="220" width="300" />
 							<h:outputText style="font-size:90%"
 								value="A Pesquisa Nacional de Saúde (PNS) 2013, realizada pelo IBGE em parceria com o Ministério da Saúde, mostrou que quase 60% dos brasileiros estão acima do peso. De acordo com o levantamento,conduzido em 2013, o número de homens com sobrepeso passou de 42,4% para 57,3%, e de 42,1% para 59,8%, no caso das mulheres. Também houve um aumento significativo na obesidade: 17,5% dos homens estavam obesos em 2013, contra 9,3% em 2002. Para as mulheres o índice passou de 14% em 2002 para 25,2%. Na avaliação do tamanho da cintura, 37,7% dos brasileiros estão com a circunferência aumentada, o que aumenta os riscos de doenças cardiovasculares e diabetes. A pressão alta, outro fator de risco para a saúde, foi constatada em 22,3% dos entrevistados." />
@@ -49,7 +52,7 @@
 				<div class="ui form">
 					<p:panel id="noticia3" header="O segredo dos Esquimós"
 						style="margin-bottom:5px">
-						<h:panelGrid columns="2" cellpadding="10">
+						<h:panelGrid columns="2" cellpadding="10" style="font-size:110%; text-align: justify">
 							<p:graphicImage url="imagens/omega3.jpg" height="220" width="300" />
 							<h:outputText style="font-size:90%"
 								value="Um estudo realizado com esquimós da Groenlândia mostrou que apesar de ser um dos povos que mais consome gordura, possuem colesterol mais baixo que a maioria dos povos com uma dieta ocidental, apresentando também baixas taxas de doenças cardíacas, obesidade e hipertensão. Esses índices foram atribuídos ao alto consumo de Ômega 3, encontrado nos peixes de água fria que os esquimós consomem." />

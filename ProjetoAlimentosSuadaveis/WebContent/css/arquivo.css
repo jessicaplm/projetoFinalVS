@@ -4,3 +4,8 @@
 
 
 body{background:  #6da5a5;}
+
+img {
+    float:left;
+    margin:0 20px 10px 0;
+  }
