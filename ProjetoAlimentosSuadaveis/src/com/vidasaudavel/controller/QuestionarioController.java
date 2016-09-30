@@ -24,7 +24,7 @@ import com.vidasaudavel.service.QuestionarioService;
 @ManagedBean(name = "questionarioController")
 @Controller
 @SessionScoped
-public class QuestionarioController  {
+public class QuestionarioController {
 
 	private Questionario questionario;
 	private Alimento alimento;
@@ -35,7 +35,8 @@ public class QuestionarioController  {
 	private boolean disablePesquisa = false;
 	private boolean selecionarsexmasc = true;
 	private boolean selecionarsexfem = false;
-	private String sexoSelecionado ;
+	private String sexoSelecionado;
+	private String respostaQuestionarioImc;
 
 	public QuestionarioController() {
 		questionario = new Questionario();
@@ -86,9 +87,38 @@ public class QuestionarioController  {
 			q.getListaAlimento().add(alimentosRespostaNoite.get(i));
 		}
 
+		resultimc();
+
 		questionarioService.addQuestionario(q);
 		disablePesquisa = true;
 		limparCampos();
+	}
+
+	public void resultimc() {
+		if (questionario.getImc() < 18.5) {
+
+			respostaQuestionarioImc = "Vocé esta abaixo do peso!";
+
+		}
+		// Peso normal
+
+		if (questionario.getImc() > 18.5 && questionario.getImc() < 24.9) {
+
+			respostaQuestionarioImc = "Seu Peso esta normal!";
+
+		}
+		// Sobrepeso
+		if (questionario.getImc() > 24.9 && questionario.getImc() < 29.9) {
+
+			respostaQuestionarioImc = "Vocé esta com sobrepeso, risco de obesidade!";
+		}
+
+		// Obesidade
+		if (questionario.getImc() > 29.9) {
+
+			respostaQuestionarioImc = "Vocé esta Obeso!";
+
+		}
 	}
 
 	public void recomendarListaAlimentos(Questionario q) {
@@ -250,6 +280,13 @@ public class QuestionarioController  {
 		this.sexoSelecionado = sexoSelecionado;
 	}
 
+	public String getRespostaQuestionarioImc() {
+		return respostaQuestionarioImc;
+	}
+
+	public void setRespostaQuestionarioImc(String respostaQuestionarioImc) {
+		this.respostaQuestionarioImc = respostaQuestionarioImc;
+	}
 
 	public void processValueChanges() {
 		// TODO Auto-generated method stub
