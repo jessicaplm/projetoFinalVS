@@ -23,7 +23,7 @@
 				<p:growl id="messages" />
 				<h:panelGrid style="margin-top:20px" columns="2">
 					<p:autoComplete placeholder="Pesquisar Ingrediente"
-						value="#{mbComponente.nm_componente}"  completeMethod="#{componenteController.completeText(mbComponente.nm_componente)}" />
+						value="#{mbComponente.nm_componente}"  forceSelection="true" completeMethod="#{componenteController.completeText}" />
 						
 						
 					<p:commandButton icon="ui-icon-search" ajax="false"

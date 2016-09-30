@@ -57,8 +57,9 @@ public class ComponenteController {
 			this.sugestaoService.addSugestao(sugestao);
 			showSugestao = false;
 
-			FacesMessage message = new FacesMessage("O item já foi adicionado as Sugestoes",
-					nmSugestao + "  foi adicionado as Sugestoes!");
+			FacesMessage message = new FacesMessage(
+					"O item já foi adicionado as Sugestoes", nmSugestao
+							+ "  foi adicionado as Sugestoes!");
 			FacesContext.getCurrentInstance().addMessage(null, message);
 
 		} catch (Exception e) {
@@ -89,7 +90,8 @@ public class ComponenteController {
 			comp = componentes.get(i);
 			if (c.getNm_componente().equalsIgnoreCase(comp.getNm_componente())) {
 
-				FacesMessage msgs = new FacesMessage("Componente ja Inserido", "");
+				FacesMessage msgs = new FacesMessage("Componente ja Inserido",
+						"");
 				FacesContext.getCurrentInstance().addMessage(null, msgs);
 
 				existe = true;
@@ -102,7 +104,8 @@ public class ComponenteController {
 
 			for (int i = 1; i < componenteslista.size(); i++) {
 				comp = componenteslista.get(i);
-				if (c.getNm_componente().equalsIgnoreCase(comp.getNm_componente())) {
+				if (c.getNm_componente().equalsIgnoreCase(
+						comp.getNm_componente())) {
 
 					existe = true;
 
@@ -120,7 +123,8 @@ public class ComponenteController {
 				cp.setUrl_imagem_componente(c.getUrl_imagem_componente());
 				cp.setMalef_componente(c.getMalef_componente());
 
-				FacesMessage msgs = new FacesMessage("Componente adicionado a lista!", "");
+				FacesMessage msgs = new FacesMessage(
+						"Componente adicionado a lista!", "");
 				FacesContext.getCurrentInstance().addMessage(null, msgs);
 
 				componentes.add(cp);
@@ -178,7 +182,7 @@ public class ComponenteController {
 	public List<Componente> listComponentebyName(String n) {
 
 		pesquisaComponentes = this.componenteService.listByNameComponente(n);
-		
+
 		if (pesquisaComponentes.size() <= 0) {
 			showSugestao = true;
 
@@ -187,15 +191,21 @@ public class ComponenteController {
 		return pesquisaComponentes;
 
 	}
+
 	public List<String> completeText(String query) {
 		List<String> results = new ArrayList<String>();
-		pesquisaComponentes = this.componenteService.listByNameComponente(query);
-        for(int i = 0; i < pesquisaComponentes.size(); i++) {
-            results.add(pesquisaComponentes.get(i).getNm_componente());
-        }
-         
-        return results;
-    }
+		pesquisaComponentes = this.componenteService
+				.listByNameComponente(query);
+		for (int i = 0; i < pesquisaComponentes.size(); i++) {
+
+			if (pesquisaComponentes.get(i).getNm_componente().toLowerCase()
+					.startsWith(query)) {
+				results.add(pesquisaComponentes.get(i).getNm_componente());
+			}
+		}
+		pesquisaComponentes = new ArrayList<Componente>();
+		return results;
+	}
 
 	public List<Componente> getPesquisaComponentes() {
 		return pesquisaComponentes;
