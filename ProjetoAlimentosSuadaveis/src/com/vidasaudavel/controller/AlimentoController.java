@@ -33,6 +33,7 @@ public class AlimentoController {
 	private List<Componente> componentes;
 	private List<Alimento> pesquisaAlimentos;
 	private String valorPesquisa;
+	private String valorPesquisasearch;
 	private Alimento alimentoSelecionado;
 	private boolean showSugestao = false;
 	private Sugestao sugestao;
@@ -108,6 +109,7 @@ public class AlimentoController {
 		}
 
 		this.alimentoService.addAlimento(a);
+	
 		FacesMessage message = new FacesMessage("Alimento Adicionado!",
 				a.getNm_alimento() + " foi adicionado!");
 		FacesContext.getCurrentInstance().addMessage(null, message);
@@ -178,7 +180,7 @@ public class AlimentoController {
 	public List<Alimento> listByNameAlimento(String n) {
 		if (!n.equals("")) {
 			pesquisaAlimentos = this.alimentoService.listByNameAlimento(n);
-
+			valorPesquisasearch = "";
 			if (pesquisaAlimentos.size() <= 0) {
 				showSugestao = true;
 
@@ -266,6 +268,14 @@ public class AlimentoController {
 
 	public PeriodoDia[] getPeriodosDia() {
 		return PeriodoDia.values();
+	}
+
+	public String getValorPesquisasearch() {
+		return valorPesquisasearch;
+	}
+
+	public void setValorPesquisasearch(String valorPesquisasearch) {
+		this.valorPesquisasearch = valorPesquisasearch;
 	}
 
 	public Componente getComponente() {

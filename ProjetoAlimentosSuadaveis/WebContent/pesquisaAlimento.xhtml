@@ -22,9 +22,9 @@
 			<p:panel>
 				<p:growl id="messages" />
 				<h:panelGrid style="margin-top:20px" columns="2">
-					<p:autoComplete value="#{mbAlimento.nm_alimento}"  ajax="false" completeMethod="#{alimentoController.completeText}"   placeholder="Pesquisar Alimento" />
+					<p:autoComplete value="#{alimentoController.valorPesquisasearch}"  ajax="false" completeMethod="#{alimentoController.completeText}"   placeholder="Pesquisar Alimento" />
 					<p:commandButton icon="ui-icon-search" ajax="false"
-						actionListener="#{alimentoController.listByNameAlimento(mbAlimento.nm_alimento)}"
+						actionListener="#{alimentoController.listByNameAlimento(alimentoController.valorPesquisasearch)}"
 						update="tabelaList" render="@form:tabelaList:botoesListar">
 					</p:commandButton>
 				</h:panelGrid>
@@ -32,7 +32,7 @@
 					rendered="#{alimentoController.showSugestao}">
 					<h4 style="color: aqua;">Alimento não encontrado?</h4>
 					<p:commandButton id="ocultar" ajax="false"
-						actionListener="#{alimentoController.addSugestaoAlimento(mbAlimento.nm_alimento)}"
+						actionListener="#{alimentoController.addSugestaoAlimento(alimentoController.valorPesquisasearch)}"
 						value="Sugerir Alimento">
 					</p:commandButton>
 				</h:panelGrid>

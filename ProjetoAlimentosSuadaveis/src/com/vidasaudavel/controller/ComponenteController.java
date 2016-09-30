@@ -32,6 +32,7 @@ public class ComponenteController {
 	private List<Componente> componentes;
 	private List<Componente> componenteslista;
 	private List<Componente> pesquisaComponentes;
+	private String valorpesquisacomponente;
 	private Componente componenteSelecionado;
 	private boolean showSugestao = false;
 
@@ -183,7 +184,7 @@ public class ComponenteController {
 		if (!n.equals("")) {
 			pesquisaComponentes = this.componenteService
 					.listByNameComponente(n);
-
+			valorpesquisacomponente = "";
 			if (pesquisaComponentes.size() <= 0) {
 				showSugestao = true;
 
@@ -245,5 +246,15 @@ public class ComponenteController {
 	public void setShowSugestao(boolean showSugestao) {
 		this.showSugestao = showSugestao;
 	}
+
+	public String getValorpesquisacomponente() {
+		return valorpesquisacomponente;
+	}
+
+	public void setValorpesquisacomponente(String valorpesquisacomponente) {
+		this.valorpesquisacomponente = valorpesquisacomponente;
+	}
+
+
 
 }
