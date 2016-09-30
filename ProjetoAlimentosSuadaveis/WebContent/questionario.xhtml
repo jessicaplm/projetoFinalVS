@@ -42,7 +42,9 @@
 						<p:outputLabel for="sexo" value="Sexo:" />
 						<p:selectOneRadio id="sexo"
 							value="#{questionarioController.sexoSelecionado}">
-							<p:ajax listener="#{questionarioController.processValueChanges()}" update="imagensimc"/>
+							<p:ajax
+								listener="#{questionarioController.processValueChanges()}"
+								update="imagensimc" />
 							<f:selectItem itemLabel="Masculino" itemValue="Masculino"
 								itemIndex="2" />
 							<f:selectItem itemLabel="Feminino" itemValue="Feminino"
@@ -102,12 +104,12 @@
 					<h:panelGrid columns="1" cellspacing="10"
 						style="width:200px; margin-left:auto; margin-right:auto;">
 						<h:panelGrid columns="1" cellspacing="10">
-						<h:outputText value="Seu IMC é:" />
-						<p:inputText disabled="true"
-							value="#{questionarioController.questionario.imc}">
-						</p:inputText>
+							<h:outputText value="Seu IMC é:" />
+							<p:inputText disabled="true"
+								value="#{questionarioController.questionario.imc}">
+							</p:inputText>
 						</h:panelGrid>
-						<p:outputLabel  style="color: green; font-weight: bold;"
+						<p:outputLabel style="color: green; font-weight: bold;"
 							value="*#{questionarioController.respostaQuestionarioImc}">
 						</p:outputLabel>
 					</h:panelGrid>
@@ -160,8 +162,12 @@
 
 								<p:commandLink
 									style=" margin-left: 10px;color: green; position: absolute;"
-									value="#{alim.nm_alimento}">
+									ajax="false" immediate="true" value="#{alim.nm_alimento}"
+									action="detalhesAlimento.xhtml">
+									<f:setPropertyActionListener value="#{alim}"
+										target="#{alimentoController.alimentoSelecionado}"></f:setPropertyActionListener>
 								</p:commandLink>
+
 
 							</p:dataList>
 						</div>
@@ -177,9 +183,12 @@
 
 								<p:commandLink
 									style=" margin-left: 10px;color: green; position: absolute;"
-									value="#{alim.nm_alimento}">
-
+									ajax="false" immediate="true" value="#{alim.nm_alimento}"
+									action="detalhesAlimento.xhtml">
+									<f:setPropertyActionListener value="#{alim}"
+										target="#{alimentoController.alimentoSelecionado}"></f:setPropertyActionListener>
 								</p:commandLink>
+
 
 							</p:dataList>
 						</div>
