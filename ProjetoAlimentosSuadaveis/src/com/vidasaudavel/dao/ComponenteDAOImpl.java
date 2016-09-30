@@ -113,7 +113,7 @@ public class ComponenteDAOImpl implements ComponenteDAO {
 
 			Session session = this.sessionFactory.getCurrentSession();
 			List<Componente> componenteList = session
-					.createQuery("Select a from Componente as a where a.nm_componente like'%" + n + "%'").list();
+					.createQuery("Select a from Componente as a where a.nm_componente like'" + n + "%'").list();
 			for (Componente a : componenteList) {
 
 				logger.info("lista= " + a);

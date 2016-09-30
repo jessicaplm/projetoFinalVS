@@ -176,12 +176,15 @@ public class AlimentoController {
 	}
 
 	public List<Alimento> listByNameAlimento(String n) {
+		if (!n.equals("")) {
+			pesquisaAlimentos = this.alimentoService.listByNameAlimento(n);
 
-		pesquisaAlimentos = this.alimentoService.listByNameAlimento(n);
+			if (pesquisaAlimentos.size() <= 0) {
+				showSugestao = true;
 
-		if (pesquisaAlimentos.size() <= 0) {
-			showSugestao = true;
-
+			}else{
+				showSugestao = false;
+			}
 		}
 		return pesquisaAlimentos;
 	}

@@ -116,7 +116,7 @@ public class AlimentoDAOImpl implements AlimentoDAO {
 		try {
 
 			Session session = this.sessionFactory.getCurrentSession();
-			List<Alimento> alimentoList = session.createQuery("Select a from Alimento as a where a.nm_alimento like'%"+n+"%'" )
+			List<Alimento> alimentoList = session.createQuery("Select a from Alimento as a where a.nm_alimento like'"+n+"%'" )
 					.list();
 			for (Alimento a : alimentoList) {
 

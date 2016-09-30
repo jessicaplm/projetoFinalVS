@@ -180,14 +180,17 @@ public class ComponenteController {
 	}
 
 	public List<Componente> listComponentebyName(String n) {
+		if (!n.equals("")) {
+			pesquisaComponentes = this.componenteService
+					.listByNameComponente(n);
 
-		pesquisaComponentes = this.componenteService.listByNameComponente(n);
+			if (pesquisaComponentes.size() <= 0) {
+				showSugestao = true;
 
-		if (pesquisaComponentes.size() <= 0) {
-			showSugestao = true;
-
+			}else{
+				showSugestao = false;
+			}
 		}
-
 		return pesquisaComponentes;
 
 	}

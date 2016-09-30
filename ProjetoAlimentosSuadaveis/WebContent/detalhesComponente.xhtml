@@ -6,7 +6,8 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
-	<link rel="shortcut icon" href="imagens/favicon.ico" type="image/x-icon" />
+	<link rel="shortcut icon" href="imagens/favicon.ico"
+		type="image/x-icon" />
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<title>Vida Saudável</title>
 	<script src="js/semantic.min.js"></script>
@@ -21,7 +22,7 @@
 			<div class="ui-g-8 ui-md-4">
 				<p:panel style="">
 
-					<h:panelGrid columns="2" style="width:100%">
+					<h:panelGrid columns="1" style="width:100%">
 						<p:panel>
 
 							<p:commandButton value="Buscar novo componente" id="buscar"
@@ -33,14 +34,16 @@
 							<p:graphicImage
 								url="#{componenteController.componenteSelecionado.url_imagem_componente}"
 								width="280px" height="300px" />
-
+							<br />
 							<p:outputLabel style="color:green;    font-size: xx-large;"
 								icon="ui-icon-caret-1-e"
 								value="#{componenteController.componenteSelecionado.nm_componente}"></p:outputLabel>
-							
+
 							<h4></h4>
-							
-							<a href="#{componenteController.componenteSelecionado.link_componente}">--Link para mais informações--</a>
+
+							<a
+								href="#{componenteController.componenteSelecionado.link_componente}">--Link
+								para mais informações--</a>
 						</p:panel>
 					</h:panelGrid>
 
